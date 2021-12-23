@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Room.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW2</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Room.java</span></div><h1>Room.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+
+/**
+ * Room is a simple object that has maxOccupancy, price, numberGuests.
+ */
+public class Room {
+
+  protected int maxOccupancy;
+  protected int price;
+<span class="fc" id="L12">  protected int numberGuests = 0;</span>
+
+
+  /**
+   * Constructor that creates a new Room object with  maxOccupancy, price.
+   *
+   * @param maxOccupancy - int, maxOccupancy of the new Room object
+   * @param price        - int, price of the new Room object
+   */
+<span class="fc" id="L21">  public Room(int maxOccupancy, int price) {</span>
+<span class="fc" id="L22">    this.maxOccupancy = maxOccupancy;</span>
+<span class="fc" id="L23">    this.price = price;</span>
+<span class="fc" id="L24">  }</span>
+
+  /**
+   * A method that used to check if the room is empty or not.
+   * @return the number of guests
+   */
+  public boolean isAvailable() {
+<span class="fc" id="L31">    int numberOfGuests = 0;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">    return this.numberGuests == numberOfGuests;</span>
+  }
+
+  /**
+   * a BoomRoom method that used to bookm a room if the room is available.
+   * @param numberGuests, - int, taking this parameter passing this method
+   * @throws IllegalArgumentException when if condition is not reached
+   * throw exception
+   */
+  public void bookRoom(int numberGuests) throws IllegalArgumentException {
+
+<span class="fc bfc" id="L43" title="All 4 branches covered.">    if (this.isAvailable() &amp;&amp; validatedGuests(numberGuests)) {</span>
+<span class="fc" id="L44">      this.numberGuests = numberGuests;</span>
+    } else {
+<span class="fc" id="L46">      throw new IllegalArgumentException(&quot;Illegal number of guests&quot;);</span>
+    }
+<span class="fc" id="L48">  }</span>
+
+  /**
+   * Validate if the number of guests is qualified.
+   * @param numberGuests, int, taking numberGuests as a parameter
+   * @return the validatedGuests if the number of guests great 0 and less than or equal max
+   * occupancy
+   */
+  private boolean validatedGuests(int numberGuests) {
+<span class="fc" id="L57">    int emptyRoomGuests = 0;</span>
+<span class="fc bfc" id="L58" title="All 4 branches covered.">    return numberGuests &gt; emptyRoomGuests &amp;&amp; numberGuests &lt;= this.maxOccupancy;</span>
+  }
+
+  /** Get max occupancy value of the room
+   * @return int, representing max occupancy of room
+   */
+  public int getMaxOccupancy() {
+<span class="fc" id="L65">    return this.maxOccupancy;</span>
+  }
+
+  /**
+   * Get the price of the room
+   * @return int, representing price of room
+   */
+  public int getPrice() {
+<span class="fc" id="L73">    return this.price;</span>
+  }
+
+  /**
+   * Get the number of guests of the room
+   * @return int, representing number of guests
+   */
+  public int getNumberGuests() {
+<span class="fc" id="L81">    return this.numberGuests;</span>
+  }
+
+  /**
+   * Set the number of guest of the room.
+   * @param numberGuests, - int, taking numberGuests as a parameter
+   */
+  public void setNumberGuests(int numberGuests) {
+<span class="fc" id="L89">    this.numberGuests = numberGuests;</span>
+<span class="fc" id="L90">  }</span>
+
+
+  /**
+   * {@inheritDoc}
+   * a method provided by java.lang.Object that indicates whether some other
+   * object passed as an argument is &quot;equal to&quot; the current instance.
+   *
+   * @param o, - Object, taking object as a parameter
+   * @return a boolean value after compare with those fields of Room object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L103" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L104">      return true;</span>
+    }
+<span class="fc bfc" id="L106" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L107">      return false;</span>
+    }
+<span class="fc" id="L109">    Room room = (Room) o;</span>
+<span class="fc bfc" id="L110" title="All 4 branches covered.">    return getMaxOccupancy() == room.getMaxOccupancy() &amp;&amp; getPrice() == room.getPrice()</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">        &amp;&amp; getNumberGuests() == room.getNumberGuests();</span>
+  }
+
+  /**
+   * Return a hash code value of Room object
+   * @return a hash code value of Room object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L120">    return Objects.hash(getMaxOccupancy(), getPrice(), getNumberGuests());</span>
+  }
+
+
+  /**
+   * Returns the value given to it in string format.
+   * @return returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L130">    return &quot;Room{&quot; +</span>
+        &quot;maxOccupancy=&quot; + maxOccupancy +
+        &quot;, price=&quot; + price +
+        &quot;, numberGuests=&quot; + numberGuests +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

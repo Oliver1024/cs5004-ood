@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem3.ListOfStringTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-06-12T06:44:50" hostname="Oliver-Macbook.local" time="0.012">
+  <properties/>
+  <testcase name="testRemoveDuplicates" classname="problem3.ListOfStringTest" time="0.008"/>
+  <testcase name="add" classname="problem3.ListOfStringTest" time="0.0"/>
+  <testcase name="containsAll" classname="problem3.ListOfStringTest" time="0.0"/>
+  <testcase name="testHasDuplicates" classname="problem3.ListOfStringTest" time="0.0"/>
+  <testcase name="isEmpty" classname="problem3.ListOfStringTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

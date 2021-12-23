@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="simpleRecursiveList.EmptyTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2021-06-24T20:45:35" hostname="Oliver-Macbook.local" time="0.02">
+  <properties/>
+  <testcase name="testToString" classname="simpleRecursiveList.EmptyTest" time="0.004"/>
+  <testcase name="remove" classname="simpleRecursiveList.EmptyTest" time="0.001"/>
+  <testcase name="contains" classname="simpleRecursiveList.EmptyTest" time="0.0"/>
+  <testcase name="lastException" classname="simpleRecursiveList.EmptyTest" time="0.001"/>
+  <testcase name="elementAt" classname="simpleRecursiveList.EmptyTest" time="0.0"/>
+  <testcase name="add" classname="simpleRecursiveList.EmptyTest" time="0.012"/>
+  <testcase name="sum" classname="simpleRecursiveList.EmptyTest" time="0.0"/>
+  <testcase name="size" classname="simpleRecursiveList.EmptyTest" time="0.0"/>
+  <testcase name="testHashCode" classname="simpleRecursiveList.EmptyTest" time="0.0"/>
+  <testcase name="testEquals" classname="simpleRecursiveList.EmptyTest" time="0.0"/>
+  <testcase name="isEmpty" classname="simpleRecursiveList.EmptyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

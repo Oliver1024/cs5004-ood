@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SpecialService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW3</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">SpecialService.java</span></div><h1>SpecialService.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+
+/**
+ * A class that inherits from its parameter class of SpecialService.
+ */
+public abstract class SpecialService extends AService {
+
+  private Integer numberOfLicensedEmployee;
+  private boolean isComplex;
+<span class="fc" id="L12">  protected static final Integer CHARGE_FOR_SPECIAL = 200;</span>
+  private Integer numberOfLeastEmployee;
+
+  /**
+   * Constructor that creates a new SpecialService object.
+   *
+   * @param propertyAddress          - String, propertyAddress of the new SpecialService object
+   * @param sizeOfProperty           - enumerate, sizeOfProperty of the new SpecialService object
+   * @param monthlyService           - boolean, monthlyService of the new SpecialService object
+   * @param numberOfLicensedEmployee - Integer, numberOfLicensedEmployee of the new object
+   * @param isComplex                - boolean, isComplex of the new SpecialService object
+   * @throws InvalidSizePropertyException    when if condition is not matched
+   * @throws InvalidPropertyAddressException when if condition is not matched
+   */
+  public SpecialService(String propertyAddress, PropertySize sizeOfProperty, boolean monthlyService,
+      Integer numberOfLicensedEmployee, boolean isComplex)
+      throws InvalidSizePropertyException, InvalidPropertyAddressException {
+<span class="fc" id="L29">    super(propertyAddress, sizeOfProperty, monthlyService);</span>
+<span class="fc" id="L30">    this.numberOfLicensedEmployee = numberOfLicensedEmployee;</span>
+<span class="fc" id="L31">    this.isComplex = isComplex;</span>
+<span class="fc" id="L32">    this.numberOfLeastEmployee = numberOfLicensedEmployee;</span>
+<span class="fc" id="L33">  }</span>
+
+  /**
+   * Return number of licensed employee
+   *
+   * @return number of the licensed employee
+   */
+  public Integer getNumberOfLicensedEmployee() {
+<span class="fc" id="L41">    return numberOfLicensedEmployee;</span>
+  }
+
+  /**
+   * Set number of licensed employee
+   *
+   * @param numberOfLicensedEmployee, set number of licensed employee
+   */
+  public void setNumberOfLicensedEmployee(Integer numberOfLicensedEmployee) {
+<span class="fc" id="L50">    this.numberOfLicensedEmployee = numberOfLicensedEmployee;</span>
+<span class="fc" id="L51">  }</span>
+
+  /**
+   * {@inheritDoc} A method provided by java.lang.Object that indicates whether some other object
+   * passed as an argument is &quot;equal to&quot; the current instance.
+   *
+   * @param o, - Object, taking this object as a parameter
+   * @return a boolean value after compare with those fields of AService object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L62" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L63">      return true;</span>
+    }
+<span class="pc bpc" id="L65" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L66">      return false;</span>
+    }
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L69">      return false;</span>
+    }
+<span class="fc" id="L71">    SpecialService that = (SpecialService) o;</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">    return isComplex == that.isComplex &amp;&amp; Objects</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        .equals(getNumberOfLicensedEmployee(), that.getNumberOfLicensedEmployee())</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        &amp;&amp; Objects.equals(CHARGE_FOR_SPECIAL, that.CHARGE_FOR_SPECIAL) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">        .equals(numberOfLeastEmployee, that.numberOfLeastEmployee);</span>
+  }
+
+  /**
+   * Return a hashcode value of the Object
+   *
+   * @return int, a hashcode value of the object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L85">    return Objects</span>
+<span class="fc" id="L86">        .hash(super.hashCode(), getNumberOfLicensedEmployee(), isComplex, CHARGE_FOR_SPECIAL,</span>
+            numberOfLeastEmployee);
+  }
+
+  /**
+   * Returns the value given to it in string format.
+   *
+   * @return String, returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L97">    return &quot;SpecialService{&quot; +</span>
+        &quot;numberOfLicensedEmployee=&quot; + numberOfLicensedEmployee +
+        &quot;, isComplex=&quot; + isComplex +
+        &quot;, CHARGE_FOR_SPECIAL=&quot; + CHARGE_FOR_SPECIAL +
+        &quot;, numberOfLeastEmployee=&quot; + numberOfLeastEmployee +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

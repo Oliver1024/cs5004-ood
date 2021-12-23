@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Controller.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Controller.java</span></div><h1>Controller.java</h1><pre class="source lang-java linenums">import controllerModules.csvOperation.FileCreatorUtils;
+import controllerModules.displayOperation.DisplayOperator;
+import controllerModules.commandOpreration.CommandInfoCollection;
+import controllerModules.commandOpreration.CommandLineParser;
+import controllerModules.csvOperation.CSVReader;
+import controllerModules.csvOperation.CSVWriter;
+import controllerModules.todoListOperation.TodoListProcessor;
+import java.util.List;
+import model.Todo;
+
+/**
+ * A class that represents Controller.
+ */
+<span class="nc" id="L14">public class Controller {</span>
+
+  /**
+   * A hub that can control all the command input.
+   * @param args String[]
+   * @throws Exception throw exception when condition is reached
+   */
+  static void create(String[] args) throws Exception {
+<span class="fc" id="L22">    String lookup = &quot;&quot;;</span>
+    while (true) {
+<span class="nc" id="L24">      lookup = ViewUtils.getInput(&quot;Command &gt;&quot;);</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">      if(lookup.equals(&quot;quit&quot;)) {</span>
+<span class="nc" id="L26">        System.out.println(&quot;GoodBye!&quot;);</span>
+<span class="nc" id="L27">        System.exit(0);</span>
+      }
+<span class="nc" id="L29">      String[] input = lookup.split(&quot; &quot;);</span>
+<span class="nc" id="L30">      controllerBody(input);</span>
+<span class="nc" id="L31">    }</span>
+  }
+
+  /**
+   * A method that can control the process of todo updating and create.
+   * @param args String[]
+   * @throws Exception throw exception when condition is reached
+   */
+  static void controllerBody(String[] args) throws Exception {
+<span class="fc" id="L40">    CommandLineParser commandLineParser = new CommandLineParser(args);</span>
+<span class="fc" id="L41">    CommandInfoCollection commandInfoCollection = commandLineParser.getCommandInfoCollection();</span>
+<span class="fc" id="L42">    FileCreatorUtils.create(commandInfoCollection.getCsvFile());</span>
+<span class="fc" id="L43">    CSVReader csvReader = new CSVReader();</span>
+<span class="fc" id="L44">    List&lt;Todo&gt; todoList = csvReader.collectCSVData(commandInfoCollection.getCsvFile());</span>
+<span class="fc" id="L45">    CSVWriter csvWriter = new CSVWriter();</span>
+<span class="fc" id="L46">    TodoListProcessor todoListProcessor = new TodoListProcessor(todoList, commandInfoCollection);</span>
+<span class="fc" id="L47">    todoList = todoListProcessor.modifyTodoList();</span>
+<span class="fc" id="L48">    csvWriter.create(todoList, commandInfoCollection.getCsvFile());</span>
+<span class="fc" id="L49">    DisplayOperator displayOperator = new DisplayOperator(commandInfoCollection, todoList);</span>
+<span class="fc" id="L50">    displayOperator.print();</span>
+<span class="fc" id="L51">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

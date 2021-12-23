@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Locker.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW2</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Locker.java</span></div><h1>Locker.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.Objects;
+
+/**
+ * Locker is a simple object that has maxWidth,maxHeight,maxDepth and mail.
+ */
+public class Locker {
+
+  private Integer maxWidth;
+  private Integer maxHeight;
+  private Integer maxDepth;
+<span class="fc" id="L13">  private Mail mail = null;</span>
+
+  /**
+   * Constructor that creates a new Locker object with maxWidth,maxHeight,maxDepth and mail.
+   *
+   * @param maxWidth  - Integer, maxHeight of the new Locker object
+   * @param maxHeight - Integer, of the new Locker object
+   * @param maxDepth  - Integer, of the new Locker object
+   */
+<span class="fc" id="L22">  public Locker(Integer maxWidth, Integer maxHeight, Integer maxDepth) {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    if (this.validateDimension(maxWidth, maxHeight, maxDepth)) {</span>
+<span class="fc" id="L24">      this.maxWidth = maxWidth;</span>
+<span class="fc" id="L25">      this.maxHeight = maxHeight;</span>
+<span class="fc" id="L26">      this.maxDepth = maxDepth;</span>
+    } else {
+<span class="fc" id="L28">      throw new IllegalArgumentException(&quot;Illegal Dimensions&quot;);</span>
+    }
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * Get the max width of the locker
+   * @return Integer, representing the maxWidth
+   */
+  public Integer getMaxWidth() {
+<span class="fc" id="L37">    return maxWidth;</span>
+  }
+
+  /**
+   * Get the max height of the locker
+   * @return Integer, representing maxHeight
+   */
+  public Integer getMaxHeight() {
+<span class="fc" id="L45">    return maxHeight;</span>
+  }
+
+  /**
+   * Get the max depth of the locker
+   * @return Integer, representing maxDepth
+   */
+  public Integer getMaxDepth() {
+<span class="fc" id="L53">    return maxDepth;</span>
+  }
+
+  /**
+   * Get mail of the locker
+   * @return String, representing mail
+   */
+  public Mail getMail() {
+<span class="fc" id="L61">    return mail;</span>
+  }
+
+  /**
+   * Set the mail of the locker
+   * @param mail, - Mail, set the mail
+   */
+  public void setMail(Mail mail) {
+<span class="fc" id="L69">    this.mail = mail;</span>
+<span class="fc" id="L70">  }</span>
+
+  /**
+   * A helper function that used to validate each dimension of locker
+   *
+   * @param maxWidth, - Integer, take maxWidth as a parameter
+   * @param maxHeight - Integer, take maxHeight as a parameter
+   * @param maxDepth  - Integer, take maxDepth as a parameter
+   * @return a true or false if the dimension is greater or equal than 1
+   */
+  private boolean validateDimension(Integer maxWidth, Integer maxHeight, Integer maxDepth) {
+<span class="fc bfc" id="L81" title="All 6 branches covered.">    if (maxWidth &gt;= 1 &amp;&amp; maxHeight &gt;= 1 &amp;&amp; maxDepth &gt;= 1) {</span>
+<span class="fc" id="L82">      return true;</span>
+    } else {
+<span class="fc" id="L84">      return false;</span>
+    }
+  }
+
+  /**
+   * A addMail method that pass the mail if the mail is matched those conditions.
+   * @param mail - Mail, take Mail as a parameter passing in this method
+   * @throws LockerOccupiedException throw LockerOccupiedException if the condition is not matched
+   * @throws MailSizeToLargeException throw MailSizeToLargeException if the condition
+   * is not matched
+   */
+  public void addMail(Mail mail) throws LockerOccupiedException, MailSizeToLargeException {
+<span class="fc bfc" id="L96" title="All 2 branches covered.">    if (!this.checkLocker()) {</span>
+<span class="fc" id="L97">      throw new LockerOccupiedException();</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">    } else if (!this.checkLockerAndMailMatch(mail)) {</span>
+<span class="fc" id="L99">      throw new MailSizeToLargeException();</span>
+    } else {
+<span class="fc" id="L101">      this.mail = mail;</span>
+    }
+<span class="fc" id="L103">  }</span>
+
+  /**
+   * A pickupMail that return the validated mail if those conditions are matched.
+   * @param recipient - Recipient, take Recipient as a parameter passing in this method
+   * @return a validated mail if the condition is reached
+   * @throws RecipientNotMatchException throw RecipientNotMatchException
+   * if condition is not matched
+   * @throws LockerEmptyException throw LockerEmptyException if condition is not matched
+   */
+  public Mail pickupMail(Recipient recipient) throws RecipientNotMatchException,
+      LockerEmptyException {
+<span class="fc bfc" id="L115" title="All 2 branches covered.">    if (!this.checkLocker()) {</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">      if (this.mail.getRecipient().equals(recipient)) {</span>
+        Mail mailRemove;
+<span class="fc" id="L118">        mailRemove = this.mail;</span>
+<span class="fc" id="L119">        this.mail = null;</span>
+<span class="fc" id="L120">        return mailRemove;</span>
+      } else {
+<span class="fc" id="L122">        throw new RecipientNotMatchException();</span>
+      }
+    } else {
+<span class="fc" id="L125">      throw new LockerEmptyException();</span>
+    }
+  }
+
+  /**
+   * A helper function that checks if the locker is empty or not.
+   * @return a boolean value to check if the lock is empty or not
+   */
+  private boolean checkLocker() {
+<span class="fc bfc" id="L134" title="All 2 branches covered.">    if (this.mail == null) {</span>
+<span class="fc" id="L135">      return true;</span>
+    } else {
+<span class="fc" id="L137">      return false;</span>
+    }
+  }
+
+  /**
+   * A helper function that used to check if the mail recipient is matched.
+   * @param mail - Mail, taking mail as a parameter to pass in this method
+   * @return a boolean value to check if the dimension of mail less than or equal max dimension of
+   * locker
+   */
+  private boolean checkLockerAndMailMatch(Mail mail) {
+<span class="fc bfc" id="L148" title="All 4 branches covered.">    if (mail.getHeight() &lt;= this.maxHeight &amp;&amp; mail.getDepth() &lt;= this.maxDepth &amp;&amp;</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">        mail.getWidth() &lt;= this.maxWidth) {</span>
+<span class="fc" id="L150">      return true;</span>
+    } else {
+<span class="fc" id="L152">      return false;</span>
+    }
+  }
+
+  /**
+   * {@inheritDoc}
+   * a method provided by java.lang.Object that indicates whether some other object
+   * passed as an argument is &quot;equal to&quot; the current instance.
+   * @param o - Object, take object as a parameter to pass in equals
+   * @return a boolean value after compare with those two objects if they are equal or not
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L165" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L166">      return true;</span>
+    }
+<span class="fc bfc" id="L168" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L169">      return false;</span>
+    }
+<span class="fc" id="L171">    Locker locker = (Locker) o;</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">    return Objects.equals(getMaxWidth(), locker.getMaxWidth()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">        .equals(getMaxHeight(), locker.getMaxHeight()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L174" title="All 4 branches covered.">        .equals(maxDepth, locker.maxDepth) &amp;&amp; Objects.equals(getMail(), locker.getMail());</span>
+  }
+
+
+  /**
+   * {@inheritDoc}
+   * Return a hash code value of those dimensions of locker
+   * @return a hash code value of those dimension of locker
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L185">    return Objects.hash(getMaxWidth(), getMaxHeight(), maxDepth, getMail());</span>
+  }
+
+  /**
+   * Returns the value given to it in string format
+   * @return Returns the value given to it in string format
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L194">    return &quot;Locker{&quot; +</span>
+        &quot;maxWidth=&quot; + maxWidth +
+        &quot;, maxHeight=&quot; + maxHeight +
+        &quot;, maxDepth=&quot; + maxDepth +
+        &quot;, mail=&quot; + mail +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

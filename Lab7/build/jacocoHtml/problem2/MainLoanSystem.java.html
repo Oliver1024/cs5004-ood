@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainLoanSystem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab7</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">MainLoanSystem.java</span></div><h1>MainLoanSystem.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.ArrayList;
+
+/**
+ * Main function that is used to execute and call other classes and methods
+ */
+<span class="nc" id="L8">public class MainLoanSystem {</span>
+  public static void main(String[] args){
+<span class="nc" id="L10">    Loan loan1 = new Loan(&quot;15 years fixed&quot;, 3.05,new ArrayList&lt;LoanObserver&gt;());</span>
+<span class="nc" id="L11">    Loan loan2 = new Loan(&quot;20 years variable&quot;, 2.85,new ArrayList&lt;LoanObserver&gt;());</span>
+<span class="nc" id="L12">    MSDailyFinances msDailyFinances = new MSDailyFinances(loan1, 1.00,</span>
+<span class="nc" id="L13">        loan1.getInterest());</span>
+<span class="nc" id="L14">    YFinances yFinances = new YFinances(loan2.getInterest());</span>
+
+<span class="nc" id="L16">    loan1.registerObserver(msDailyFinances);</span>
+<span class="nc" id="L17">    loan2.registerObserver(yFinances);</span>
+
+<span class="nc" id="L19">    loan1.setInterest(2.95);</span>
+
+<span class="nc" id="L21">    loan1.removeObserver(msDailyFinances);</span>
+<span class="nc" id="L22">    loan1.setInterest(3.00);</span>
+
+<span class="nc" id="L24">    System.out.println(&quot;Working with loan2&quot;);</span>
+<span class="nc" id="L25">    loan2.setInterest(2.90);</span>
+
+<span class="nc" id="L27">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

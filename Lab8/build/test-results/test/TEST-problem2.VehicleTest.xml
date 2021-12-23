@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.VehicleTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-08-11T20:07:26" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.091">
+  <properties/>
+  <testcase name="testToString" classname="problem2.VehicleTest" time="0.088"/>
+  <testcase name="getVehicleColor" classname="problem2.VehicleTest" time="0.0"/>
+  <testcase name="getMake" classname="problem2.VehicleTest" time="0.0"/>
+  <testcase name="getYear" classname="problem2.VehicleTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem2.VehicleTest" time="0.0"/>
+  <testcase name="testPrintMakeModelAndYear" classname="problem2.VehicleTest" time="0.001"/>
+  <testcase name="testEquals" classname="problem2.VehicleTest" time="0.0"/>
+  <testcase name="testIsYoungerThanGivenYear" classname="problem2.VehicleTest" time="0.0"/>
+  <testcase name="getModel" classname="problem2.VehicleTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

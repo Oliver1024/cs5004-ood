@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CSVReader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">controllerModules.csvOperation</a> &gt; <span class="el_source">CSVReader.java</span></div><h1>CSVReader.java</h1><pre class="source lang-java linenums">package controllerModules.csvOperation;
+
+import java.io.File;
+import java.time.LocalDate;
+import java.util.List;
+import model.Todo;
+import controllerModules.lineOperation.LineSeparator;
+
+import java.io.*;
+import java.util.ArrayList;
+import model.Todo.Builder;
+
+/**
+ * A class that represents CSVReader.
+ */
+<span class="fc" id="L16">public class CSVReader {</span>
+
+  /**
+   * Collect csv data information according those conditions.
+   * @param dir String
+   * @return a list of csv todo file
+   * @throws IllegalAccessException throw exception when condition is reached
+   */
+  public List&lt;Todo&gt; collectCSVData(String dir) throws IllegalAccessException {
+<span class="fc" id="L25">    List&lt;Todo&gt; csvInfoTotal = new ArrayList&lt;&gt;();</span>
+    try {
+<span class="fc" id="L27">      File template = new File(dir);</span>
+<span class="fc" id="L28">      BufferedReader inputFile = new BufferedReader(new FileReader(template));</span>
+<span class="fc" id="L29">      int row = 0;</span>
+      String line;
+<span class="fc" id="L31">      List&lt;List&lt;String&gt;&gt; info = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">      while ((line = inputFile.readLine()) != null) {</span>
+<span class="fc" id="L33">        LineSeparator lineSeparator = new LineSeparator();</span>
+<span class="fc" id="L34">        String[] words = lineSeparator.separate(line);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(row == 0) {</span>
+<span class="fc" id="L36">          info = generateColumns(words);</span>
+
+        } else {
+<span class="fc" id="L39">          addInfo(info, words);</span>
+<span class="fc" id="L40">          Todo newTodo = createTodo(info);</span>
+<span class="fc" id="L41">          csvInfoTotal.add(newTodo);</span>
+        }
+<span class="fc" id="L43">        row++;</span>
+<span class="fc" id="L44">      }</span>
+<span class="fc" id="L45">      inputFile.close();</span>
+<span class="nc" id="L46">    } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L47">      e.printStackTrace();</span>
+<span class="nc" id="L48">    } catch (IOException e) {</span>
+<span class="nc" id="L49">      e.printStackTrace();</span>
+<span class="pc" id="L50">    }</span>
+<span class="fc" id="L51">    return csvInfoTotal;</span>
+  }
+
+  /**
+   * Return a valid columns.
+   * @param words String[]
+   * @return a list of list String
+   */
+  public List&lt;List&lt;String&gt;&gt; generateColumns(String[] words){
+<span class="fc" id="L60">    List&lt;List&lt;String&gt;&gt; items = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    for(String word : words) {</span>
+<span class="fc" id="L62">      List&lt;String&gt; item = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L63">      item.add(word);</span>
+<span class="fc" id="L64">      item.add(&quot;&quot;);</span>
+<span class="fc" id="L65">      items.add(item);</span>
+    }
+<span class="fc" id="L67">    return items;</span>
+  }
+
+  /**
+   * Return a list of list Sting storing valid
+   * @param items List
+   * @param words String[]
+   */
+  public void addInfo(List&lt;List&lt;String&gt;&gt; items, String[] words){
+<span class="fc" id="L76">    int column = 0;</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">    for(String word : words) {</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">      if(column == items.size()) return;</span>
+<span class="fc" id="L79">      List&lt;String&gt; item = items.get(column);</span>
+<span class="fc" id="L80">      item.remove(1);</span>
+<span class="fc" id="L81">      item.add(word);</span>
+<span class="fc" id="L82">      items.remove(column);</span>
+<span class="fc" id="L83">      items.add(column, item);</span>
+<span class="fc" id="L84">      column++;</span>
+    }
+<span class="fc" id="L86">  }</span>
+
+  /**
+   * Return createTodo
+   * @param items List
+   * @return List
+   * @throws IllegalAccessException throw exception when condition is reached.
+   */
+  public Todo createTodo(List&lt;List&lt;String&gt;&gt; items) throws IllegalAccessException {
+<span class="fc" id="L95">    Builder builder = new Builder();</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">    for (List&lt;String&gt; item : items) {</span>
+<span class="fc" id="L97">      String columnName = item.get(0);</span>
+<span class="fc" id="L98">      String info  = item.get(1);</span>
+<span class="fc" id="L99">      convertInfo(columnName, info, builder);</span>
+<span class="fc" id="L100">    }</span>
+<span class="fc" id="L101">    Todo todo = builder.build();</span>
+<span class="fc" id="L102">    return todo;</span>
+  }
+
+  /**
+   * A helper function that is used to convert valid info.
+   * @param columnName String
+   * @param info String
+   * @param builder Builder
+   */
+  private void convertInfo(String columnName, String info, Builder builder){
+<span class="fc" id="L112">    Integer secondTwo = 2;</span>
+<span class="fc" id="L113">    Integer thirdThree = 3;</span>
+
+<span class="fc bfc" id="L115" title="All 2 branches covered.">    if(columnName.contains(ColumnNamesUtils.ID))builder.setId(Integer.parseInt(info));</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">    if(columnName.contains(ColumnNamesUtils.TEXT)) builder.setText(info);</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">    if(columnName.contains(ColumnNamesUtils.COMPLETED)) {</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">      if (info.equals(&quot;true&quot;)) builder.setCompleted(true);</span>
+<span class="fc" id="L119">      else builder.setCompleted(false);</span>
+    }
+<span class="fc bfc" id="L121" title="All 2 branches covered.">    if(columnName.contains(ColumnNamesUtils.DUE)) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">      if(info.equals(&quot;?&quot;)) builder.setDue(null);</span>
+      else {
+<span class="fc" id="L124">        String[] dateInfo = info.split(&quot;/&quot;);</span>
+<span class="fc" id="L125">        Integer month = Integer.parseInt(dateInfo[0]);</span>
+<span class="fc" id="L126">        Integer date = Integer.parseInt(dateInfo[1]);</span>
+<span class="fc" id="L127">        Integer year = Integer.parseInt(dateInfo[secondTwo]);</span>
+<span class="fc" id="L128">        builder.setDue(LocalDate.of(year, month, date));</span>
+      }
+    }
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    if(columnName.contains(ColumnNamesUtils.PRIORITY)) {</span>
+<span class="pc bpc" id="L132" title="1 of 2 branches missed.">      if(info.equals(&quot;?&quot;)) builder.setPriority(thirdThree);</span>
+<span class="fc" id="L133">      else builder.setPriority(Integer.parseInt(info));</span>
+    }
+<span class="fc bfc" id="L135" title="All 2 branches covered.">    if(columnName.contains(ColumnNamesUtils.CATEGORY)) {</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">      if(info.equals(&quot;?&quot;)) builder.setCategory(&quot;?&quot;);</span>
+<span class="fc" id="L137">      else builder.setCategory(info);</span>
+    }
+<span class="fc" id="L139">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.ConsPriorityQueueTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-06-27T07:42:22" hostname="Oliver-Macbook.local" time="0.007">
+  <properties/>
+  <testcase name="testToString" classname="problem1.ConsPriorityQueueTest" time="0.001"/>
+  <testcase name="add" classname="problem1.ConsPriorityQueueTest" time="0.001"/>
+  <testcase name="pop" classname="problem1.ConsPriorityQueueTest" time="0.0"/>
+  <testcase name="peek" classname="problem1.ConsPriorityQueueTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem1.ConsPriorityQueueTest" time="0.0"/>
+  <testcase name="testHashCode2" classname="problem1.ConsPriorityQueueTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem1.ConsPriorityQueueTest" time="0.0"/>
+  <testcase name="isEmpty" classname="problem1.ConsPriorityQueueTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

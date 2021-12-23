@@ -1,0 +1,8 @@
+problem1/FrequencyCountTest.java
+ problem1.FrequencyCountTest
+problem2/SwimmerComparatorTest.java
+ problem2.SwimmerComparatorTest
+problem2/SwimmerTest.java
+ problem2.SwimmerTest
+problem3/SwimmerIteratorTest.java
+ problem3.SwimmerIteratorTest

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommandInfoCollection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">controllerModules.commandOpreration</a> &gt; <span class="el_source">CommandInfoCollection.java</span></div><h1>CommandInfoCollection.java</h1><pre class="source lang-java linenums">package controllerModules.commandOpreration;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * A class that represents CommandInfoCollection.
+ */
+public class CommandInfoCollection {
+<span class="fc" id="L11">  private Boolean addTodo = true;</span>
+<span class="fc" id="L12">  private String csvFile = &quot;&quot;;</span>
+<span class="fc" id="L13">  private Boolean completed = false;</span>
+<span class="fc" id="L14">  private String todoText = &quot;&quot;;</span>
+<span class="fc" id="L15">  private LocalDate due = null;</span>
+<span class="fc" id="L16">  private Integer priority = 3;</span>
+<span class="fc" id="L17">  private String category = &quot;?&quot;;</span>
+<span class="fc" id="L18">  private Boolean display = false;</span>
+<span class="fc" id="L19">  private Boolean showIncomplete = false;</span>
+<span class="fc" id="L20">  private Boolean showCategory = false;</span>
+<span class="fc" id="L21">  private Boolean sortByDate = false;</span>
+<span class="fc" id="L22">  private Boolean sortByPriority = false;</span>
+<span class="fc" id="L23">  private String categoryToShow = &quot;&quot;;</span>
+
+  private Map&lt;String, String&gt; commandStringInfoMap;
+  private List&lt;Integer&gt; completeTodoList;
+
+  /**
+   * A constructor that creates a new object of CommandInfoCollection
+   * @param commandStringInfoMap - Map, commandStringInfoMap
+   */
+<span class="fc" id="L32">  public CommandInfoCollection(Map&lt;String, String&gt; commandStringInfoMap) {</span>
+<span class="fc" id="L33">    this.commandStringInfoMap = commandStringInfoMap;</span>
+<span class="fc" id="L34">    collectAll();</span>
+<span class="fc" id="L35">  }</span>
+
+  /**
+   * A helper function that collects all commands.
+   */
+  private void collectAll() {
+<span class="fc" id="L41">    collectCsvFile();</span>
+<span class="fc" id="L42">    collectText();</span>
+<span class="fc" id="L43">    collectDue();</span>
+<span class="fc" id="L44">    collectPriority();</span>
+<span class="fc" id="L45">    collectCategory();</span>
+<span class="fc" id="L46">    collectDisplay();</span>
+<span class="fc" id="L47">    collectShowIncomplete();</span>
+<span class="fc" id="L48">    collectShowCategory();</span>
+<span class="fc" id="L49">    collectSortByDate();</span>
+<span class="fc" id="L50">    collectSortByPriority();</span>
+<span class="fc" id="L51">  }</span>
+
+
+  /**
+   * A helper function that collects CSV file.
+   */
+  private void collectCsvFile() {
+<span class="fc" id="L58">    csvFile = this.commandStringInfoMap.get(CommandOptions.D_CSV_FILE);</span>
+<span class="fc" id="L59">  }</span>
+
+  /**
+   * A helper function that collects Text.
+   */
+  private void collectText() {
+<span class="fc" id="L65">    todoText = this.commandStringInfoMap.get(CommandOptions.D_TODO_TEXT);</span>
+<span class="fc" id="L66">  }</span>
+
+  /**
+   * A helper function that collect Due command.
+   */
+  private void collectDue() {
+<span class="fc" id="L72">    Integer firstOne = 1;</span>
+<span class="fc" id="L73">    Integer zeroZero = 0;</span>
+<span class="fc" id="L74">    Integer secondTwo = 2;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.D_DUE_DATE)) {</span>
+<span class="fc" id="L76">      String info = this.commandStringInfoMap.get(CommandOptions.D_DUE_DATE);</span>
+<span class="fc" id="L77">      String[] dateInfo = info.split(&quot;/&quot;);</span>
+<span class="fc" id="L78">      Integer month = Integer.parseInt(dateInfo[zeroZero]);</span>
+<span class="fc" id="L79">      Integer date = Integer.parseInt(dateInfo[firstOne]);</span>
+<span class="fc" id="L80">      Integer year = Integer.parseInt(dateInfo[secondTwo]);</span>
+<span class="fc" id="L81">      due = LocalDate.of(year, month, date);</span>
+<span class="fc" id="L82">    } else {</span>
+<span class="fc" id="L83">      due = null;</span>
+    }
+<span class="fc" id="L85">  }</span>
+
+  /**
+   * A helper function that collects Priority command.
+   */
+  private void collectPriority() {
+<span class="fc bfc" id="L91" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.D_PRIORITY)) {</span>
+<span class="fc" id="L92">      priority =Integer.parseInt(this.commandStringInfoMap.get(CommandOptions.D_PRIORITY));</span>
+    }
+<span class="fc" id="L94">  }</span>
+
+  /**
+   * A helper function that collects Category command.
+   */
+  private void collectCategory(){
+<span class="fc bfc" id="L100" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.D_CATEGORY)) {</span>
+<span class="fc" id="L101">      category = this.commandStringInfoMap.get(CommandOptions.D_CATEGORY);</span>
+    }
+<span class="fc" id="L103">  }</span>
+
+  /**
+   * A helper function that collects Display command.
+   */
+  private void collectDisplay(){
+<span class="fc bfc" id="L109" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.S_DISPLAY)) {</span>
+<span class="fc" id="L110">      display = true;</span>
+    }
+<span class="fc" id="L112">  }</span>
+
+  /**
+   * A helper function that collects ShowIncomplete command.
+   */
+  private void collectShowIncomplete(){
+<span class="fc bfc" id="L118" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.S_SHOW_INCOMPLETE)) {</span>
+<span class="fc" id="L119">      showIncomplete = true;</span>
+    }
+<span class="fc" id="L121">  }</span>
+
+  private void collectShowCategory() {
+<span class="fc bfc" id="L124" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.D_SHOW_CATEGORY)){</span>
+<span class="fc" id="L125">      showCategory = true;</span>
+<span class="fc" id="L126">      categoryToShow = this.commandStringInfoMap.get(CommandOptions.D_SHOW_CATEGORY);</span>
+    }
+
+<span class="fc" id="L129">  }</span>
+
+  /**
+   * A helper function that collects SortByDate command.
+   */
+  private void collectSortByDate(){
+<span class="fc bfc" id="L135" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.S_SORT_BY_DATE)) {</span>
+<span class="fc" id="L136">      sortByDate = true;</span>
+    }
+<span class="fc" id="L138">  }</span>
+
+  /**
+   * A helper function that collects SortByPriority command.
+   */
+  private void collectSortByPriority(){
+<span class="fc bfc" id="L144" title="All 2 branches covered.">    if (this.commandStringInfoMap.containsKey(CommandOptions.S_SORT_BY_PRIORITY)) {</span>
+<span class="fc" id="L145">      sortByPriority = true;</span>
+    }
+<span class="fc" id="L147">  }</span>
+
+  /**
+   * Return csv file
+   * @return String, csv file
+   */
+  public String getCsvFile() {
+<span class="fc" id="L154">    return csvFile;</span>
+  }
+
+  /**
+   * Return completed
+   * @return Boolean value
+   */
+  public Boolean getCompleted() {
+<span class="fc" id="L162">    return completed;</span>
+  }
+
+  /**
+   * Return TodoText
+   * @return String
+   */
+  public String getTodoText() {
+<span class="fc" id="L170">    return todoText;</span>
+  }
+
+  /**
+   * Return due
+   * @return LocalDate
+   */
+  public LocalDate getDue() {
+<span class="fc" id="L178">    return due;</span>
+  }
+
+  /**
+   * Return priority
+   * @return Integer
+   */
+  public Integer getPriority() {
+<span class="fc" id="L186">    return priority;</span>
+  }
+
+  /**
+   * Return category
+   * @return String
+   */
+  public String getCategory() {
+<span class="fc" id="L194">    return category;</span>
+  }
+
+  /**
+   * Return display
+   * @return Boolean value
+   */
+  public Boolean getDisplay() {
+<span class="fc" id="L202">    return display;</span>
+  }
+
+  /**
+   * Return ShowIncomplete
+   * @return Boolean value
+   */
+  public Boolean getShowIncomplete() {
+<span class="fc" id="L210">    return showIncomplete;</span>
+  }
+
+  /**
+   * Return ShowCategory
+   * @return Boolean value
+   */
+  public Boolean getShowCategory() {
+<span class="fc" id="L218">    return showCategory;</span>
+  }
+
+  /**
+   * Return Sort By date
+   * @return Boolean value
+   */
+  public Boolean getSortByDate() {
+<span class="fc" id="L226">    return sortByDate;</span>
+  }
+
+  /**
+   * Return SortByPriority
+   * @return Boolean value
+   */
+  public Boolean getSortByPriority() {
+<span class="fc" id="L234">    return sortByPriority;</span>
+  }
+
+  public String getCategoryToShow() {
+<span class="fc" id="L238">    return categoryToShow;</span>
+  }
+
+  /**
+   * Set complete todo list
+   * @param completeTodoList set complete todo list
+   */
+  public void setCompleteTodoList(List&lt;Integer&gt; completeTodoList) {
+<span class="fc" id="L246">    this.completeTodoList = completeTodoList;</span>
+<span class="fc" id="L247">  }</span>
+
+  /**
+   * Return complete todo list
+   * @return completeTodoList
+   */
+  public List&lt;Integer&gt; getCompleteTodoList() {
+<span class="fc" id="L254">    return completeTodoList;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

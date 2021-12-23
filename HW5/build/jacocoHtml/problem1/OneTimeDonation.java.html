@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OneTimeDonation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW5</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">OneTimeDonation.java</span></div><h1>OneTimeDonation.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+
+/**
+ * Define a class.
+ */
+public class OneTimeDonation extends AbstractDonation{
+  private Integer amount;
+  private LocalDateTime donationDateTime;
+
+
+  /**
+   * Constructor a new object.
+   * @param amount - Integer, amount
+   * @param donationDateTime - LocalDateTime
+   * @throws IllegalArgumentException throw exception
+   */
+  public OneTimeDonation(Integer amount, LocalDateTime donationDateTime)
+<span class="fc" id="L22">      throws IllegalArgumentException {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    if(this.validateAmount(amount)){</span>
+<span class="fc" id="L24">      this.amount = amount;</span>
+    }else {
+<span class="fc" id="L26">      throw new IllegalArgumentException(&quot;Illegal amount&quot;);</span>
+    }
+<span class="fc" id="L28">    this.donationDateTime = donationDateTime;</span>
+<span class="fc" id="L29">  }</span>
+
+  /**
+   * Return amount
+   * @return amount
+   */
+  public Integer getAmount() {
+<span class="fc" id="L36">    return amount;</span>
+  }
+
+  /**
+   *  Return donation date and time
+   * @return donation date and time
+   */
+  public LocalDateTime getDonationDateTime() {
+<span class="fc" id="L44">    return donationDateTime;</span>
+  }
+
+  /**
+   *  Count donation amount
+   * @param year Integer, year
+   * @return donation amount
+   */
+  @Override
+  public Integer countDonationAmount(Integer year) {
+<span class="fc bfc" id="L54" title="All 2 branches covered.">    if(this.donationDateTime.getYear() == year){</span>
+<span class="fc" id="L55">      return this.amount;</span>
+    }
+<span class="fc" id="L57">    return 0;</span>
+  }
+
+  /**
+   * Check valid amount
+   * @param amount Integer, amount
+   * @return boolean
+   */
+  private boolean validateAmount(Integer amount){
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    return amount &gt;= 0;</span>
+  }
+
+  /**
+   *  indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   *  current instance
+   * @param o object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L77" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L78">      return true;</span>
+    }
+<span class="fc bfc" id="L80" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L81">      return false;</span>
+    }
+<span class="fc" id="L83">    OneTimeDonation that = (OneTimeDonation) o;</span>
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">    return Objects.equals(getAmount(), that.getAmount()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        .equals(getDonationDateTime(), that.getDonationDateTime());</span>
+  }
+
+  /**
+   * hashcode
+   * @return int
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L94">    return Objects.hash(getAmount(), getDonationDateTime());</span>
+  }
+
+  /**
+   * Return String
+   * @return string
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L103">    return &quot;OneTimeDonation{&quot; +</span>
+        &quot;amount=&quot; + amount +
+        &quot;, donationDateTime=&quot; + donationDateTime +
+        '}';
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

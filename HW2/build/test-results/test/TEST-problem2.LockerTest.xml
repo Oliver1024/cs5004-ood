@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.LockerTest" tests="30" skipped="0" failures="0" errors="0" timestamp="2021-05-31T06:33:52" hostname="Oliver-Macbook.local" time="0.016">
+  <properties/>
+  <testcase name="testHashCodeNull" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="getMaxDepth" classname="problem2.LockerTest" time="0.001"/>
+  <testcase name="getMaxWidth" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="lockerOccupiedException" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="addMail" classname="problem2.LockerTest" time="0.001"/>
+  <testcase name="testToString" classname="problem2.LockerTest" time="0.001"/>
+  <testcase name="testRecipientNotMatchException" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="pickupMail" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="equalsReflexivity" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="mailSizeToLargeException" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="getMaxHeight" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="testLockerEmptyException" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="allIllegalDimensions" classname="problem2.LockerTest" time="0.003"/>
+  <testcase name="equalNotSameDepth" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="equalNotSameWidth" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="testHashCodeConsistency" classname="problem2.LockerTest" time="0.002"/>
+  <testcase name="equalsDifferentDataTypes" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="getMail" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="equalNotSameHeight" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="testInvalidHeight" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="illegalDepth" classname="problem2.LockerTest" time="0.001"/>
+  <testcase name="illegalHeight" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="illegalWidth" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="equalsReflexivity2" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="testInvalidDepth" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="testInvalidWidth" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="equalsSameFields" classname="problem2.LockerTest" time="0.001"/>
+  <testcase name="testHashCodeEquality" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="equalNotSameMail" classname="problem2.LockerTest" time="0.0"/>
+  <testcase name="setMail" classname="problem2.LockerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

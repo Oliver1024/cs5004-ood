@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.MailTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-05-31T06:33:52" hostname="Oliver-Macbook.local" time="0.005">
+  <properties/>
+  <testcase name="allIllegalDimensions" classname="problem2.MailTest" time="0.001"/>
+  <testcase name="illegalDepth" classname="problem2.MailTest" time="0.0"/>
+  <testcase name="illegalHeight" classname="problem2.MailTest" time="0.0"/>
+  <testcase name="illegalWidth" classname="problem2.MailTest" time="0.0"/>
+  <testcase name="getHeight" classname="problem2.MailTest" time="0.0"/>
+  <testcase name="getRecipient" classname="problem2.MailTest" time="0.001"/>
+  <testcase name="getDepth" classname="problem2.MailTest" time="0.0"/>
+  <testcase name="getWidth" classname="problem2.MailTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

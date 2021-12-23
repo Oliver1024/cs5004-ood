@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WindowCleaning.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW3</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">WindowCleaning.java</span></div><h1>WindowCleaning.java</h1><pre class="source lang-java linenums">package problem1;
+
+/**
+ * A class that inherits from its parent class of ExteriorService.
+ */
+public class WindowCleaning extends ExteriorService {
+
+  private static final int TWO_VALUE = 2;
+  private static final int THREE_VALUE = 3;
+  private static final int ONE_VALUE = 1;
+  private static final double HALF_PRICE = 0.05;
+  private static final int NINE_VALUE = 9;
+  private static final int TEN_VALUE = 10;
+  private static final double DISCOUNT_VALUE = 0.9;
+
+  /**
+   * Constructor that creates a new WindowCleaning object.
+   *
+   * @param propertyAddress - String, propertyAddress of the new WindowCleaning object
+   * @param sizeOfProperty  - enumerate, sizeOfProperty of the new WindowCleaning object
+   * @param monthlyService  - boolean, monthlyService of the new WindowCleaning object
+   * @param numberOfFloors  - Integer, numberOfFloors of the new WindowCleaning object
+   * @throws InvalidSizePropertyException    when if condition is not matched
+   * @throws InvalidPropertyAddressException when if condition is not matched
+   */
+  public WindowCleaning(String propertyAddress, PropertySize sizeOfProperty, boolean monthlyService
+      , int numberOfFloors)
+      throws InvalidSizePropertyException, InvalidPropertyAddressException {
+<span class="fc" id="L29">    super(propertyAddress, sizeOfProperty, monthlyService);</span>
+<span class="fc" id="L30">    super.setNumberOfFloors(numberOfFloors);</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * This method is used to get the total price of this service.
+   *
+   * @param o, Object, taking this as a parameter
+   * @return double, total price of this service
+   */
+  @Override
+  public double calculatePrice(Object o) {
+<span class="fc" id="L41">    double tempPrice = 0;</span>
+
+<span class="fc" id="L43">    int floors = super.getNumberOfFloors();</span>
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">    if (floors &gt;= TWO_VALUE &amp;&amp; floors &lt;= THREE_VALUE) {</span>
+<span class="fc" id="L45">      tempPrice = super.getNumberOfHours() * BASE_PRICE * (ONE_VALUE + HALF_PRICE);</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">    } else if (floors == ONE_VALUE) {</span>
+<span class="fc" id="L47">      tempPrice = super.getNumberOfHours() * BASE_PRICE;</span>
+    }
+
+<span class="fc bfc" id="L50" title="All 2 branches covered.">    if (super.getMonthlyService()) {</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">      tempPrice = timeService % TEN_VALUE == NINE_VALUE ? (double) (tempPrice * HALF_PRICE) :</span>
+<span class="fc" id="L52">          (double) (tempPrice * DISCOUNT_VALUE);</span>
+    } else {
+<span class="fc bfc" id="L54" title="All 2 branches covered.">      tempPrice = timeService % TEN_VALUE == NINE_VALUE ?</span>
+<span class="fc" id="L55">          (double) (tempPrice * HALF_PRICE) : tempPrice;</span>
+    }
+<span class="fc" id="L57">    super.setTotalPrice(tempPrice);</span>
+<span class="fc" id="L58">    return getTotalPrice();</span>
+  }
+
+  /**
+   * Returns the value given to it in string format.
+   *
+   * @return String, returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L68">    return super.toString() + &quot;WindowCleaning&quot;;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

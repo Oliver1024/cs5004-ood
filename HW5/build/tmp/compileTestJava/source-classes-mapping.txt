@@ -1,0 +1,20 @@
+problem2/CatalogTest.java
+ problem2.CatalogTest
+problem2/RecordingArtistTest.java
+ problem2.RecordingArtistTest
+problem1/MonthlyDonationTest.java
+ problem1.MonthlyDonationTest
+problem1/PledgesTest.java
+ problem1.PledgesTest
+problem1/OneTimeDonationTest.java
+ problem1.OneTimeDonationTest
+problem2/MusicTest.java
+ problem2.MusicTest
+problem2/AuthorTest.java
+ problem2.AuthorTest
+problem2/BookTest.java
+ problem2.BookTest
+problem1/NonProfitTest.java
+ problem1.NonProfitTest
+problem2/BandTest.java
+ problem2.BandTest

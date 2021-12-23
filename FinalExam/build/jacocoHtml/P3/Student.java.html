@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Student.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">FinalExam</a> &gt; <a href="index.source.html" class="el_package">P3</a> &gt; <span class="el_source">Student.java</span></div><h1>Student.java</h1><pre class="source lang-java linenums">package P3;
+
+import java.util.List;
+import java.util.Objects;
+
+/**
+Class Student contains information about a student - students name and their studentID, academic program a student is
+enrolled into, as well as the list of courses the student has taken.
+ */
+public class Student {
+
+  private Name name;
+  private String studentID;
+  private String academicProgram;
+  private List&lt;Course&gt; takenCourses;
+
+<span class="nc" id="L17">  public Student(Name name, String studentID, String academicProgram, List&lt;Course&gt; takenCourses) {</span>
+<span class="nc" id="L18">    this.name = name;</span>
+<span class="nc" id="L19">    this.studentID = studentID;</span>
+<span class="nc" id="L20">    this.academicProgram = academicProgram;</span>
+<span class="nc" id="L21">    this.takenCourses = takenCourses;</span>
+<span class="nc" id="L22">  }</span>
+
+  public Name getName() {
+<span class="nc" id="L25">    return name;</span>
+  }
+
+  public String getStudentID() {
+<span class="nc" id="L29">    return studentID;</span>
+  }
+
+  public String getAcademicProgram() {
+<span class="nc" id="L33">    return academicProgram;</span>
+  }
+
+  public List&lt;Course&gt; getTakenCourses() {
+<span class="nc" id="L37">    return takenCourses;</span>
+  }
+
+  public Float getGPA(){
+<span class="nc" id="L41">    Float gradeSum = 0f;</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">    for (Course course : this.takenCourses){</span>
+<span class="nc" id="L43">      gradeSum += course.getGrade();</span>
+<span class="nc" id="L44">    }</span>
+<span class="nc" id="L45">    return Float.valueOf(gradeSum/this.takenCourses.size());</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">    if (this == o) return true;</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">    if (!(o instanceof Student)) return false;</span>
+<span class="nc" id="L52">    Student student = (Student) o;</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">    return Objects.equals(getName(), student.getName()) &amp;&amp;</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        Objects.equals(getStudentID(), student.getStudentID()) &amp;&amp;</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        Objects.equals(getAcademicProgram(), student.getAcademicProgram()) &amp;&amp;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        Objects.equals(getTakenCourses(), student.getTakenCourses());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L61">    return Objects.hash(getName(), getStudentID(), getAcademicProgram(), getTakenCourses());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L66">    return &quot;Student{&quot; +</span>
+        &quot;name=&quot; + name +
+        &quot;, studentID='&quot; + studentID + '\'' +
+        &quot;, academicProgram='&quot; + academicProgram + '\'' +
+        &quot;, takenCourses=&quot; + takenCourses +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

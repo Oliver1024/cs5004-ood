@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NonPerishableFood.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab3</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">NonPerishableFood.java</span></div><h1>NonPerishableFood.java</h1><pre class="source lang-java linenums">package problem1;
+
+/**
+ * A abstract class that inherits from its parent class of AbstractFoodItem.
+ */
+public abstract class NonPerishableFood extends AbstractFoodItem{
+  private static final int MAX_NUM = 250;
+  private static final int MIN_NUM = 0;
+
+  /**
+   * Constructor that creates a new object of NonPerishableFood.
+   * @param name - String, name of the new object
+   * @param currentPricePerUnit - Double, currentPricePerUnit of the new object
+   * @param currentAvailableQuantity - Integer, currentAvailableQuantity of the new object
+   * @param maxAllowedQuantity - Integer, maxAllowedQuantity of the new object
+   */
+  public NonPerishableFood(String name, Double currentPricePerUnit,
+      Integer currentAvailableQuantity, Integer maxAllowedQuantity) {
+<span class="nc" id="L19">    super(name, currentPricePerUnit, currentAvailableQuantity, maxAllowedQuantity);</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">    if(!this.validMaxAllowedQuantity(maxAllowedQuantity)){</span>
+<span class="nc" id="L21">      throw new IllegalArgumentException(&quot;Invalid max allowed quantity for non perishable food&quot;);</span>
+    }
+<span class="nc" id="L23">  }</span>
+
+  /**
+   * A helper function that used to validate the max allowed number of the quantity.
+   * @param numAllowedQuantity Integer, as a parameter passed in the function
+   * @return a boolean value
+   */
+  private boolean validMaxAllowedQuantity(Integer numAllowedQuantity){
+<span class="nc bnc" id="L31" title="All 4 branches missed.">    return (numAllowedQuantity &lt;= MAX_NUM &amp;&amp; numAllowedQuantity &gt;= MIN_NUM);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

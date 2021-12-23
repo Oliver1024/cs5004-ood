@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExteriorService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW3</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">ExteriorService.java</span></div><h1>ExteriorService.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+
+/**
+ * A abstract class that inherit class of AService
+ */
+public abstract class ExteriorService extends AService {
+
+  protected static final int BASE_PRICE = 80;
+  private static final int LARGE_HOUR = 4;
+  private static final int MEDIUM_HOUR = 2;
+  private static final int SMALL_HOUR = 1;
+
+  /**
+   * A constructor that creates a new object of the ExteriorService
+   *
+   * @param propertyAddress - String, propertyAddress of the new ExteriorService object
+   * @param sizeOfProperty  - enumerate, sizeOfProperty of the new ExteriorService object
+   * @param monthlyService  - boolean, monthlyService of the new ExteriorService object
+   * @throws InvalidSizePropertyException    when if condition is not matched
+   * @throws InvalidPropertyAddressException when if condition is not matched
+   */
+  public ExteriorService(String propertyAddress, PropertySize sizeOfProperty,
+      boolean monthlyService)
+      throws InvalidSizePropertyException, InvalidPropertyAddressException {
+<span class="fc" id="L27">    super(propertyAddress, sizeOfProperty, monthlyService);</span>
+
+<span class="fc bfc" id="L29" title="All 3 branches covered.">    switch (sizeOfProperty) {</span>
+      case LARGE:
+<span class="fc" id="L31">        super.setNumberOfHours(LARGE_HOUR);</span>
+      case MEDIUM:
+<span class="fc" id="L33">        super.setNumberOfHours(MEDIUM_HOUR);</span>
+      default:
+<span class="fc" id="L35">        super.setNumberOfHours(SMALL_HOUR);</span>
+    }
+<span class="fc" id="L37">  }</span>
+
+  /**
+   * {@inheritDoc} A method provided by java.lang.Object that indicates whether some other object
+   * passed as an argument is &quot;equal to&quot; the current instance.
+   *
+   * @param o, - Object, taking this object as a parameter
+   * @return boolean, a boolean value after compare with those fields of ExteriorService object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L49">      return true;</span>
+    }
+<span class="fc bfc" id="L51" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L52">      return false;</span>
+    }
+<span class="fc bfc" id="L54" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L55">      return false;</span>
+    }
+<span class="fc" id="L57">    ExteriorService that = (ExteriorService) o;</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">    return BASE_PRICE == that.BASE_PRICE;</span>
+  }
+
+  /**
+   * Return a hashcode value of the Object
+   *
+   * @return int, a hashcode value of the object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L68">    return Objects.hash(super.hashCode(), BASE_PRICE);</span>
+  }
+
+  /**
+   * Returns the value given to it in string format.
+   *
+   * @return String, returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L78">    return super.toString() + &quot;ExteriorService&quot;;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SwimmerComparator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab6</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">SwimmerComparator.java</span></div><h1>SwimmerComparator.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * A class that represents SwimmerComparator.
+ * @param &lt;T&gt; a generic data type
+ */
+<span class="fc" id="L10">public class SwimmerComparator&lt;T&gt; implements Comparator&lt;Swimmer&gt;{</span>
+  /**
+   * Compares its two arguments for order.  Returns a negative integer,
+   * zero, or a positive integer as the first argument is less than, equal
+   * to, or greater than the second.&lt;p&gt;
+   * &lt;p&gt;
+   * The implementor must ensure that {@code sgn(compare(x, y)) ==
+   * -sgn(compare(y, x))} for all {@code x} and {@code y}.  (This
+   * implies that {@code compare(x, y)} must throw an exception if and only
+   * if {@code compare(y, x)} throws an exception.)&lt;p&gt;
+   * &lt;p&gt;
+   * The implementor must also ensure that the relation is transitive:
+   * {@code ((compare(x, y)&gt;0) &amp;&amp; (compare(y, z)&gt;0))} implies
+   * {@code compare(x, z)&gt;0}.&lt;p&gt;
+   * &lt;p&gt;
+   * Finally, the implementor must ensure that {@code compare(x, y)==0}
+   * implies that {@code sgn(compare(x, z))==sgn(compare(y, z))} for all
+   * {@code z}.&lt;p&gt;
+   * &lt;p&gt;
+   * It is generally the case, but &lt;i&gt;not&lt;/i&gt; strictly required that
+   * {@code (compare(x, y)==0) == (x.equals(y))}.  Generally speaking,
+   * any comparator that violates this condition should clearly indicate
+   * this fact.  The recommended language is &quot;Note: this comparator
+   * imposes orderings that are inconsistent with equals.&quot;&lt;p&gt;
+   * &lt;p&gt;
+   * In the foregoing description, the notation
+   * {@code sgn(}&lt;i&gt;expression&lt;/i&gt;{@code )} designates the mathematical
+   * &lt;i&gt;signum&lt;/i&gt; function, which is defined to return one of {@code -1},
+   * {@code 0}, or {@code 1} according to whether the value of
+   * &lt;i&gt;expression&lt;/i&gt; is negative, zero, or positive, respectively.
+   *
+   * @param swimmer1 the first object to be compared.
+   * @param swimmer2 the second object to be compared.
+   * @return a negative integer, zero, or a positive integer as the
+   * first argument is less than, equal to, or greater than the
+   * second.
+   * @throws NullPointerException if an argument is null and this
+   *                              comparator does not permit null arguments
+   * @throws ClassCastException   if the arguments' types prevent them from
+   *                              being compared by this comparator.
+   */
+  @Override
+  public int compare(Swimmer swimmer1, Swimmer swimmer2) {
+
+<span class="fc" id="L54">    return Double.compare(swimmer1.getFastestSwimTime(swimmer1.getButterfly50mTimes()),</span>
+<span class="fc" id="L55">        swimmer2.getFastestSwimTime(swimmer2.getButterfly50mTimes()));</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Name.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab1</a> &gt; <a href="index.source.html" class="el_package">modifedAuthor</a> &gt; <span class="el_source">Name.java</span></div><h1>Name.java</h1><pre class="source lang-java linenums">package modifedAuthor;
+
+/**
+ * This is a Name class that has 4 fields.
+ */
+public class Name {
+
+  private String firstName;
+  private String middleName;
+  private String lastName;
+
+  /**
+   * Constructor that creates a new name object with specified firstName, middleName and lastName.
+   *
+   * @param firstName
+   * @param middleName
+   * @param lastName
+   */
+<span class="fc" id="L19">  public Name(String firstName, String middleName, String lastName) {</span>
+<span class="fc" id="L20">    this.firstName = firstName;</span>
+<span class="fc" id="L21">    this.middleName = middleName;</span>
+<span class="fc" id="L22">    this.lastName = lastName;</span>
+<span class="fc" id="L23">  }</span>
+
+  /**
+   * A class that gets the firstname of a person
+   *
+   * @return a person's firstname
+   */
+  public String getFirstName() {
+<span class="fc" id="L31">    return firstName;</span>
+  }
+
+  /**
+   * A class that gets the middle of a person
+   *
+   * @return a person's middle
+   */
+  public String getMiddleName() {
+<span class="fc" id="L40">    return middleName;</span>
+  }
+
+  /**
+   * A class that gets the lastname of a person
+   *
+   * @return a person's lastname
+   */
+  public String getLastName() {
+<span class="fc" id="L49">    return lastName;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

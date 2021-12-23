@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW1</a> &gt; <a href="index.source.html" class="el_package">problem3</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package problem3;
+
+/**
+ * Account is a simple object that has name and balance
+ */
+public class Account {
+
+  private Name name;
+  private Amount balance;
+
+  /**
+   * Constructor that creates a new Account object with the specified name and balance
+   *
+   * @param name    - name of the new Account object
+   * @param balance - balance of the new Account object
+   */
+<span class="fc" id="L17">  public Account(Name name, Amount balance) {</span>
+<span class="fc" id="L18">    this.name = name;</span>
+<span class="fc" id="L19">    this.balance = balance;</span>
+<span class="fc" id="L20">  }</span>
+
+  /**
+   * A deposit function that can used to deposit money to a name's account
+   *
+   * @param amount Taking amount as a parameter in this function
+   * @return a new Account object with name and newAmount value
+   */
+  public Account deposit(Amount amount) {
+<span class="fc" id="L29">    Integer depositValue = amount.getDollarValue() * 100 + amount.getCentsValue();</span>
+<span class="fc" id="L30">    Integer newBalance = this.balance.getDollarValue() * 100 + this.balance.getCentsValue()</span>
+<span class="fc" id="L31">        + depositValue;</span>
+<span class="fc" id="L32">    Integer newCurrentDollar = newBalance / 100;</span>
+<span class="fc" id="L33">    Integer newCurrentCent = newBalance % 100;</span>
+
+<span class="fc" id="L35">    Amount newAmount = new Amount(newCurrentDollar, newCurrentCent);</span>
+<span class="fc" id="L36">    return new Account(this.name, newAmount);</span>
+  }
+
+  /**
+   * A withDraw function that can used to withdraw money from a name's account
+   *
+   * @param amount Taking amount as a parameter in this function
+   * @return a new Account object with name and newAmount value
+   */
+  public Account withdraw(Amount amount) {
+<span class="fc" id="L46">    Integer withDrawValue = amount.getDollarValue() * 100 + amount.getCentsValue();</span>
+<span class="fc" id="L47">    Integer newBalance = this.balance.getDollarValue() * 100 + this.balance.getCentsValue()</span>
+<span class="fc" id="L48">        - withDrawValue;</span>
+<span class="fc" id="L49">    Integer newCurrentDollar = newBalance / 100;</span>
+<span class="fc" id="L50">    Integer newCurrentCent = newBalance % 100;</span>
+
+<span class="fc" id="L52">    Amount newAmount = new Amount(newCurrentDollar, newCurrentCent);</span>
+<span class="fc" id="L53">    return new Account(this.name, newAmount);</span>
+  }
+
+  /**
+   * Returns name of Account
+   *
+   * @return name of Account
+   */
+  public Name getName() {
+<span class="fc" id="L62">    return name;</span>
+  }
+
+  /**
+   * Returns balance of Account
+   *
+   * @return balance of Account
+   */
+  public Amount getBalance() {
+<span class="fc" id="L71">    return this.balance;</span>
+  }
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.MSDailyFinancesTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-08-07T06:20:54" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.007">
+  <properties/>
+  <testcase name="getPreviousInterest" classname="problem2.MSDailyFinancesTest" time="0.0"/>
+  <testcase name="getCurrentInterest" classname="problem2.MSDailyFinancesTest" time="0.0"/>
+  <testcase name="testToString" classname="problem2.MSDailyFinancesTest" time="0.001"/>
+  <testcase name="update" classname="problem2.MSDailyFinancesTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem2.MSDailyFinancesTest" time="0.0"/>
+  <testcase name="getTrackedLoan" classname="problem2.MSDailyFinancesTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem2.MSDailyFinancesTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

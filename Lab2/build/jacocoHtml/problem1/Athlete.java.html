@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Athlete.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Athlete.java</span></div><h1>Athlete.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+
+/**
+ * Athlete is a simple object that has athletesName,height,weight,league.
+ */
+public class Athlete {
+
+  protected Name athletesName;
+  protected Double height;
+  protected Double weight;
+  protected String league;
+
+  /**
+   * Constructors that creates a new Athlete object with athletesName,height,weight,league.
+   *
+   * @param athletesName - String, athletesName of the new Athlete object.
+   * @param height       - Double, height of the new Athlete object.
+   * @param weight       - Double, weight of the new Athlete object.
+   * @param league       - String, league of the new Athlete object.
+   */
+<span class="fc" id="L23">  public Athlete(Name athletesName, Double height, Double weight, String league) {</span>
+<span class="fc" id="L24">    this.athletesName = athletesName;</span>
+<span class="fc" id="L25">    this.height = height;</span>
+<span class="fc" id="L26">    this.weight = weight;</span>
+<span class="fc" id="L27">    this.league = league;</span>
+<span class="fc" id="L28">  }</span>
+
+  /**
+   * Constructors that creates a new Athlete object with athletesName,height,weight.
+   *
+   * @param athletesName - String, athletesName of the new Athlete object.
+   * @param height       - Double, height of the new Athlete object.
+   * @param weight       - Double, weight of the new Athlete object.
+   */
+<span class="fc" id="L37">  public Athlete(Name athletesName, Double height, Double weight) {</span>
+<span class="fc" id="L38">    this.athletesName = athletesName;</span>
+<span class="fc" id="L39">    this.height = height;</span>
+<span class="fc" id="L40">    this.weight = weight;</span>
+<span class="fc" id="L41">    this.league = null;</span>
+<span class="fc" id="L42">  }</span>
+
+  /**
+   * Returns the athletesName.
+   *
+   * @return the athletesName
+   */
+  public Name getAthletesName() {
+<span class="fc" id="L50">    return athletesName;</span>
+  }
+
+  /**
+   * Returns height
+   *
+   * @return height
+   */
+  public Double getHeight() {
+<span class="fc" id="L59">    return height;</span>
+  }
+
+  /**
+   * Returns weight
+   *
+   * @return weight
+   */
+  public Double getWeight() {
+<span class="fc" id="L68">    return weight;</span>
+  }
+
+  /**
+   * Returns league
+   *
+   * @return league
+   */
+  public String getLeague() {
+<span class="fc" id="L77">    return league;</span>
+  }
+
+  /**
+   * Returns a boolean value after compare with those fields of Athlete object
+   *
+   * @param o - Taking object as a parameter
+   * @return a boolean value after compare with those fields of Athlete object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L89">      return true;</span>
+    }
+<span class="fc bfc" id="L91" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L92">      return false;</span>
+    }
+<span class="fc" id="L94">    Athlete athlete = (Athlete) o;</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">    return Objects.equals(getAthletesName(), athlete.getAthletesName()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        .equals(getHeight(), athlete.getHeight()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        .equals(getWeight(), athlete.getWeight()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        .equals(getLeague(), athlete.getLeague());</span>
+  }
+
+
+  /**
+   * Returns a hash value after of those fields of Athlete object.
+   *
+   * @return a hash value after of those fields of Athlete object.
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L109">    return Objects.hash(getAthletesName(), getHeight(), getWeight(), getLeague());</span>
+  }
+
+  /**
+   * Returns strings of those fields of Athlete object.
+   *
+   * @return strings of those fields of Athlete object.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L119">    return &quot;Athlete{&quot; +</span>
+        &quot;athletesName=&quot; + athletesName +
+        &quot;, height=&quot; + height +
+        &quot;, weight=&quot; + weight +
+        &quot;, league='&quot; + league + '\'' +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

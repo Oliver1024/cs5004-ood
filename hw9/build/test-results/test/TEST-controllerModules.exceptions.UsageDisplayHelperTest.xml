@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="controllerModules.exceptions.UsageDisplayHelperTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-08-19T07:43:45" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.01">
+  <properties/>
+  <testcase name="testCreateTableException2" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.001"/>
+  <testcase name="testCreateTableException3" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.0"/>
+  <testcase name="testCreateTableException4" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.0"/>
+  <testcase name="testCreateTableException5" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.0"/>
+  <testcase name="testCreateTableException6" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.0"/>
+  <testcase name="testCreateTableException7" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.0"/>
+  <testcase name="testCreateTableException8" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.002"/>
+  <testcase name="testCreateTableException9" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.0"/>
+  <testcase name="testCreateTableException" classname="controllerModules.exceptions.UsageDisplayHelperTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

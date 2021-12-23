@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.EmptyBagOfWordsTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-06-27T07:42:22" hostname="Oliver-Macbook.local" time="0.009">
+  <properties/>
+  <testcase name="testToString" classname="problem2.EmptyBagOfWordsTest" time="0.004"/>
+  <testcase name="contains" classname="problem2.EmptyBagOfWordsTest" time="0.001"/>
+  <testcase name="size" classname="problem2.EmptyBagOfWordsTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem2.EmptyBagOfWordsTest" time="0.001"/>
+  <testcase name="removeItem" classname="problem2.EmptyBagOfWordsTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem2.EmptyBagOfWordsTest" time="0.002"/>
+  <testcase name="isEmpty" classname="problem2.EmptyBagOfWordsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

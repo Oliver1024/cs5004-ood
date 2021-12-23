@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.PosnTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2021-05-28T21:25:34" hostname="Oliver-Macbook.hitronhub.home" time="0.009">
+  <properties/>
+  <testcase name="testToString" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="equalsReflexivity" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="equalsDifferentDataTypes" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="getX" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="getY" classname="problem2.PosnTest" time="0.001"/>
+  <testcase name="equalsNotSameValueX" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="equalsNotSameValueY" classname="problem2.PosnTest" time="0.002"/>
+  <testcase name="HashCodeSame2" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="equalsReflexivity2" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="equalsSameFields" classname="problem2.PosnTest" time="0.0"/>
+  <testcase name="HashCodeSame" classname="problem2.PosnTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

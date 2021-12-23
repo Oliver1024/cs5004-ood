@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="P1.AppStoreTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-18T04:47:04" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.013">
+  <properties/>
+  <testcase name="filterByRequestedPermissions" classname="P1.AppStoreTest" time="0.011"/>
+  <testcase name="mysteryMethod" classname="P1.AppStoreTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

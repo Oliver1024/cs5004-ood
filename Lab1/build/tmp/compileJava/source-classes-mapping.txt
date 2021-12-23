@@ -1,0 +1,10 @@
+practicePackage/Author.java
+ practicePackage.Author
+modifedAuthor/Author.java
+ modifedAuthor.Author
+modifedAuthor/EmailAddress.java
+ modifedAuthor.EmailAddress
+modifedAuthor/Address.java
+ modifedAuthor.Address
+modifedAuthor/Name.java
+ modifedAuthor.Name

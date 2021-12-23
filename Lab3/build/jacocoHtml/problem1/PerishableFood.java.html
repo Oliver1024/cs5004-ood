@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PerishableFood.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab3</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">PerishableFood.java</span></div><h1>PerishableFood.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
+/**
+ * A abstract class that inherits from its parent class of AbstractFoodItem.
+ */
+public abstract class PerishableFood extends AbstractFoodItem {
+  private LocalDate orderDate;
+  private LocalDate expirationDate;
+  private static final int MAX_NUM = 100;
+  private static final int MIN_NUM = 0;
+
+  /**
+   * Constructor that creates a new object of PerishableFood.
+   * @param name - String, name of the new object
+   * @param currentPricePerUnit - Double, currentPricePerUnit of the new object
+   * @param currentAvailableQuantity - Integer, currentAvailableQuantity of the new object
+   * @param maxAllowedQuantity - Integer, maxAllowedQuantity of the new object
+   * @param orderDate - LocalDate, orderDate of the new object
+   * @param expirationDate - LocalDate, expirationDate of the new object
+   */
+  public PerishableFood(String name, Double currentPricePerUnit,
+      Integer currentAvailableQuantity, Integer maxAllowedQuantity, LocalDate orderDate,
+      LocalDate expirationDate) {
+<span class="nc" id="L27">    super(name, currentPricePerUnit, currentAvailableQuantity, maxAllowedQuantity);</span>
+<span class="nc" id="L28">    this.orderDate = orderDate;</span>
+<span class="nc" id="L29">    this.expirationDate = expirationDate;</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">    if(!this.validMaxAllowedQuantity(maxAllowedQuantity)){</span>
+<span class="nc" id="L31">      throw new IllegalArgumentException(&quot;Invalid max allowed quantity&quot;);</span>
+    }
+<span class="nc" id="L33">  }</span>
+
+  /**
+   * A helper function that used to validate the max allowed number of the quantity.
+   * @param numAllowedQuantity, Integer, numAllowedQuantity as a parameter passed into function
+   * @return a boolean value
+   */
+  private boolean validMaxAllowedQuantity(Integer numAllowedQuantity){
+<span class="nc bnc" id="L41" title="All 4 branches missed.">    return (numAllowedQuantity &lt;= MAX_NUM &amp; numAllowedQuantity &gt;= MIN_NUM);</span>
+  }
+
+  /**
+   * Return the order date
+   * @return LocalDate, the order date
+   */
+  public LocalDate getOrderDate() {
+<span class="nc" id="L49">    return orderDate;</span>
+  }
+
+  /**
+   * Return ExpirationDate
+   * @return LocalDate, the ExpirationDate
+   */
+  public LocalDate getExpirationDate() {
+<span class="nc" id="L57">    return expirationDate;</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   * A method provided by java.lang.Object that indicates whether some other object
+   * passed as an argument is &quot;equal to&quot; the current instance.
+   *
+   * @param o - Object, taking this object as a parameter
+   * @return a boolean value after compare with those fields of AService object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L71">      return true;</span>
+    }
+<span class="nc bnc" id="L73" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L74">      return false;</span>
+    }
+<span class="nc bnc" id="L76" title="All 2 branches missed.">    if (!super.equals(o)) {</span>
+<span class="nc" id="L77">      return false;</span>
+    }
+<span class="nc" id="L79">    PerishableFood that = (PerishableFood) o;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">    return Objects.equals(getOrderDate(), that.getOrderDate()) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        .equals(getExpirationDate(), that.getExpirationDate());</span>
+  }
+
+  /**
+   * Return a hashcode value of the Object
+   * @return int, a hashcode value of the object
+   */
+  @Override
+  public int hashCode() {
+<span class="nc" id="L90">    return Objects.hash(super.hashCode(), getOrderDate(), getExpirationDate());</span>
+  }
+
+  /**
+   * Returns the value given to it in string format.
+   * @return String, returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="nc" id="L99">    return &quot;PerishableFood{&quot; +</span>
+        &quot;orderDate=&quot; + orderDate +
+        &quot;, expirationDate=&quot; + expirationDate +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CourseStatistics.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">FinalExam</a> &gt; <a href="index.source.html" class="el_package">P3</a> &gt; <span class="el_source">CourseStatistics.java</span></div><h1>CourseStatistics.java</h1><pre class="source lang-java linenums">package P3;
+
+import java.util.List;
+import java.util.Objects;
+
+public class CourseStatistics {
+  private String courseName;
+  private String courseCode;
+  private Integer allStudents;
+  private Integer allALIGNStudents;
+  private List&lt;Student&gt; listOfAlignStudents;
+  private Float averageGradeOfAllStudents;
+  private Float averageGradeOfAllALIGNStudents;
+
+
+  public CourseStatistics(String courseName, String courseCode, List&lt;Student&gt; listOfStudents,
+<span class="nc" id="L17">      List&lt;Student&gt; listOfAlignStudents) {</span>
+<span class="nc" id="L18">    this.courseName = courseName;</span>
+<span class="nc" id="L19">    this.courseCode = courseCode;</span>
+<span class="nc" id="L20">    this.listOfAlignStudents = listOfAlignStudents;</span>
+
+<span class="nc" id="L22">    Integer tempAllStudents = 0;</span>
+<span class="nc" id="L23">    Float totalGrade = 0f;</span>
+
+<span class="nc bnc" id="L25" title="All 2 branches missed.">    for(Student student : listOfStudents){</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">      for(Course course : student.getTakenCourses()){</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if(course.getCourseName().equals(courseName)){</span>
+<span class="nc" id="L28">          tempAllStudents++;</span>
+<span class="nc" id="L29">          totalGrade += course.getGrade();</span>
+        }
+<span class="nc" id="L31">      }</span>
+<span class="nc" id="L32">    }</span>
+
+<span class="nc" id="L34">    this.allStudents = tempAllStudents;</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">    if(tempAllStudents != 0){</span>
+<span class="nc" id="L36">      this.averageGradeOfAllStudents = (float) (totalGrade / tempAllStudents);</span>
+    }else{
+<span class="nc" id="L38">      this.averageGradeOfAllStudents = 0f;</span>
+    }
+
+<span class="nc" id="L41">    Integer tempAllALIGNStudents = 0;</span>
+<span class="nc" id="L42">    Float totalALIGNGrade = 0f;</span>
+
+<span class="nc bnc" id="L44" title="All 2 branches missed.">    for(Student student : listOfAlignStudents){</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">      for(Course course : student.getTakenCourses()){</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if(course.getCourseName().equals(courseName)){</span>
+<span class="nc" id="L47">          tempAllALIGNStudents++;</span>
+<span class="nc" id="L48">          totalALIGNGrade += course.getGrade();</span>
+        }
+<span class="nc" id="L50">      }</span>
+<span class="nc" id="L51">    }</span>
+
+<span class="nc" id="L53">    this.allALIGNStudents = tempAllALIGNStudents;</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">    if(tempAllALIGNStudents != 0){</span>
+<span class="nc" id="L55">      this.averageGradeOfAllALIGNStudents = (float) (totalALIGNGrade / tempAllALIGNStudents);</span>
+    }else {
+<span class="nc" id="L57">      this.averageGradeOfAllALIGNStudents = 0f;</span>
+    }
+<span class="nc" id="L59">  }</span>
+
+
+  public String getCourseName() {
+<span class="nc" id="L63">    return courseName;</span>
+  }
+
+  public String getCourseCode() {
+<span class="nc" id="L67">    return courseCode;</span>
+  }
+
+  public Integer getAllStudents() {
+<span class="nc" id="L71">    return allStudents;</span>
+  }
+
+  public Integer getAllALIGNStudents() {
+<span class="nc" id="L75">    return allALIGNStudents;</span>
+  }
+
+  public List&lt;Student&gt; getListOfAlignStudents() {
+<span class="nc" id="L79">    return listOfAlignStudents;</span>
+  }
+
+  public Float getAverageGradeOfAllStudents() {
+<span class="nc" id="L83">    return averageGradeOfAllStudents;</span>
+  }
+
+  public Float getAverageGradeOfAllALIGNStudents() {
+<span class="nc" id="L87">    return averageGradeOfAllALIGNStudents;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L92" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L93">      return true;</span>
+    }
+<span class="nc bnc" id="L95" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L96">      return false;</span>
+    }
+<span class="nc" id="L98">    CourseStatistics that = (CourseStatistics) o;</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">    return Objects.equals(getCourseName(), that.getCourseName()) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        .equals(getCourseCode(), that.getCourseCode()) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        .equals(getAllStudents(), that.getAllStudents()) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        .equals(getAllALIGNStudents(), that.getAllALIGNStudents()) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        .equals(getListOfAlignStudents(), that.getListOfAlignStudents()) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        .equals(getAverageGradeOfAllStudents(), that.getAverageGradeOfAllStudents())</span>
+        &amp;&amp; Objects
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        .equals(getAverageGradeOfAllALIGNStudents(), that.getAverageGradeOfAllALIGNStudents());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L111">    return Objects.hash(getCourseName(), getCourseCode(), getAllStudents(), getAllALIGNStudents(),</span>
+<span class="nc" id="L112">        getListOfAlignStudents(), getAverageGradeOfAllStudents(),</span>
+<span class="nc" id="L113">        getAverageGradeOfAllALIGNStudents());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L118">    return &quot;CourseStatistics{&quot; +</span>
+        &quot;courseName='&quot; + courseName + '\'' +
+        &quot;, courseCode='&quot; + courseCode + '\'' +
+        &quot;, allStudents=&quot; + allStudents +
+        &quot;, allALIGNStudents=&quot; + allALIGNStudents +
+        &quot;, listOfAlignStudents=&quot; + listOfAlignStudents +
+        &quot;, averageGradeOfAllStudents=&quot; + averageGradeOfAllStudents +
+        &quot;, averageGradeOfAllALIGNStudents=&quot; + averageGradeOfAllALIGNStudents +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

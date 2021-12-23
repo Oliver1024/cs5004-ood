@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.TravelerIteratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-08-07T06:20:54" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.003">
+  <properties/>
+  <testcase name="next" classname="problem1.TravelerIteratorTest" time="0.002"/>
+  <testcase name="hasNext" classname="problem1.TravelerIteratorTest" time="0.0"/>
+  <testcase name="testRemove" classname="problem1.TravelerIteratorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

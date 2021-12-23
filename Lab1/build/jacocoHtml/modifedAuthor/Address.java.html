@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Address.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab1</a> &gt; <a href="index.source.html" class="el_package">modifedAuthor</a> &gt; <span class="el_source">Address.java</span></div><h1>Address.java</h1><pre class="source lang-java linenums">package modifedAuthor;
+
+import java.util.Objects;
+
+/**
+ * Address is a simple class that contains four fields
+ */
+public class Address {
+
+  private String street;
+  private String city;
+  private String state;
+  private String zipCode;
+
+  /**
+   * Constructor that creates a new Address object with specified fields
+   *
+   * @param street
+   * @param city
+   * @param state
+   * @param zipCode
+   */
+<span class="fc" id="L23">  public Address(String street, String city, String state, String zipCode) {</span>
+<span class="fc" id="L24">    this.street = street;</span>
+<span class="fc" id="L25">    this.city = city;</span>
+<span class="fc" id="L26">    this.state = state;</span>
+<span class="fc" id="L27">    this.zipCode = zipCode;</span>
+<span class="fc" id="L28">  }</span>
+
+  /**
+   * Override equals() function
+   *
+   * @param o
+   * @returna boolean
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L39">      return true;</span>
+    }
+<span class="pc bpc" id="L41" title="2 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L42">      return false;</span>
+    }
+<span class="fc" id="L44">    Address address = (Address) o;</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">    return Objects.equals(getStreet(), address.getStreet()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L46" title="2 of 4 branches missed.">        .equals(getCity(), address.getCity()) &amp;&amp; Objects.equals(getState(), address.getState())</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        &amp;&amp; Objects.equals(getZipCode(), address.getZipCode());</span>
+  }
+
+  /**
+   * @return the street of address
+   */
+  public String getStreet() {
+<span class="fc" id="L54">    return street;</span>
+  }
+
+  /**
+   * @return city of address
+   */
+  public String getCity() {
+<span class="fc" id="L61">    return city;</span>
+  }
+
+  /**
+   * @return state of address
+   */
+  public String getState() {
+<span class="fc" id="L68">    return state;</span>
+  }
+
+  /**
+   * @return return zipCode of address
+   */
+  public String getZipCode() {
+<span class="fc" id="L75">    return zipCode;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

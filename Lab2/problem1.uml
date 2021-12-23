@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/oliver/cs5004/Lab2/src/main/java/problem1</OriginalElement>
+  <nodes>
+    <node x="303.8636363636363" y="325.0">problem1.BaseballPlayer</node>
+    <node x="-563.1363636363637" y="243.0">problem1.Runner</node>
+    <node x="394.1136363636363" y="-141.0">problem1.Name</node>
+    <node x="-176.0" y="-141.0">problem1.Athlete</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="problem1.BaseballPlayer" target="problem1.Athlete" relationship="GENERALIZATION">
+      <point x="-120.75" y="-138.5" />
+      <point x="424.61363636363626" y="657.0" />
+      <point x="-31.0" y="657.0" />
+      <point x="0.0" y="160.5" />
+    </edge>
+    <edge source="problem1.Runner" target="problem1.Name" relationship="DEPENDENCY">
+      <point x="109.0" y="-138.5" />
+      <point x="-236.13636363636374" y="647.0" />
+      <point x="300.5" y="647.0" />
+      <point x="300.5" y="285.0" />
+      <point x="306.6136363636364" y="285.0" />
+      <point x="306.6136363636364" y="275.0" />
+      <point x="562.8636363636363" y="275.0" />
+      <point x="56.25" y="127.5" />
+    </edge>
+    <edge source="problem1.Athlete" target="problem1.Name" relationship="DEPENDENCY">
+      <point x="72.5" y="-160.5" />
+      <point x="41.5" y="285.0" />
+      <point x="306.6136363636364" y="285.0" />
+      <point x="306.6136363636364" y="275.0" />
+      <point x="562.8636363636363" y="275.0" />
+      <point x="56.25" y="127.5" />
+    </edge>
+    <edge source="problem1.Runner" target="problem1.Athlete" relationship="GENERALIZATION">
+      <point x="-109.0" y="-138.5" />
+      <point x="-454.13636363636374" y="657.0" />
+      <point x="-31.0" y="657.0" />
+      <point x="0.0" y="160.5" />
+    </edge>
+    <edge source="problem1.Athlete" target="problem1.Name" relationship="TO_ONE">
+      <point x="-72.5" y="-160.5" />
+      <point x="-103.5" y="285.0" />
+      <point x="450.3636363636363" y="285.0" />
+      <point x="-56.25" y="127.5" />
+    </edge>
+    <edge source="problem1.BaseballPlayer" target="problem1.Name" relationship="DEPENDENCY">
+      <point x="120.75" y="-138.5" />
+      <point x="666.1136363636363" y="285.0" />
+      <point x="306.6136363636364" y="285.0" />
+      <point x="306.6136363636364" y="275.0" />
+      <point x="562.8636363636363" y="275.0" />
+      <point x="56.25" y="127.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="147.5" y="232.5" />
+  <SelectedNodes>
+    <node>problem1.Runner</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

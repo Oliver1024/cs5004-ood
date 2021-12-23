@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Time.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW1</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Time.java</span></div><h1>Time.java</h1><pre class="source lang-java linenums">package problem2;
+
+/**
+ * Time is a very simple object that has hours, minutes and seconds.
+ */
+public class Time {
+
+  private Integer hours;
+  private Integer minutes;
+  private Integer seconds;
+
+  /**
+   * Constructor that creates a new Time object with hours, minutes and seconds.
+   *
+   * @param hours   - hours of new Time object
+   * @param minutes - minutes of new Time object
+   * @param seconds - seconds of new Time object
+   */
+<span class="fc" id="L19">  public Time(Integer hours, Integer minutes, Integer seconds) {</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">    if (this.validateHoursNumber(hours)) {</span>
+<span class="fc" id="L21">      this.hours = hours;</span>
+    }
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    if (this.validateMinutesNumber(minutes)) {</span>
+<span class="fc" id="L24">      this.minutes = minutes;</span>
+    }
+<span class="fc bfc" id="L26" title="All 2 branches covered.">    if (this.validateSecondsNumber(seconds)) {</span>
+<span class="fc" id="L27">      this.seconds = seconds;</span>
+    }
+<span class="fc" id="L29">  }</span>
+
+  /**
+   * A helper function that use to validate hours number
+   *
+   * @param hours - hours is passwd into this function as a parameter
+   * @return the boolean value
+   */
+  private Boolean validateHoursNumber(Integer hours) {
+<span class="fc" id="L38">    Integer maxHourValue = 23;</span>
+<span class="fc bfc" id="L39" title="All 4 branches covered.">    if (hours &gt;= 0 &amp;&amp; hours &lt;= maxHourValue) {</span>
+<span class="fc" id="L40">      return true;</span>
+    }
+<span class="fc" id="L42">    return false;</span>
+  }
+
+  /**
+   * A helper function that use to validate minutes number
+   *
+   * @param minutes Taking minutes as a parameter
+   * @return the boolean value
+   */
+  private boolean validateMinutesNumber(Integer minutes) {
+<span class="fc" id="L52">    Integer maxMinutesValue = 59;</span>
+<span class="fc bfc" id="L53" title="All 4 branches covered.">    if (minutes &gt;= 0 &amp;&amp; minutes &lt;= maxMinutesValue) {</span>
+<span class="fc" id="L54">      return true;</span>
+    }
+<span class="fc" id="L56">    return false;</span>
+  }
+
+  /**
+   * A helper function that use to validate seconds number
+   *
+   * @param seconds Taking seconds as a parameter
+   * @return the boolean value
+   */
+  private boolean validateSecondsNumber(Integer seconds) {
+<span class="fc" id="L66">    Integer maxSecondsValue = 59;</span>
+<span class="fc bfc" id="L67" title="All 4 branches covered.">    if (seconds &gt;= 0 &amp;&amp; seconds &lt;= maxSecondsValue) {</span>
+<span class="fc" id="L68">      return true;</span>
+    }
+<span class="fc" id="L70">    return false;</span>
+  }
+
+  /**
+   * Returns the hours of Time
+   *
+   * @return the hours of Time
+   */
+  public Integer getHours() {
+<span class="fc" id="L79">    return this.hours;</span>
+  }
+
+  /**
+   * Returns the minutes of Time
+   *
+   * @return the minutes of Time
+   */
+  public Integer getMinutes() {
+<span class="fc" id="L88">    return this.minutes;</span>
+  }
+
+  /**
+   * Returns the seconds of Time
+   *
+   * @return the hours of Time
+   */
+  public Integer getSeconds() {
+<span class="fc" id="L97">    return this.seconds;</span>
+  }
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

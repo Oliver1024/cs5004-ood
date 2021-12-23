@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.BaseballPlayerTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2021-05-28T21:25:34" hostname="Oliver-Macbook.hitronhub.home" time="0.012">
+  <properties/>
+  <testcase name="testHashCodeNull" classname="problem1.BaseballPlayerTest" time="0.001"/>
+  <testcase name="testToString" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsNotSameHomeRuns" classname="problem1.BaseballPlayerTest" time="0.001"/>
+  <testcase name="equalsReflexivity" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="testHashCodeConsistency" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsDifferentDataTypes" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="getTeam" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsNotSameName" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsNotSameTeam" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsNotSameHeight" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsNotSameWeight" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="getAverageBatting" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsReflexivity2" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="equalsSameFields" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="getHomeRuns" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <testcase name="testHashCodeEquality" classname="problem1.BaseballPlayerTest" time="0.001"/>
+  <testcase name="equalsNotSameAverageBatting" classname="problem1.BaseballPlayerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

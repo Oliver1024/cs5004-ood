@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pledges.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW5</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Pledges.java</span></div><h1>Pledges.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+/**
+ * Represents a concrete class Pledge, extending its parent class AbstractDonation
+ */
+public class Pledges extends AbstractDonation {
+  private Integer amount;
+  private LocalDateTime createDateTime;
+  private LocalDateTime processingDateTime;
+
+  /**
+   * Constructs a new Pledge, with amount, createDateTime, and processingDateTime
+   * @param amount - Integer,the amount of donation
+   * @param createDateTime - LocalDateTime, time when pledge is created
+   * @param processingDateTime - LocalDateTime time when pledge is processed
+   * @throws IllegalArgumentException
+   */
+  public Pledges(Integer amount, LocalDateTime createDateTime,
+<span class="fc" id="L22">      LocalDateTime processingDateTime) throws IllegalArgumentException{</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    if(this.validateAmount(amount)){</span>
+<span class="fc" id="L24">      this.amount = amount;</span>
+    }else {
+<span class="fc" id="L26">      throw new IllegalArgumentException(&quot;Illegal amount&quot;);</span>
+    }
+<span class="fc" id="L28">    this.createDateTime = createDateTime;</span>
+<span class="fc" id="L29">    this.processingDateTime = this.setProcessingDateTime(processingDateTime);</span>
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * Constructs a new Pledge, with creationTime and amount
+   * @param amount - Integer, the amount of donation
+   * @param createDateTime - LocalDateTime, time when pledge is created
+   */
+<span class="fc" id="L37">  public Pledges(Integer amount, LocalDateTime createDateTime) {</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">    if(this.validateAmount(amount)){</span>
+<span class="fc" id="L39">      this.amount = amount;</span>
+    }else {
+<span class="fc" id="L41">      throw new IllegalArgumentException(&quot;Illegal amount&quot;);</span>
+    }
+<span class="fc" id="L43">    this.createDateTime = createDateTime;</span>
+<span class="fc" id="L44">    this.processingDateTime = null;</span>
+<span class="fc" id="L45">  }</span>
+
+  /**
+   * Return amount
+   * @return Integer, amount
+   */
+  public Integer getAmount() {
+<span class="fc" id="L52">    return amount;</span>
+  }
+
+  /**
+   * Return create date and time
+   * @return create date and time
+   */
+  public LocalDateTime getCreateDateTime() {
+<span class="fc" id="L60">    return createDateTime;</span>
+  }
+
+  /**
+   * Return processing time and date
+   * @return processing time and date
+   */
+  public LocalDateTime getProcessingDateTime() {
+<span class="fc" id="L68">    return processingDateTime;</span>
+  }
+
+  /**
+   * Return validate processing date and time
+   * @param processingDateTime LocalDateTime, taking this parameter
+   * @return validate processing date and time
+   * @throws IllegalArgumentException throw exception when condition is matched
+   */
+  private LocalDateTime setProcessingDateTime(LocalDateTime processingDateTime)
+      throws IllegalArgumentException{
+<span class="fc bfc" id="L79" title="All 2 branches covered.">    if(processingDateTime.isAfter(createDateTime)){</span>
+<span class="fc" id="L80">      return this.processingDateTime = processingDateTime;</span>
+    }else{
+<span class="fc" id="L82">      throw new IllegalArgumentException(&quot;Illegal processing date time&quot;);</span>
+    }
+  }
+
+  /**
+   * Return validate amount
+   * @param amount Integer, amount
+   * @return validate amount
+   */
+  private boolean validateAmount(Integer amount){
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    return amount &gt;= 0;</span>
+  }
+
+  /**
+   * Return count donation amount for a year
+   * @param year Integer, year
+   * @return count donation amount for a year
+   */
+  @Override
+  public Integer countDonationAmount(Integer year) {
+<span class="fc bfc" id="L102" title="All 4 branches covered.">    if(this.processingDateTime == null || this.processingDateTime.getYear() != year) return 0;</span>
+<span class="fc" id="L103">    return amount;</span>
+  }
+
+  /**
+   * Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   * current instance
+   * @param o object
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L114" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L115">      return true;</span>
+    }
+<span class="pc bpc" id="L117" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L118">      return false;</span>
+    }
+<span class="fc" id="L120">    Pledges pledges = (Pledges) o;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">    return Objects.equals(getAmount(), pledges.getAmount()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        .equals(getCreateDateTime(), pledges.getCreateDateTime()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        .equals(getProcessingDateTime(), pledges.getProcessingDateTime());</span>
+  }
+
+  /**
+   * returns an integer representation of the object memory address
+   * @return an integer representation of the object memory address
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L132">    return Objects.hash(getAmount(), getCreateDateTime(), getProcessingDateTime());</span>
+  }
+
+  /**
+   *  returns an String representation of the object
+   * @return String
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L141">    return &quot;Pledges{&quot; +</span>
+        &quot;amount=&quot; + amount +
+        &quot;, createDateTime=&quot; + createDateTime +
+        &quot;, processingDateTime=&quot; + processingDateTime +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

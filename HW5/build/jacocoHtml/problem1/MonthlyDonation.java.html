@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MonthlyDonation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW5</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">MonthlyDonation.java</span></div><h1>MonthlyDonation.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+/**
+ * Represents a concrete class MonthlyDonation, extending its parent class Donation
+ */
+public class MonthlyDonation extends AbstractDonation {
+
+  private Integer amount;
+  private LocalDateTime donationDateTime;
+  private LocalDateTime cancelDateTime;
+<span class="fc" id="L14">  private static final Integer TOTAL_MONTH_YEAR = 12;</span>
+
+  /**
+   * Constructs a new MonthlyAmount, with amount and donationDateTime
+   * @param amount - Integer, amount of monthly donation
+   * @param donationDateTime - LocalDateTime, time of monthly donationDateTime
+   * @throws IllegalArgumentException  throw exception when condition is matched
+   */
+  public MonthlyDonation(Integer amount, LocalDateTime donationDateTime)
+<span class="fc" id="L23">      throws IllegalArgumentException {</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">    if (this.validateAmount(amount)) {</span>
+<span class="fc" id="L25">      this.amount = amount;</span>
+    } else {
+<span class="fc" id="L27">      throw new IllegalArgumentException(&quot;Illegal amount&quot;);</span>
+    }
+<span class="fc" id="L29">    this.donationDateTime = donationDateTime;</span>
+<span class="fc" id="L30">    this.cancelDateTime = null;</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Return amount
+   * @return amount
+   */
+  public Integer getAmount() {
+<span class="fc" id="L38">    return amount;</span>
+  }
+
+  /**
+   * Return donation time and date
+   * @return donation time and date
+   */
+  public LocalDateTime getDonationDateTime() {
+<span class="fc" id="L46">    return donationDateTime;</span>
+  }
+
+  /**
+   * Return cancel date and time
+   * @return cancel date and time
+   */
+  public LocalDateTime getCancelDateTime() {
+<span class="fc" id="L54">    return cancelDateTime;</span>
+  }
+
+  /**
+   * Set cancel date and time and check if it is legal and valid
+   * @param cancelDateTime LocalDateTime, taking this parameter
+   * @throws IllegalArgumentException throw exception when condition is matched.
+   */
+  public void setCancelDateTime(LocalDateTime cancelDateTime) throws IllegalArgumentException {
+<span class="fc bfc" id="L63" title="All 2 branches covered.">    if (cancelDateTime.isAfter(donationDateTime)) {</span>
+<span class="fc" id="L64">      this.cancelDateTime = cancelDateTime;</span>
+    } else {
+<span class="fc" id="L66">      throw new IllegalArgumentException(&quot;Illegal cancel date time&quot;);</span>
+    }
+<span class="fc" id="L68">  }</span>
+
+  /**
+   * return boolean value
+   * @param amount Integer, taking this parameter
+   * @return boolean value
+   */
+  private boolean validateAmount(Integer amount) {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">    return amount &gt;= 0;</span>
+  }
+
+  /**
+   * Count each year of donation amount
+   * @param year Integer, taking this parater
+   * @return total donation amount
+   */
+  @Override
+  public Integer countDonationAmount(Integer year) {
+<span class="fc" id="L86">    return countCheckedMonths(year) * amount;</span>
+  }
+
+  /**
+   * Count total numbers of month for a period time
+   * @param targetYear Integer, taking this parameter
+   * @return total numbers of months
+   */
+  private Integer countCheckedMonths(Integer targetYear){
+<span class="fc" id="L95">    Integer result = 0;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">    if(donationDateTime.getYear() &lt; targetYear) result -= 0;</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">    else if(donationDateTime.getYear() == targetYear) result -= donationDateTime.getMonthValue()-1;</span>
+<span class="fc" id="L98">    else result -= TOTAL_MONTH_YEAR;</span>
+
+<span class="fc bfc" id="L100" title="All 4 branches covered.">    if(cancelDateTime == null || cancelDateTime.getYear() &gt; targetYear){</span>
+<span class="fc" id="L101">      result += TOTAL_MONTH_YEAR;</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">    }else if(cancelDateTime.getYear() == targetYear){</span>
+<span class="fc" id="L103">      result += cancelDateTime.getMonthValue();</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">      result -= isChargedFeeForLastMonth() ? 0 : 1;</span>
+    }else
+<span class="fc" id="L106">      result += 0;</span>
+
+<span class="fc" id="L108">    return result;</span>
+  }
+
+  /**
+   * Get the charged fee for last month
+   * @return a boolean value
+   */
+  private boolean isChargedFeeForLastMonth(){
+<span class="fc bfc" id="L116" title="All 2 branches covered.">    if(cancelDateTime.getDayOfMonth() &gt; donationDateTime.getDayOfMonth()) return true;</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">    else if(cancelDateTime.getDayOfMonth() &lt; donationDateTime.getDayOfMonth()) return false;</span>
+    else{
+<span class="fc bfc" id="L119" title="All 2 branches covered.">      if(cancelDateTime.getHour() &gt; donationDateTime.getHour()) return true;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">      else if(cancelDateTime.getHour() &lt; donationDateTime.getHour()) return false;</span>
+      else{
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        if(cancelDateTime.getMinute() &gt; donationDateTime.getMinute()) return true;</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        else if(cancelDateTime.getMinute() &lt; donationDateTime.getMinute()) return false;</span>
+        else {
+<span class="fc bfc" id="L125" title="All 2 branches covered.">          if(cancelDateTime.getSecond() &gt;= donationDateTime.getSecond()) return true;</span>
+<span class="fc" id="L126">          else return false;</span>
+        }
+      }
+    }
+  }
+
+  /**
+   * Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   *    * current instance
+   * @param o - an object to compare
+   * @return boolean value
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L140" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L141">      return true;</span>
+    }
+<span class="fc bfc" id="L143" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L144">      return false;</span>
+    }
+<span class="fc" id="L146">    MonthlyDonation that = (MonthlyDonation) o;</span>
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">    return Objects.equals(getAmount(), that.getAmount()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">        .equals(getDonationDateTime(), that.getDonationDateTime()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">        .equals(getCancelDateTime(), that.getCancelDateTime());</span>
+  }
+
+  /**
+   * returns an integer representation of the object memory address
+   * @return int, hash code
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L158">    return Objects.hash(getAmount(), getDonationDateTime(), getCancelDateTime());</span>
+  }
+
+  /**
+   * Returns an String representation of the object
+   * @return String
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L167">    return &quot;MonthlyDonation{&quot; +</span>
+        &quot;amount=&quot; + amount +
+        &quot;, donationDateTime=&quot; + donationDateTime +
+        &quot;, cancelDateTime=&quot; + cancelDateTime +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

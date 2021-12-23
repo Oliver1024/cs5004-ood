@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CourseRecommender.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">FinalExam</a> &gt; <a href="index.source.html" class="el_package">P3</a> &gt; <span class="el_source">CourseRecommender.java</span></div><h1>CourseRecommender.java</h1><pre class="source lang-java linenums">package P3;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class CourseRecommender {
+
+<span class="nc" id="L14">  private static final Integer YEAR_VALUE = 2020;</span>
+<span class="nc" id="L15">  private static final Integer MONTH_VALUE = 9;</span>
+<span class="nc" id="L16">  private static final Integer DAY_VALUE = 1;</span>
+  private List&lt;Student&gt; listOfStudents;
+  private List&lt;Student&gt; listOfALIGNStudents;
+  private Map&lt;String, CourseStatistics&gt; courseStatisticsMap;
+<span class="nc" id="L20">  private final LocalDate COURSE_YEAR_TAKEN = LocalDate.of(YEAR_VALUE,MONTH_VALUE,DAY_VALUE);</span>
+<span class="nc" id="L21">  private final Float GRADE_VALUE = 0f;</span>
+<span class="nc" id="L22">  private static final Integer NEGATIVE_ONE = -1;</span>
+
+  public CourseRecommender(List&lt;Student&gt; listOfStudents,
+      List&lt;Student&gt; listOfALIGNStudents,
+<span class="nc" id="L26">      Map&lt;String, CourseStatistics&gt; courseStatisticsMap) {</span>
+<span class="nc" id="L27">    this.listOfStudents = listOfStudents;</span>
+<span class="nc" id="L28">    this.listOfALIGNStudents = listOfALIGNStudents;</span>
+<span class="nc" id="L29">    this.courseStatisticsMap = courseStatisticsMap;</span>
+<span class="nc" id="L30">  }</span>
+
+<span class="nc" id="L32">  public CourseRecommender(List&lt;Student&gt; listOfStudents) {</span>
+<span class="nc" id="L33">    this.listOfStudents = listOfStudents;</span>
+<span class="nc" id="L34">    this.listOfALIGNStudents = this.filterOutAlignStudents(listOfStudents);</span>
+<span class="nc" id="L35">    this.courseStatisticsMap = this.computeCollegeCoursesStatistics(listOfStudents);</span>
+<span class="nc" id="L36">  }</span>
+
+
+  private List&lt;Student&gt; filterOutAlignStudents(List&lt;Student&gt; allStudents) {
+<span class="nc" id="L40">    return this.checkALLALIGNStudents();</span>
+  }
+
+
+  /**
+   * Helper function that is used tot get Align students of List.
+   * @return align students of list
+   */
+  private List&lt;Student&gt; checkALLALIGNStudents() {
+<span class="nc" id="L49">    List&lt;Student&gt; allALIGNStudents = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">    for (Student student : listOfStudents) {</span>
+<span class="nc" id="L51">      Set&lt;Course&gt; courseSet = student.getTakenCourses().stream().filter(c -&gt; c.getCourseCode()</span>
+<span class="nc bnc" id="L52" title="All 4 branches missed.">          .equals(&quot;CS 5001&quot;) || c.getCourseCode().equals(&quot;CS 5002&quot;) ||</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">          c.getCourseCode().equals(&quot;CS 5004&quot;) ||</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">          c.getCourseCode().equals(&quot;CS 5008&quot;)).collect(Collectors.toSet());</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">      if(courseSet.size() &gt; 0) {</span>
+<span class="nc" id="L56">        allALIGNStudents.add(student);</span>
+      }
+<span class="nc" id="L58">    }</span>
+<span class="nc" id="L59">    return allALIGNStudents;</span>
+  }
+
+  private Map&lt;String, CourseStatistics&gt; computeCollegeCoursesStatistics(List&lt;Student&gt;
+      listOfStudents){
+<span class="nc" id="L64">    Map&lt;String, String&gt; courseMap = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L65">    Map&lt;String, CourseStatistics&gt; outputResult = new HashMap&lt;&gt;();</span>
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">    for(Student student : listOfStudents){</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">      for(Course course : student.getTakenCourses() ){</span>
+<span class="nc" id="L69">        courseMap.put(course.getCourseName(), course.getCourseCode());</span>
+<span class="nc" id="L70">      }</span>
+<span class="nc" id="L71">    }</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">    for (String courseName : courseMap.keySet()){</span>
+<span class="nc" id="L73">      CourseStatistics courseStatistics = new CourseStatistics(courseName,</span>
+<span class="nc" id="L74">          courseMap.get(courseName),listOfStudents, listOfALIGNStudents);</span>
+<span class="nc" id="L75">      outputResult.put(courseName,courseStatistics);</span>
+<span class="nc" id="L76">    }</span>
+<span class="nc" id="L77">    return outputResult;</span>
+  }
+
+  /**
+   * Return recommended list of courses
+   * @param student Student
+   * @return recommended list of courses
+   */
+  public List&lt;Course&gt; recommendCourses(Student student) {
+<span class="nc" id="L86">    List&lt;Course&gt; recommendCourses = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L88">    recommendCourses.add(this.firstRecommendCourse(student));</span>
+<span class="nc" id="L89">    recommendCourses.add(this.secondRecommendCourse(student));</span>
+<span class="nc" id="L90">    recommendCourses.add(this.thirdRecommendCourse(student));</span>
+<span class="nc" id="L91">    return recommendCourses;</span>
+  }
+
+  /**
+   * Helper function to get the CourseStatistics of List
+   * @return get the CourseStatistics of List
+   */
+  private List&lt;CourseStatistics&gt; getCourseStatisticsList(){
+<span class="nc" id="L99">    List&lt;CourseStatistics&gt; courseStatisticsList = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">    for(String courseName : courseStatisticsMap.keySet()) {</span>
+<span class="nc" id="L101">      courseStatisticsList.add(courseStatisticsMap.get(courseName));</span>
+<span class="nc" id="L102">    }</span>
+<span class="nc" id="L103">    return courseStatisticsList;</span>
+  }
+
+  /**
+   * Helper function that is used to get the first recommend course
+   * @param student Student
+   * @return get the first recommend course
+   */
+  private Course firstRecommendCourse(Student student){
+<span class="nc" id="L112">    Course firstRecommendCourse = null;</span>
+<span class="nc" id="L113">    List&lt;CourseStatistics&gt;  courseStatisticsList = this.getCourseStatisticsList();</span>
+
+<span class="nc" id="L115">    courseStatisticsList.sort((o1, o2) -&gt; {</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">      if(o1.getAllStudents() &lt; o2.getAllStudents()) return NEGATIVE_ONE;</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">      else if (o1.getAllStudents() &gt; o2.getAllStudents()) return 1;</span>
+<span class="nc" id="L118">      return 0;</span>
+    });
+
+<span class="nc bnc" id="L121" title="All 2 branches missed.">    for (CourseStatistics courseStatistics : courseStatisticsList){</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">      for (Course course : student.getTakenCourses()){</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        if(!course.getCourseCode().equals(courseStatistics.getCourseCode())){</span>
+<span class="nc" id="L124">          firstRecommendCourse = new Course(courseStatistics.getCourseName(),</span>
+<span class="nc" id="L125">              courseStatistics.getCourseCode(),COURSE_YEAR_TAKEN, GRADE_VALUE);</span>
+        }
+<span class="nc" id="L127">      }</span>
+<span class="nc" id="L128">    }</span>
+<span class="nc" id="L129">    return firstRecommendCourse;</span>
+  }
+
+  /**
+   * Helper function that is used to get the second recommend course
+   * @param student Student
+   * @return get the second recommend course
+   */
+  private Course secondRecommendCourse(Student student){
+<span class="nc" id="L138">    Course secondRecommendCourse = null;</span>
+<span class="nc" id="L139">    List&lt;CourseStatistics&gt; courseStatisticsList = this.getCourseStatisticsList();</span>
+
+<span class="nc" id="L141">    courseStatisticsList.sort((o1, o2) -&gt; {</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">      if(o1.getAverageGradeOfAllStudents() &lt; o2.getAverageGradeOfAllStudents()) return NEGATIVE_ONE;</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">      else if(o1.getAverageGradeOfAllStudents() &gt; o2.getAverageGradeOfAllStudents()) return 1;</span>
+<span class="nc" id="L144">      return 0;</span>
+    });
+
+<span class="nc bnc" id="L147" title="All 2 branches missed.">    for(CourseStatistics courseStatistics : courseStatisticsList){</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">      for(Course course : student.getTakenCourses()){</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        if(!course.getCourseCode().equals(courseStatistics.getCourseCode())){</span>
+<span class="nc" id="L150">          secondRecommendCourse = new Course(courseStatistics.getCourseName(),</span>
+<span class="nc" id="L151">              courseStatistics.getCourseCode(),COURSE_YEAR_TAKEN, GRADE_VALUE);</span>
+        }
+<span class="nc" id="L153">      }</span>
+<span class="nc" id="L154">    }</span>
+<span class="nc" id="L155">    return secondRecommendCourse;</span>
+  }
+
+
+  /**
+   * Helper function that is used to get the third recommend course
+   * @param student Student
+   * @return the second recommend course
+   */
+  private Course thirdRecommendCourse(Student student){
+<span class="nc" id="L165">    Course thirdRecommendCourse = null;</span>
+<span class="nc" id="L166">    List&lt;CourseStatistics&gt; courseStatisticsList = this.getCourseStatisticsList();</span>
+
+<span class="nc" id="L168">    courseStatisticsList.sort((o1, o2) -&gt; {</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">      if(o1.getAllALIGNStudents() &lt; o2.getAllALIGNStudents()) return NEGATIVE_ONE;</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">      else if (o1.getAllALIGNStudents() &gt; o2.getAllALIGNStudents()) return 1;</span>
+<span class="nc" id="L171">      return 0;</span>
+    });
+
+<span class="nc bnc" id="L174" title="All 2 branches missed.">    for (CourseStatistics courseStatistics : courseStatisticsList){</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">      for(Course course : student.getTakenCourses()){</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">        if (!course.getCourseCode().equals(courseStatistics.getCourseCode())){</span>
+<span class="nc" id="L177">          thirdRecommendCourse = new Course(courseStatistics.getCourseName(),</span>
+<span class="nc" id="L178">              courseStatistics.getCourseCode(),COURSE_YEAR_TAKEN, GRADE_VALUE);</span>
+        }
+<span class="nc" id="L180">      }</span>
+<span class="nc" id="L181">    }</span>
+<span class="nc" id="L182">    return thirdRecommendCourse;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L187" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L188">      return true;</span>
+    }
+<span class="nc bnc" id="L190" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L191">      return false;</span>
+    }
+<span class="nc" id="L193">    CourseRecommender that = (CourseRecommender) o;</span>
+<span class="nc bnc" id="L194" title="All 2 branches missed.">    return Objects.equals(listOfStudents, that.listOfStudents) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">        .equals(listOfALIGNStudents, that.listOfALIGNStudents) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">        .equals(courseStatisticsMap, that.courseStatisticsMap) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        .equals(COURSE_YEAR_TAKEN, that.COURSE_YEAR_TAKEN) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">        .equals(GRADE_VALUE, that.GRADE_VALUE);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L203">    return Objects.hash(listOfStudents, listOfALIGNStudents, courseStatisticsMap, COURSE_YEAR_TAKEN,</span>
+        GRADE_VALUE);
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L209">    return &quot;CourseRecommender{&quot; +</span>
+        &quot;listOfStudents=&quot; + listOfStudents +
+        &quot;, listOfALIGNStudents=&quot; + listOfALIGNStudents +
+        &quot;, courseStatisticsMap=&quot; + courseStatisticsMap +
+        &quot;, COURSE_YEAR_TAKEN=&quot; + COURSE_YEAR_TAKEN +
+        &quot;, GRADE_VALUE=&quot; + GRADE_VALUE +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

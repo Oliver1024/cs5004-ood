@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PriorityQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW6</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">PriorityQueue.java</span></div><h1>PriorityQueue.java</h1><pre class="source lang-java linenums">package problem1;
+
+/**
+ * Represents a priority queue strings.
+ */
+public interface PriorityQueue {
+
+  /**
+   * Return a new empty priority queue
+   * @return a new empty priority queue
+   */
+  static PriorityQueue createEmpty(){
+<span class="fc" id="L13">    return new EmptyPriorityQueue();</span>
+  }
+
+  /**
+   * Return a boolean value if it is empty return true otherwise false
+   * @return boolean value
+   */
+  Boolean isEmpty();
+
+  /**
+   * Add a new priority queue to current priority queue
+   * @param priority Integer, priority
+   * @param value String, value
+   * @return a new priority queue
+   */
+  PriorityQueue add(Integer priority, String value);
+
+  /**
+   * Returns the value in the PQ that has the highest priority.
+   * @return the value in the PQ that has the highest priority.
+   * @throws IllegalQueueOperationException throw exception when condition is matched
+   */
+  String peek() throws IllegalQueueOperationException;
+
+  /**
+   *  Returns a copy of the PQ without the element with the
+   * highest priority.
+   * @return a copy of the PQ without the element with the highest priority.
+   * @throws IllegalQueueOperationException throw exception when condition is matched.
+   */
+  PriorityQueue pop() throws IllegalQueueOperationException;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

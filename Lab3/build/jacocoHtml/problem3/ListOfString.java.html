@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ListOfString.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab3</a> &gt; <a href="index.source.html" class="el_package">problem3</a> &gt; <span class="el_source">ListOfString.java</span></div><h1>ListOfString.java</h1><pre class="source lang-java linenums">package problem3;
+
+/**
+ * A concrete class that inherits from interface of ImmutableListOfStrings.
+ */
+public class ListOfString implements ImmutableListOfStrings {
+
+  private Node head;
+  private Integer numNodes;
+
+  /**
+   * A constructor that instantiate the head and numNodes.
+   */
+<span class="fc" id="L14">  public ListOfString() {</span>
+<span class="fc" id="L15">    this.head = null;</span>
+<span class="fc" id="L16">    this.numNodes = 0;</span>
+<span class="fc" id="L17">  }</span>
+
+  /**
+   * Return a boolean value
+   * @return boolean, a boolean value
+   */
+  @Override
+  public Boolean isEmpty() {
+<span class="pc bpc" id="L25" title="1 of 4 branches missed.">    return (this.head == null &amp;&amp; this.numNodes.equals(0));</span>
+  }
+
+  /**
+   * Return the number of nodes
+   * @return Integer, number of nodes
+   */
+  @Override
+  public Integer size() {
+<span class="fc" id="L34">    return this.numNodes;</span>
+  }
+
+  /**
+   * Return a boolean value if condition is matched.
+   * @param item String, taking this parameter
+   * @return boolean, a boolean value
+   */
+  @Override
+  public Boolean contains(String item) {
+<span class="fc" id="L44">    Node currNode = this.head;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">    while (currNode != null) {</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">      if (currNode.getItem().equals(item)) {</span>
+<span class="fc" id="L47">        return true;</span>
+      }
+<span class="fc" id="L49">      currNode = currNode.getNextNode();</span>
+    }
+<span class="fc" id="L51">    return false;</span>
+  }
+
+  /**
+   * Return a boolean value if condition is matched.
+   * @param items Strings, taking this parameter
+   * @return boolean, a boolean value
+   */
+  public Boolean containsAll(ImmutableListOfStrings items) {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">    if(this.head != null){</span>
+<span class="fc" id="L61">      ListOfString currItems = (ListOfString) items;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">      while(currItems.head != null){</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if(!this.contains(currItems.head.getItem())) return false;</span>
+<span class="fc" id="L64">        currItems.head = currItems.head.getNextNode();</span>
+      }
+<span class="fc" id="L66">      return true;</span>
+    }
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    return items.size() == 0;</span>
+  }
+
+  /**
+   * Return a link list that is a ImmutableListOfStrings date type
+   * @param strLen Integer, taking this parameter
+   * @return ImmutableListOfStrings, a link list that is a ImmutableListOfStrings date type
+   */
+  @Override
+  public ImmutableListOfStrings filterLargerThan(Integer strLen) {
+<span class="nc" id="L78">    ImmutableListOfStrings resultingList = new ListOfString();</span>
+<span class="nc" id="L79">    Node currNode = this.head;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">    while (currNode != null) {</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">      if (currNode.getItem().length() &gt;= strLen){</span>
+<span class="nc" id="L82">        resultingList = resultingList.add(currNode.getItem());</span>
+      }
+<span class="nc bnc" id="L84" title="All 2 branches missed.">      if(currNode.getNextNode() != null){</span>
+<span class="nc" id="L85">        currNode = currNode.getNextNode();</span>
+      }else break;
+    }
+<span class="nc" id="L88">    return resultingList;</span>
+  }
+
+  /**
+   * Return a boolean value
+   * @return boolean, a boolean value if the condition is matched
+   */
+  @Override
+  public Boolean hasDuplicates() {
+<span class="fc" id="L97">    Node currNode1 = this.head;</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">    while (currNode1 != null) {</span>
+<span class="fc" id="L99">      Node currNode2 = currNode1.getNextNode();</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">      while (currNode2 != null) {</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        if (currNode1.getItem().equals(currNode2.getItem()))</span>
+<span class="fc" id="L102">          return true;</span>
+<span class="nc" id="L103">        currNode2 = currNode2.getNextNode();</span>
+      }
+<span class="nc" id="L105">      currNode1 = currNode1.getNextNode();</span>
+<span class="nc" id="L106">    }</span>
+<span class="nc" id="L107">    return false;</span>
+  }
+
+
+  /**
+   * Return a storeLinkList that has removed the duplicated items
+   * @return ImmutableListOfStrings, a storeLinkList that has removed the duplicated items
+   */
+  @Override
+  public ImmutableListOfStrings removeDuplicates() {
+<span class="nc" id="L117">      ImmutableListOfStrings newLinkedList = new ListOfString();</span>
+<span class="nc" id="L118">      Node currNode = this.head;</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">      while (currNode.getNextNode() != null) {</span>
+<span class="nc" id="L120">        String currString = currNode.getNextNode().getItem();</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        if (!newLinkedList.contains(currString)) {</span>
+<span class="nc" id="L122">          newLinkedList = newLinkedList.add(currString);</span>
+        }
+<span class="nc" id="L124">        currNode = currNode.getNextNode();</span>
+<span class="nc" id="L125">      }</span>
+<span class="nc" id="L126">      return newLinkedList;</span>
+    }
+
+  /**
+   * Add a new node to current node.
+   * @param item String, taking this parameter
+   * @return ImmutableListOfStrings, a new node that has added new nodes
+   */
+  @Override
+  public ImmutableListOfStrings add(String item) {
+<span class="fc" id="L136">    ListOfString newList = new ListOfString();</span>
+<span class="fc" id="L137">    Node curNode = new Node(item, this.head);</span>
+<span class="fc" id="L138">    newList.head = curNode;</span>
+<span class="fc" id="L139">    newList.numNodes = this.numNodes + 1;</span>
+<span class="fc" id="L140">    return newList;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

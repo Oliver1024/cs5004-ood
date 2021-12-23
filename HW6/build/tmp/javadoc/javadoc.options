@@ -1,0 +1,15 @@
+-classpath '/Users/oliver/cs5004/HW6/build/classes/java/main:/Users/oliver/cs5004/HW6/build/resources/main'
+-d '/Users/oliver/cs5004/HW6/build/docs/javadoc'
+-doctitle 'HW6 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'HW6 1.0-SNAPSHOT API'
+'/Users/oliver/cs5004/HW6/src/main/java/problem1/AbstractPriorityQueue.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem1/EmptyPriorityQueue.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem1/ConsPriorityQueue.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem1/IllegalQueueOperationException.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem1/PriorityQueue.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem2/AbstractBagOfWords.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem2/EmptyBagOfWords.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem2/ConsBagOfWords.java'
+'/Users/oliver/cs5004/HW6/src/main/java/problem2/BagOfWords.java'

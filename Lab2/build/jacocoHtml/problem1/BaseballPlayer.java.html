@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseballPlayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">BaseballPlayer.java</span></div><h1>BaseballPlayer.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+
+/**
+ * Class BaseBallPlayer stores information about a baseball player. This class inherits from
+ * Athlete.
+ */
+public class BaseballPlayer extends Athlete {
+
+  private String team;
+  private Double averageBatting;
+  private Integer homeRuns;
+
+  /**
+   * Constructor for a BaseballPlayer.
+   *
+   * @param athletesName   - Name, representing baseball player's name
+   * @param height         - Double, representing height
+   * @param weight         - Double, representing weight
+   * @param league         - String, representing league
+   * @param team           - String, representing team
+   * @param averageBatting - String, representing average batting
+   * @param homeRuns       - Integer, representing the number of home runs
+   */
+  public BaseballPlayer(Name athletesName, Double height, Double weight, String league,
+      String team, Double averageBatting, Integer homeRuns) {
+<span class="fc" id="L28">    super(athletesName, height, weight, league);</span>
+<span class="fc" id="L29">    this.team = team;</span>
+<span class="fc" id="L30">    this.averageBatting = averageBatting;</span>
+<span class="fc" id="L31">    this.homeRuns = homeRuns;</span>
+<span class="fc" id="L32">  }</span>
+
+  /**
+   * Constructor for a BaseballPlayer.
+   *
+   * @param athletesName   - Name, representing baseball player's name
+   * @param height         - Double, representing height
+   * @param weight         - Double, representing weight
+   * @param team           - String, representing team
+   * @param averageBatting - String, representing average batting
+   * @param homeRuns       - Integer, representing the number of home runs
+   */
+  public BaseballPlayer(Name athletesName, Double height, Double weight, String team,
+      Double averageBatting, Integer homeRuns) {
+<span class="fc" id="L46">    super(athletesName, height, weight);</span>
+<span class="fc" id="L47">    this.team = team;</span>
+<span class="fc" id="L48">    this.averageBatting = averageBatting;</span>
+<span class="fc" id="L49">    this.homeRuns = homeRuns;</span>
+<span class="fc" id="L50">  }</span>
+
+  /**
+   * @return String, representing the team name
+   */
+  public String getTeam() {
+<span class="fc" id="L56">    return team;</span>
+  }
+
+  /**
+   * @return Double, representing the average batting
+   */
+  public Double getAverageBatting() {
+<span class="fc" id="L63">    return averageBatting;</span>
+  }
+
+  /**
+   * @return Integer, representing the number of home runs
+   */
+  public Integer getHomeRuns() {
+<span class="fc" id="L70">    return homeRuns;</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @param o - Taking object as a parameter
+   * @return a boolean value after compare with those fields of Athlete object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L81" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L82">      return true;</span>
+    }
+<span class="fc bfc" id="L84" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L85">      return false;</span>
+    }
+<span class="fc bfc" id="L87" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L88">      return false;</span>
+    }
+<span class="fc" id="L90">    BaseballPlayer that = (BaseballPlayer) o;</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">    return Objects.equals(getTeam(), that.getTeam()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        .equals(getAverageBatting(), that.getAverageBatting()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        .equals(getHomeRuns(), that.getHomeRuns());</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return a hash value after of those fields of BaseBallPlayer object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L103">    return Objects.hash(super.hashCode(), team, averageBatting, homeRuns);</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return Strings of those fields of BaseBallPlayer object
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L113">    return &quot;BaseballPlayer{&quot; +</span>
+        &quot;team='&quot; + team + '\'' +
+        &quot;, averageBatting=&quot; + averageBatting +
+        &quot;, homeRuns=&quot; + homeRuns +
+        '}';
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

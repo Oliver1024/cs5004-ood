@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TravelerIterator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab7</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">TravelerIterator.java</span></div><h1>TravelerIterator.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * A class that implements from Iterator can represent a Traveler Iterator.
+ */
+public class TravelerIterator implements Iterator{
+
+  private List&lt;Traveler&gt; travelersWhoDidntTravelOutsideUS;
+
+  /**
+   * A constructor that create a new object of TravelerIterator
+   * @param travelers - List&lt;Traveler&gt;
+   */
+//  public TravelerIterator(List&lt;Traveler&gt; travelersWhoDidntTravelOutsideUS) {
+//    this.travelersWhoDidntTravelOutsideUS = travelersWhoDidntTravelOutsideUS;
+//  }
+
+<span class="fc" id="L22">  public TravelerIterator(List&lt;Traveler&gt; travelers) {</span>
+<span class="fc" id="L23">    this.travelersWhoDidntTravelOutsideUS = findNoneOutsideUSTravelers(travelers);</span>
+<span class="fc" id="L24">  }</span>
+
+  /**
+   * A helper function that return the resultingTravelers
+   * @param travelers List&lt;Traveler&gt;
+   * @return resultingTravelers
+   */
+  private List&lt;Traveler&gt; findNoneOutsideUSTravelers(List&lt;Traveler&gt; travelers){
+<span class="fc" id="L32">    List&lt;Traveler&gt; resultingTravelers = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">    for(Traveler traveler: travelers){</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">      if(!hasTraveledOutsideUS(traveler))</span>
+<span class="fc" id="L36">        resultingTravelers.add(traveler);</span>
+<span class="fc" id="L37">    }</span>
+<span class="fc" id="L38">    return resultingTravelers;</span>
+  }
+
+  /**
+   * A helper function that can get the travelers who traveled out side US.
+   * @param traveler Traveler
+   * @return boolean value
+   */
+  private boolean hasTraveledOutsideUS(Traveler traveler){
+<span class="fc bfc" id="L47" title="All 2 branches covered.">    for(Destination destination: traveler.traveledDestinations()){</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">      if(!destination.getCountry().equals(&quot;US&quot;))</span>
+<span class="fc" id="L49">        return true;</span>
+<span class="fc" id="L50">    }</span>
+<span class="fc" id="L51">    return false;</span>
+  }
+
+
+
+  /**
+   * Returns {@code true} if the iteration has more elements.
+   * (In other words, returns {@code true} if {@link #next} would
+   * return an element rather than throwing an exception.)
+   *
+   * @return {@code true} if the iteration has more elements
+   */
+  @Override
+  public boolean hasNext() {
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">    return (travelersWhoDidntTravelOutsideUS.size() &gt; 0);</span>
+  }
+
+  /**
+   * Returns the next element in the iteration.
+   *
+   * @return the next element in the iteration
+   */
+  @Override
+  public Traveler next() {
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">    if(this.hasNext())</span>
+<span class="fc" id="L76">      return this.travelersWhoDidntTravelOutsideUS.remove(0);</span>
+<span class="nc" id="L77">    return null;</span>
+  }
+
+  /**
+   *  Removes from the underlying collection the last element returned
+   *  by this iterator (optional operation).
+   */
+  @Override
+  public void remove() {
+<span class="fc" id="L86">    throw new RuntimeException(&quot;Method is not implemented&quot;);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

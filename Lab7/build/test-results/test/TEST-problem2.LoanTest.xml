@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.LoanTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-08-07T06:20:54" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.023">
+  <properties/>
+  <testcase name="notifyObservers" classname="problem2.LoanTest" time="0.015"/>
+  <testcase name="setInterest" classname="problem2.LoanTest" time="0.002"/>
+  <testcase name="getInterest" classname="problem2.LoanTest" time="0.002"/>
+  <testcase name="removeObserver" classname="problem2.LoanTest" time="0.0"/>
+  <testcase name="testToString" classname="problem2.LoanTest" time="0.002"/>
+  <testcase name="removeObserver2" classname="problem2.LoanTest" time="0.001"/>
+  <testcase name="registerObserver" classname="problem2.LoanTest" time="0.0"/>
+  <system-out><![CDATA[Loan interest change alert - updated interest: 1.1rate of change 0.8461538461538461
+YFinances - updated interest rate - from 1.1to1.1
+Loan interest change alert - updated interest: 1.1rate of change 0.8461538461538461
+YFinances - updated interest rate - from 1.1to1.1
+Loan interest change alert - updated interest: 2.5rate of change 2.2727272727272725
+YFinances - updated interest rate - from 1.1to2.5
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

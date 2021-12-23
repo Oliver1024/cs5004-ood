@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OlderVehicleFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab8</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">OlderVehicleFilter.java</span></div><h1>OlderVehicleFilter.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * A class that represents an object of OlderVehicleFilter.
+ */
+public class OlderVehicleFilter {
+
+<span class="fc" id="L12">  private static final Integer FILTER_YEAR = 1999;</span>
+<span class="fc" id="L13">  private List&lt;Vehicle&gt; vehicles = new ArrayList&lt;&gt;();</span>
+
+  /**
+   * A constructor that creates a new object of OlderVehicleFilter
+   * @param vehicles - List
+   */
+<span class="fc" id="L19">  public OlderVehicleFilter(List&lt;Vehicle&gt; vehicles) {</span>
+<span class="fc" id="L20">    this.vehicles = vehicles;</span>
+<span class="fc" id="L21">  }</span>
+
+  /**
+   * A constructor that creates a new object of OlderVehicleFilter
+   * @param vehicle1 - Vehicle
+   * @param vehicle2 - Vehicle
+   * @param vehicle3 - Vehicle
+   */
+<span class="fc" id="L29">  public OlderVehicleFilter(Vehicle vehicle1, Vehicle vehicle2, Vehicle vehicle3) {</span>
+<span class="fc" id="L30">    this.vehicles.add(vehicle1);</span>
+<span class="fc" id="L31">    this.vehicles.add(vehicle2);</span>
+<span class="fc" id="L32">    this.vehicles.add(vehicle3);</span>
+<span class="fc" id="L33">  }</span>
+
+  /**
+   * Filter out vehicles that are manufactured after 1999
+   */
+//  public void filterOlderVehicles() {
+//
+////    approach 1 -- simply filter and print out remaining vehicles
+//    this.vehicles.stream().filter(vehicle -&gt; vehicle.getYear() &gt; FILTER_YEAR).forEach(vehicle -&gt;
+//        Vehicle.printMakeModelAndYear(vehicle));
+//
+//    //approach 2 -- store filtered vehicles into a list , and then print elements of a list
+//    List&lt;Vehicle&gt; resultingVehicles = this.vehicles.stream().filter(vehicle -&gt; vehicle.getYear() &gt;
+//        FILTER_YEAR).collect(Collectors.toList());
+//    resultingVehicles.forEach(vehicle -&gt; Vehicle.printMakeModelAndYear(vehicle));
+//  }
+
+  /**
+   * Filter out vehicles that are manufactured after 1999.
+   */
+  public List&lt;Vehicle&gt; filterOlderVehicles2(){
+<span class="fc" id="L54">    List&lt;Vehicle&gt; resultingVehicles = this.vehicles.stream().filter(vehicle -&gt;</span>
+<span class="fc" id="L55">        vehicle.isYoungerThanGivenYear(FILTER_YEAR)).collect(Collectors.toList());</span>
+
+<span class="fc" id="L57">    resultingVehicles.forEach(vehicle -&gt; Vehicle.printMakeModelAndYear(vehicle));</span>
+<span class="fc" id="L58">    return resultingVehicles;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

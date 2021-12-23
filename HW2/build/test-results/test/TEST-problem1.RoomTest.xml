@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.RoomTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2021-05-31T06:33:52" hostname="Oliver-Macbook.local" time="0.014">
+  <properties/>
+  <testcase name="getNumberGuests" classname="problem1.RoomTest" time="0.003"/>
+  <testcase name="testHashCodeNull" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="invalidNumberAndNotEmptyOfGuests" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="testToString" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="invalidNumberOfGuests" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="getMaxOccupancy" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="equalsReflexivity" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="invalidEmptyOfGuests" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="equalNotSamePrice" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="testHashCodeConsistency" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="equalsDifferentDataTypes" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="isAvailable" classname="problem1.RoomTest" time="0.001"/>
+  <testcase name="equalsReflexivity2" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="equalSetNumberOfGuests" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="equalsSameFields" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="testHashCodeEquality" classname="problem1.RoomTest" time="0.003"/>
+  <testcase name="getPrice" classname="problem1.RoomTest" time="0.001"/>
+  <testcase name="bookRoom" classname="problem1.RoomTest" time="0.0"/>
+  <testcase name="equalNotSameMaxOccupancy" classname="problem1.RoomTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

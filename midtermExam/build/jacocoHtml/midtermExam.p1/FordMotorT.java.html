@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FordMotorT.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">midtermExam</a> &gt; <a href="index.source.html" class="el_package">midtermExam.p1</a> &gt; <span class="el_source">FordMotorT.java</span></div><h1>FordMotorT.java</h1><pre class="source lang-java linenums">package midtermExam.p1;
+
+public class FordMotorT extends BrassEraAntiqueCar{
+<span class="nc" id="L4">  private static final Integer MILES_LIMIT = 500000;</span>
+<span class="nc" id="L5">  private static final Double EXTRA_AMOUNT_ZERO = 0.0;</span>
+<span class="nc" id="L6">  private static final Double EXTRA_AMOUNT = 225000.0;</span>
+
+
+  public FordMotorT(String uniqueID, Integer age, Integer mileage,
+      ConditionCategory conditionCategory, Double latestAskingPrice) {
+<span class="nc" id="L11">    super(uniqueID, age, mileage, conditionCategory, latestAskingPrice);</span>
+<span class="nc" id="L12">  }</span>
+
+  @Override
+  public Double estimatePrice() {
+<span class="nc" id="L16">    return super.estimatePrice() + addExtraAmount();</span>
+  }
+
+  private Double addExtraAmount(){
+<span class="nc bnc" id="L20" title="All 2 branches missed.">    if (this.conditionCategory == ConditionCategory.EXCELLENT) {</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">      if (this.mileage &lt; MILES_LIMIT) {</span>
+<span class="nc" id="L22">        return EXTRA_AMOUNT;</span>
+      }
+    }
+<span class="nc" id="L25">    return EXTRA_AMOUNT_ZERO;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

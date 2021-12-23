@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Trip.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW1</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Trip.java</span></div><h1>Trip.java</h1><pre class="source lang-java linenums">package problem2;
+
+/**
+ * Trip is a simple object that has employee, startLocation, endLocation, startTime and endTime.
+ */
+public class Trip {
+
+  private Employee employee;
+  private String startLocation;
+  private String endLocation;
+  private Time startTime;
+  private Time endTime;
+
+  /**
+   * Constructor that creates a new Trip object with specified employee,startLocation, endLocation,
+   * startTime and endTime.
+   *
+   * @param employee      - employee of the new Trip object
+   * @param startLocation - startLocation of the new Trip object
+   * @param endLocation   - endLocation of the new Trip object
+   * @param startTime     - startTime of the new Trip object
+   * @param endTime       - endTime of the new Trip object
+   */
+  public Trip(Employee employee, String startLocation, String endLocation, Time startTime,
+<span class="fc" id="L25">      Time endTime) {</span>
+<span class="fc" id="L26">    this.employee = employee;</span>
+<span class="fc" id="L27">    this.startLocation = startLocation;</span>
+<span class="fc" id="L28">    this.endLocation = endLocation;</span>
+<span class="fc" id="L29">    this.startTime = startTime;</span>
+<span class="fc" id="L30">    this.endTime = endTime;</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Returns the employee of the Trip.
+   *
+   * @return the employee of the Trip.
+   */
+  public Employee getEmployee() {
+<span class="fc" id="L39">    return this.employee;</span>
+  }
+
+  /**
+   * Returns startLocation of the Trip
+   *
+   * @return startLocation of the Trip
+   */
+  public String getStartLocation() {
+<span class="fc" id="L48">    return this.startLocation;</span>
+  }
+
+  /**
+   * Returns endLocation of the Trip
+   *
+   * @return endLocation of the Trip
+   */
+  public String getEndLocation() {
+<span class="fc" id="L57">    return this.endLocation;</span>
+  }
+
+  /**
+   * Returns startTime of the Trip
+   *
+   * @return startTime of the Trip
+   */
+  public Time getStartTime() {
+<span class="fc" id="L66">    return this.startTime;</span>
+  }
+
+  /**
+   * Returns endTime of the Trip
+   *
+   * @return endTime of the Trip
+   */
+  public Time getEndTime() {
+<span class="fc" id="L75">    return this.endTime;</span>
+  }
+
+  /**
+   * Returns totalSeconds of the time
+   *
+   * @param hours   hours of the time
+   * @param minutes minutes of the time
+   * @param seconds seconds of the time
+   * @return the totalSeconds of the time
+   */
+  private Integer timeToSeconds(int hours, int minutes, int seconds) {
+
+<span class="fc" id="L88">    return (hours * 3600) + (minutes * 60) + seconds;</span>
+  }
+
+  /**
+   * Returns a new time object with hours, minutes and seconds
+   *
+   * @param durationSeconds Taking durationSeconds as a parameter
+   * @return the durationSeconds of commute
+   */
+  private Time durationSecondsConvert(Integer durationSeconds) {
+<span class="fc" id="L98">    int hours = durationSeconds / 3600;</span>
+<span class="fc" id="L99">    int minutes = (durationSeconds % 3600) / 60;</span>
+<span class="fc" id="L100">    int seconds = durationSeconds % 60;</span>
+    Time timeCommute;
+<span class="fc" id="L102">    return timeCommute = new Time(hours, minutes, seconds);</span>
+  }
+
+  /**
+   * Returns a new object of time with
+   *
+   * @return total time of the trip
+   */
+  public Time getDuration() {
+<span class="fc" id="L111">    int startSeconds = timeToSeconds(this.startTime.getHours(), this.startTime.getMinutes(),</span>
+<span class="fc" id="L112">        this.startTime.getSeconds());</span>
+<span class="fc" id="L113">    int endSeconds = timeToSeconds(this.endTime.getHours(), this.endTime.getMinutes(),</span>
+<span class="fc" id="L114">        this.endTime.getSeconds());</span>
+<span class="fc" id="L115">    int durationSeconds = endSeconds - startSeconds;</span>
+
+<span class="fc" id="L117">    return durationSecondsConvert(durationSeconds);</span>
+
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

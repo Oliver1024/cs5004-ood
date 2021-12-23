@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommandChecker.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">controllerModules.commandChecking</a> &gt; <span class="el_source">CommandChecker.java</span></div><h1>CommandChecker.java</h1><pre class="source lang-java linenums">package controllerModules.commandChecking;
+
+import controllerModules.exceptions.InvalidCommandExceptions.InvalidArgumentsException;
+import controllerModules.exceptions.InvalidCommandExceptions.LackArgumentsException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+import controllerModules.commandOpreration.CommandOptions;
+
+/**
+ * A class that represents command checker implementing from ICommandChecker.
+ */
+public class CommandChecker implements ICommandChecker{
+
+  private Map&lt;String, String&gt; commandInfoMap;
+<span class="fc" id="L16">  private static final Integer PRI_NUM_ONE = 1;</span>
+<span class="fc" id="L17">  private static final Integer PRI_NUM_THREE = 3;</span>
+
+
+  /**
+   * A constructor that create a new object of CommandChecker
+   * @param commandInfoMap - Map, commandInfoMap
+   */
+<span class="fc" id="L24">  public CommandChecker(Map&lt;String, String&gt; commandInfoMap) {</span>
+<span class="fc" id="L25">    this.commandInfoMap = commandInfoMap;</span>
+<span class="fc" id="L26">  }</span>
+
+  /**
+   * Check all arguments according different conditions
+   */
+  @Override
+  public void checkAll()
+      throws Exception {
+<span class="fc" id="L34">    checkAddToDo();</span>
+<span class="fc" id="L35">    checkDueDate();</span>
+<span class="fc" id="L36">    checkPriority();</span>
+<span class="fc" id="L37">    checkCompleteTodo();</span>
+<span class="fc" id="L38">    checkDisplay();</span>
+<span class="fc" id="L39">    checkShowIncomplete();</span>
+<span class="fc" id="L40">    checkShowCategory();</span>
+<span class="fc" id="L41">    checkSortByDate();</span>
+<span class="fc" id="L42">    checkSortByPriority();</span>
+<span class="fc" id="L43">  }</span>
+
+  /**
+   * Check addToDo argument
+   * @throws LackArgumentsException throw exception when condition is reached
+   */
+  @Override
+  public void checkAddToDo() throws Exception {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    if (!commandInfoMap.containsKey(CommandOptions.S_ADD_TODO)) {</span>
+<span class="fc" id="L52">      throw new LackArgumentsException(&quot;--add-todo must be provided&quot;);</span>
+    }
+<span class="fc" id="L54">  }</span>
+
+  /**
+   * Check DueDate argument
+   */
+  @Override
+  public void checkDueDate() {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    if (commandInfoMap.containsKey(CommandOptions.D_DUE_DATE)) {</span>
+<span class="fc" id="L62">      SimpleDateFormat simpleDateFormat = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;);</span>
+<span class="fc" id="L63">      simpleDateFormat.setLenient(false);</span>
+      try {
+<span class="fc" id="L65">        simpleDateFormat.parse(commandInfoMap.get(CommandOptions.D_DUE_DATE));</span>
+<span class="fc" id="L66">      } catch (ParseException e) {</span>
+<span class="fc" id="L67">        System.out.println(&quot;Your due date is in an invalid format!&quot;);</span>
+<span class="fc" id="L68">      }</span>
+    }
+<span class="fc" id="L70">  }</span>
+
+  /**
+   * Check priority argument
+   * @throws InvalidArgumentsException throw exception when condition is reached
+   */
+  @Override
+  public void checkPriority() throws Exception {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">    if (commandInfoMap.containsKey(CommandOptions.D_PRIORITY)) {</span>
+      try {
+<span class="fc" id="L80">        int priorityNum = Integer.parseInt(commandInfoMap.get(CommandOptions.D_PRIORITY));</span>
+<span class="fc bfc" id="L81" title="All 4 branches covered.">        if (priorityNum &lt; PRI_NUM_ONE || priorityNum &gt; PRI_NUM_THREE) throw new</span>
+            InvalidArgumentsException(&quot;Priority should be between 1 and 3!&quot;);
+<span class="fc" id="L83">      } catch (NumberFormatException e) {</span>
+<span class="fc" id="L84">        throw new InvalidArgumentsException(&quot;Priority must be an Integer&quot;);</span>
+<span class="fc" id="L85">      }</span>
+    }
+<span class="fc" id="L87">  }</span>
+
+  /**
+   * Check CompleteToDo argument
+   */
+  @Override
+  public void checkCompleteTodo() {
+<span class="fc" id="L94">  }</span>
+
+  /**
+   * Check Display argument
+   */
+  @Override
+  public void checkDisplay() {
+<span class="fc" id="L101">  }</span>
+
+  /**
+   * Check ShowIncomplete argument
+   * @throws LackArgumentsException throw exception when condition is reached
+   */
+  @Override
+  public void checkShowIncomplete() throws Exception {
+<span class="fc bfc" id="L109" title="All 2 branches covered.">    if (commandInfoMap.containsKey(CommandOptions.S_SHOW_INCOMPLETE)){</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">      if (!commandInfoMap.containsKey(CommandOptions.S_DISPLAY)) {</span>
+<span class="fc" id="L111">        throw new LackArgumentsException(&quot;No display command is provided!&quot;);</span>
+      }
+    }
+<span class="fc" id="L114">  }</span>
+
+  /**
+   * Check ShowCategory argument
+   * @throws LackArgumentsException throw exception when condition is reached
+   */
+  @Override
+  public void checkShowCategory() throws Exception {
+<span class="fc bfc" id="L122" title="All 2 branches covered.">    if (commandInfoMap.containsKey(CommandOptions.D_SHOW_CATEGORY)){</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">      if (!commandInfoMap.containsKey(CommandOptions.S_DISPLAY)) {</span>
+<span class="fc" id="L124">        throw new LackArgumentsException(&quot;No display command is provided!&quot;);</span>
+      }
+    }
+<span class="fc" id="L127">  }</span>
+
+  /**
+   * Check ShortByDate argument
+   * @throws LackArgumentsException throw exception when condition is reached
+   * @throws InvalidArgumentsException throw exception when condition is reached
+   */
+  @Override
+  public void checkSortByDate() throws Exception {
+<span class="fc bfc" id="L136" title="All 2 branches covered.">    if (commandInfoMap.containsKey(CommandOptions.S_SORT_BY_DATE)){</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">      if (!commandInfoMap.containsKey(CommandOptions.S_DISPLAY)) {</span>
+<span class="fc" id="L138">        throw new LackArgumentsException(&quot;No display command is provided!&quot;);</span>
+      }
+<span class="fc bfc" id="L140" title="All 2 branches covered.">      if (commandInfoMap.containsKey(CommandOptions.S_SORT_BY_PRIORITY)) {</span>
+<span class="fc" id="L141">        throw new InvalidArgumentsException(</span>
+            &quot;Cannot sort by date and priority at the same time!&quot;);
+      }
+    }
+<span class="fc" id="L145">  }</span>
+
+  /**
+   * Check SortByPriority argument
+   * @throws LackArgumentsException throw exception when condition is reached
+   */
+  @Override
+  public void checkSortByPriority() throws Exception {
+<span class="fc bfc" id="L153" title="All 2 branches covered.">    if (commandInfoMap.containsKey(CommandOptions.S_SORT_BY_PRIORITY)){</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">      if (!commandInfoMap.containsKey(CommandOptions.S_DISPLAY)) {</span>
+<span class="fc" id="L155">        throw new LackArgumentsException(&quot;No display command is provided!&quot;);</span>
+      }
+    }
+<span class="fc" id="L158">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,12 @@
+problem1/ElectricalWorkTest.java
+ problem1.ElectricalWorkTest
+problem1/GardeningTest.java
+ problem1.GardeningTest
+problem1/PlumbingWorkTest.java
+ problem1.PlumbingWorkTest
+problem1/PaintingTest.java
+ problem1.PaintingTest
+problem1/WindowCleaningTest.java
+ problem1.WindowCleaningTest
+problem1/InteriorCleaningTest.java
+ problem1.InteriorCleaningTest

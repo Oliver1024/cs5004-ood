@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Amount.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW1</a> &gt; <a href="index.source.html" class="el_package">problem3</a> &gt; <span class="el_source">Amount.java</span></div><h1>Amount.java</h1><pre class="source lang-java linenums">package problem3;
+
+/**
+ * Amount is a simple object that has dollarValue and centsValue.
+ */
+public class Amount {
+
+  private Integer dollarValue;
+  private Integer centsValue;
+
+  /**
+   * Constructor that creates a new Amount object with dollarValue and centsValue.
+   *
+   * @param dollarValue - dollarValue of new Amount object
+   * @param centsValue  - centsValue of new Amount object
+   */
+<span class="fc" id="L17">  public Amount(Integer dollarValue, Integer centsValue) {</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">    if (validateDollar(dollarValue)) {</span>
+<span class="fc" id="L19">      this.dollarValue = dollarValue;</span>
+    } else {
+<span class="fc" id="L21">      this.dollarValue = -1;</span>
+    }
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    if (validateCent(centsValue)) {</span>
+<span class="fc" id="L24">      this.centsValue = centsValue;</span>
+    } else {
+<span class="fc" id="L26">      this.centsValue = -1;</span>
+    }
+<span class="fc" id="L28">  }</span>
+
+  /**
+   * Returns DollarValue of the Amount
+   *
+   * @return DollarValue of the Amount
+   */
+  public Integer getDollarValue() {
+<span class="fc" id="L36">    return this.dollarValue;</span>
+  }
+
+  /**
+   * Returns CentsValue of the Amount
+   *
+   * @return CentsValue of the Amount
+   */
+  public Integer getCentsValue() {
+<span class="fc" id="L45">    return this.centsValue;</span>
+  }
+
+  /**
+   * A helper function that used to validate dollar value
+   *
+   * @param dollarValue Taking this dollarValue as a parameter in this function
+   * @return boolean value
+   */
+  private boolean validateDollar(Integer dollarValue) {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">    if (dollarValue &gt;= 0) {</span>
+<span class="fc" id="L56">      return true;</span>
+    }
+<span class="fc" id="L58">    return false;</span>
+  }
+
+  /**
+   * A helper function that used to validate cents value
+   *
+   * @param centsValue Taking this centsValue as parameter in this function
+   * @return boolean value
+   */
+  private boolean validateCent(Integer centsValue) {
+<span class="fc" id="L68">    Integer maxCentValue = 99;</span>
+<span class="fc bfc" id="L69" title="All 4 branches covered.">    if (centsValue &gt;= 0 &amp;&amp; centsValue &lt;= maxCentValue) {</span>
+<span class="fc" id="L70">      return true;</span>
+    }
+<span class="fc" id="L72">    return false;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

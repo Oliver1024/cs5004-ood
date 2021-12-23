@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.CatalogTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-06-21T07:44:14" hostname="Oliver-Macbook.local" time="0.007">
+  <properties/>
+  <testcase name="testEquals2" classname="problem2.CatalogTest" time="0.001"/>
+  <testcase name="addItem" classname="problem2.CatalogTest" time="0.0"/>
+  <testcase name="testToString" classname="problem2.CatalogTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem2.CatalogTest" time="0.0"/>
+  <testcase name="getSetItemCollection" classname="problem2.CatalogTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem2.CatalogTest" time="0.0"/>
+  <testcase name="testSearch2" classname="problem2.CatalogTest" time="0.0"/>
+  <testcase name="testSearch3" classname="problem2.CatalogTest" time="0.0"/>
+  <testcase name="testSearch" classname="problem2.CatalogTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

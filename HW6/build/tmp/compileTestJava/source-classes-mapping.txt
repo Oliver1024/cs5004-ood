@@ -1,0 +1,8 @@
+problem1/ConsPriorityQueueTest.java
+ problem1.ConsPriorityQueueTest
+problem1/EmptyPriorityQueueTest.java
+ problem1.EmptyPriorityQueueTest
+problem2/ConsBagOfWordsTest.java
+ problem2.ConsBagOfWordsTest
+problem2/EmptyBagOfWordsTest.java
+ problem2.EmptyBagOfWordsTest

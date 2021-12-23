@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Group.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW5</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Group.java</span></div><h1>Group.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * Represents an abstract class Group, extending its parent class Creator
+ */
+public abstract class Group extends Creator {
+  private String name;
+  private Set&lt;Person&gt; members;
+
+  /**
+   * Constructs a Band, with name and a collection of members
+   * @param name - String, name of the group
+   * @param members - Set of Person, collection of members
+   */
+<span class="fc" id="L18">  public Group(String name, Set&lt;Person&gt; members) {</span>
+<span class="fc" id="L19">    this.name = name;</span>
+<span class="fc" id="L20">    this.members = members;</span>
+<span class="fc" id="L21">  }</span>
+
+  /**
+   * Return name
+   * @return String, name
+   */
+  @Override
+  public String getName() {
+<span class="fc" id="L29">    return this.name;</span>
+  }
+
+  /**
+   * Return members of the group
+   * @return Set of members
+   */
+  @Override
+  public Set&lt;Person&gt; getMembers() {
+<span class="fc" id="L38">    return this.members;</span>
+  }
+
+  /**
+   * Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   * @param o an object to compare
+   * @return boolean
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L49">      return true;</span>
+    }
+<span class="pc bpc" id="L51" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L52">      return false;</span>
+    }
+<span class="fc" id="L54">    Group group = (Group) o;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">    return Objects.equals(getName(), group.getName()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        .equals(getMembers(), group.getMembers());</span>
+  }
+
+  /**
+   * Returns an integer representation of the object memory address
+   * @return int, hash code
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L65">    return Objects.hash(getName(), getMembers());</span>
+  }
+
+  /**
+   * Returns an String representation of the object
+   * @return String, string
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L74">    return &quot;Group{&quot; +</span>
+        &quot;name='&quot; + name + '\'' +
+        &quot;, members=&quot; + members +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

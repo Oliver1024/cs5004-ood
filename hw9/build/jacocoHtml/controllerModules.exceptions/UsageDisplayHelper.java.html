@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsageDisplayHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">controllerModules.exceptions</a> &gt; <span class="el_source">UsageDisplayHelper.java</span></div><h1>UsageDisplayHelper.java</h1><pre class="source lang-java linenums">package controllerModules.exceptions;
+
+import controllerModules.exceptions.InvalidCommandExceptions.InvalidArgumentsException;
+
+<span class="fc" id="L5">public class UsageDisplayHelper {</span>
+
+  /**
+   * Helper method to present some information in tabular form.
+   *
+   * @param dimensions dimensions of the table
+   * @param headers    Name of each row
+   * @param values     Values in each row
+   * @return String representation of a table
+   * @throws IllegalArgumentException If the dimensions of all the parameters do not match
+   * @throws Exception If the dimensions of all the parameters do not match
+   */
+  public static String createTable(int[] dimensions, String[] headers, String[][] values) throws
+      Exception{
+<span class="fc" id="L19">    Integer secondTwo = 2;</span>
+<span class="fc" id="L20">    Integer thirdThree = 3;</span>
+<span class="fc bfc" id="L21" title="All 6 branches covered.">    if (dimensions == null || headers == null || values == null) {</span>
+<span class="fc" id="L22">      throw new InvalidArgumentsException(&quot;Cannot pass NULL as an argument&quot;);</span>
+    }
+
+<span class="fc bfc" id="L25" title="All 2 branches covered.">    if (dimensions.length != secondTwo) {</span>
+<span class="fc" id="L26">      throw new InvalidArgumentsException(&quot;We only support 2D table!&quot;);</span>
+    }
+<span class="fc bfc" id="L28" title="All 2 branches covered.">    if (dimensions[0] != headers.length) {</span>
+<span class="fc" id="L29">      throw new InvalidArgumentsException(</span>
+          &quot;Number of header values should equal to number of rows!&quot;);
+    }
+<span class="fc bfc" id="L32" title="All 2 branches covered.">    if (dimensions[0] != values.length) {</span>
+<span class="fc" id="L33">      throw new InvalidArgumentsException(</span>
+          &quot;Number of arrays for values should equal to number of rows!&quot;);
+    }
+
+<span class="fc bfc" id="L37" title="All 2 branches covered.">    for (String[] arr : values) {</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">      if (arr == null) {</span>
+<span class="fc" id="L39">        throw new InvalidArgumentsException(&quot;Values of a row cannot be null&quot;);</span>
+      }
+    }
+
+<span class="fc" id="L43">    String table = &quot;&quot;;</span>
+<span class="fc" id="L44">    int maxHeader = maxLength(headers);</span>
+<span class="fc" id="L45">    int maxValues = maxLength(values);</span>
+<span class="fc" id="L46">    int lineCount = (maxHeader + thirdThree) + (maxValues + thirdThree) * dimensions[1] - 1;</span>
+
+<span class="fc" id="L48">    table = &quot;\n&quot;;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    for (int row = 0; row &lt; dimensions[0]; ++row) {</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">      if (!headers[row].equals(&quot;&quot;)) {</span>
+<span class="fc" id="L51">        table += createLine(&quot;-&quot;, lineCount);</span>
+      }
+<span class="fc" id="L53">      table += String.format(&quot; %&quot; + maxHeader + &quot;s |&quot;, headers[row]);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">      for (int col = 0; col &lt; dimensions[1]; ++col) {</span>
+<span class="fc" id="L55">        table += String.format(&quot; %&quot; + maxValues + &quot;s |&quot;, values[row][col]);</span>
+      }
+<span class="fc" id="L57">      table += &quot;\n&quot;;</span>
+    }
+<span class="fc" id="L59">    table += createLine(&quot;-&quot;, lineCount);</span>
+
+<span class="fc" id="L61">    return table;</span>
+  }
+
+  /**
+   * Helper method to draw a line on stdout.
+   *
+   * @param character Character to be used for creating the line
+   * @param count     Length of the line
+   * @return String representing the line
+   */
+  private static String createLine(String character, int count) {
+<span class="fc" id="L72">    StringBuilder line = new StringBuilder(&quot;&quot;);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">    for (int i = 0; i &lt; count; ++i) {</span>
+<span class="fc" id="L74">      line.append(character);</span>
+    }
+<span class="fc" id="L76">    line.append(&quot;\n&quot;);</span>
+
+<span class="fc" id="L78">    return line.toString();</span>
+  }
+
+  /**
+   * Helper method to calculate the length of maximum string in an array of strings.
+   *
+   * @param strings Array of string
+   * @return Length of longest string in the given array
+   */
+  private static int maxLength(String[] strings) {
+<span class="fc" id="L88">    int max = 0;</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">    for (String str : strings) {</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">      if (str.length() &gt; max) {</span>
+<span class="fc" id="L91">        max = str.length();</span>
+      }
+    }
+<span class="fc" id="L94">    return max;</span>
+  }
+
+  /**
+   * Helper method to calculate the length of maximum string in an array of array of string.
+   *
+   * @param arrayOfStrings Array of array of strings
+   * @return Length of longest string in the given 2D array
+   */
+  private static int maxLength(String[][] arrayOfStrings) {
+<span class="fc" id="L104">    int max = 0;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">    for (String[] strings : arrayOfStrings) {</span>
+<span class="fc" id="L106">      int localMax = maxLength(strings);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">      if (localMax &gt; max) {</span>
+<span class="fc" id="L108">        max = localMax;</span>
+      }
+    }
+<span class="fc" id="L111">    return max;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

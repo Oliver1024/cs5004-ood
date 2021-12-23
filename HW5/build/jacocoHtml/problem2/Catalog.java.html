@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Catalog.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW5</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Catalog.java</span></div><h1>Catalog.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * Represents a concrete class Catalog, with functionalities to store and search items
+ */
+public class Catalog {
+  private Set&lt;Item&gt; setItemCollection;
+
+  /**
+   * Constructs a new Catalog, with an empty set of Item is created
+   */
+<span class="fc" id="L16">  public Catalog() {</span>
+<span class="fc" id="L17">    this.setItemCollection = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L18">  }</span>
+
+  /**
+   * Adds Item to the collection
+   * @param item - Item, including Music and Book
+   */
+  public void addItem(Item item){
+<span class="fc" id="L25">    this.setItemCollection.add(item);</span>
+<span class="fc" id="L26">  }</span>
+
+  /**
+   * Returns the collection of Item
+   * @return the collection of Item
+   */
+  public Set&lt;Item&gt; getSetItemCollection() {
+<span class="fc" id="L33">    return setItemCollection;</span>
+  }
+
+  /**
+   * Returns Set of Item whose title contains the keyword
+   * @param keyword - String, searching keyword
+   * @return Set of Item
+   */
+  public Set&lt;Item&gt; search(String keyword){
+<span class="fc" id="L42">    Set&lt;Item&gt; newItems = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">    for(Item item : setItemCollection){</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">      if(item.getTitle().toLowerCase().contains(keyword.toLowerCase())){</span>
+<span class="fc" id="L45">        newItems.add(item);</span>
+      }
+<span class="fc" id="L47">    }</span>
+<span class="fc" id="L48">    return newItems;</span>
+  }
+
+  /**
+   * Returns Set of Item
+   * @param author - Author, the author of book
+   * @return Set of Item
+   */
+  public Set&lt;Item&gt; search(Author author){
+<span class="fc" id="L57">    Set&lt;Item&gt; newItems = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">    for(Item item : setItemCollection){</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">      if(item.getCreators().equals(author)){</span>
+<span class="fc" id="L60">        newItems.add(item);</span>
+      }
+<span class="fc" id="L62">    }</span>
+<span class="fc" id="L63">    return newItems;</span>
+  }
+
+
+  /**
+   * Returns Set of Item, only including the music
+   * @param artist - RecordingArtist, the artist of music
+   * @return Set of Item
+   */
+  public Set&lt;Item&gt; search(RecordingArtist artist) {
+<span class="fc" id="L73">    Set&lt;Item&gt; newItems = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">    for (Item item : setItemCollection) {</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">      if (item.getCreators().equals(artist)) {</span>
+<span class="fc" id="L76">        newItems.add(item);</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">      }else if( item.getCreators().getMembers() != null &amp;&amp;</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">          item.getCreators().getMembers().contains(artist)</span>
+         ){
+<span class="fc" id="L80">        newItems.add(item);</span>
+      }
+<span class="fc" id="L82">    }</span>
+<span class="fc" id="L83">    return newItems;</span>
+  }
+
+
+  /**
+   * Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   * current instance
+   * @param o object
+   * @return boolean value
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L95" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L96">      return true;</span>
+    }
+<span class="pc bpc" id="L98" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L99">      return false;</span>
+    }
+<span class="fc" id="L101">    Catalog catalog = (Catalog) o;</span>
+<span class="fc" id="L102">    return Objects.equals(getSetItemCollection(), catalog.getSetItemCollection());</span>
+  }
+
+
+  /**
+   * returns an integer representation of the object memory address
+   * @return int, hash value
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L112">    return Objects.hash(getSetItemCollection());</span>
+  }
+
+  /**
+   * Returns an String representation of the object
+   * @return an String representation of the object
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L121">    return &quot;Catalog{&quot; +</span>
+        &quot;setItemCollection=&quot; + setItemCollection +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

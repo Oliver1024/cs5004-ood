@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TodoListProcessor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">controllerModules.todoListOperation</a> &gt; <span class="el_source">TodoListProcessor.java</span></div><h1>TodoListProcessor.java</h1><pre class="source lang-java linenums">package controllerModules.todoListOperation;
+
+import controllerModules.commandOpreration.CommandInfoCollection;
+import java.util.List;
+import model.Todo;
+import model.Todo.Builder;
+
+/**
+ * A class that represent TodoListProcessor
+ */
+public class TodoListProcessor {
+  private List&lt;Todo&gt; todoList;
+  private CommandInfoCollection commandInfoCollection;
+
+  /**
+   * A constructor that create a new object of TodoListProcessor
+   * @param todoList - List, todoList
+   * @param commandInfoCollection - CommandInfoCollection commandInfoCollection
+   */
+  public TodoListProcessor(List&lt;Todo&gt; todoList,
+<span class="fc" id="L21">      CommandInfoCollection commandInfoCollection) {</span>
+<span class="fc" id="L22">    this.todoList = todoList;</span>
+<span class="fc" id="L23">    this.commandInfoCollection = commandInfoCollection;</span>
+<span class="fc" id="L24">  }</span>
+
+  /**
+   * Modify todo list
+   * @return modified todo list
+   */
+  public List&lt;Todo&gt; modifyTodoList(){
+<span class="fc" id="L31">    todoList.add(createNewTodo());</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">    for (Todo todo : todoList) {</span>
+<span class="fc" id="L33">      completeTodo(todo);</span>
+<span class="fc" id="L34">    }</span>
+<span class="fc" id="L35">    return todoList;</span>
+  }
+
+  /**
+   * A helper function that is used to create new todo
+   * @return a new Todo object
+   */
+  private Todo createNewTodo(){
+<span class="fc" id="L43">    Builder builder = new Builder();</span>
+<span class="fc" id="L44">    builder.setId(todoList.size()+1);</span>
+<span class="fc" id="L45">    builder.setText(commandInfoCollection.getTodoText());</span>
+<span class="fc" id="L46">    builder.setDue(commandInfoCollection.getDue());</span>
+<span class="fc" id="L47">    builder.setCompleted(commandInfoCollection.getCompleted());</span>
+<span class="fc" id="L48">    builder.setPriority(commandInfoCollection.getPriority());</span>
+<span class="fc" id="L49">    builder.setCategory(commandInfoCollection.getCategory());</span>
+<span class="fc" id="L50">    return builder.build();</span>
+
+  }
+
+  /**
+   * A helper function that set completed is true when condition is reached
+   * @param todo
+   */
+  private void completeTodo(Todo todo){
+<span class="fc bfc" id="L59" title="All 2 branches covered.">    for (Integer id : commandInfoCollection.getCompleteTodoList()) {</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">      if(id.equals(todo.getId())){</span>
+<span class="fc" id="L61">        todo.setCompleted(true);</span>
+      }
+<span class="fc" id="L63">    }</span>
+<span class="fc" id="L64">  }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

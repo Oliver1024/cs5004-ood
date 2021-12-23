@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">FinalExam</a> &gt; <a href="index.source.html" class="el_package">P1</a> &gt; <span class="el_source">MobileApp.java</span></div><h1>MobileApp.java</h1><pre class="source lang-java linenums">package P1;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
+
+public class MobileApp {
+  private String appName;
+  private MobileAppCategory appCategory;
+  private Float currentVersion;
+  private Float currentSize;
+  private List&lt;Name&gt; developers;
+  private List&lt;String&gt; requestedPermissions;
+  private LocalDate dateOfOriginalRelease;
+  private LocalDate dateOfLatestUpdate;
+  public MobileApp(String appName, MobileAppCategory appCategory, Float currentVersion,
+      Float currentSize, List&lt;Name&gt; developers, List&lt;String&gt; requestedPermissions,
+<span class="fc" id="L18">      LocalDate dateOfOriginalRelease, LocalDate dateOfLatestUpdate) {</span>
+<span class="fc" id="L19">    this.appName = appName;</span>
+<span class="fc" id="L20">    this.appCategory = appCategory;</span>
+<span class="fc" id="L21">    this.currentVersion = currentVersion;</span>
+<span class="fc" id="L22">    this.currentSize = currentSize;</span>
+<span class="fc" id="L23">    this.developers = developers;</span>
+<span class="fc" id="L24">    this.requestedPermissions = requestedPermissions;</span>
+<span class="fc" id="L25">    this.dateOfOriginalRelease = dateOfOriginalRelease;</span>
+<span class="fc" id="L26">    this.dateOfLatestUpdate = dateOfLatestUpdate;</span>
+<span class="fc" id="L27">  }</span>
+  public String getAppName() {
+<span class="fc" id="L29">    return appName;</span>
+  }
+  public MobileAppCategory getAppCategory() {
+<span class="fc" id="L32">    return appCategory;</span>
+  }
+
+  public Float getCurrentVersion() {
+<span class="fc" id="L36">    return currentVersion;</span>
+  }
+  public Float getCurrentSize() {
+<span class="fc" id="L39">    return currentSize;</span>
+  }
+  public List&lt;Name&gt; getDevelopers() {
+<span class="fc" id="L42">    return developers;</span>
+  }
+  public List&lt;String&gt; getRequestedPermissions() {
+<span class="fc" id="L45">    return requestedPermissions;</span>
+  }
+  public LocalDate getDateOfOriginalRelease() {
+<span class="fc" id="L48">    return dateOfOriginalRelease;</span>
+  }
+
+  public LocalDate getDateOfLatestUpdate() {
+<span class="fc" id="L52">    return dateOfLatestUpdate;</span>
+  }
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L56" title="All 2 branches missed.">    if (this == o) return true;</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">    if (!(o instanceof MobileApp)) return false;</span>
+<span class="nc" id="L58">    MobileApp mobileApp = (MobileApp) o;</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">    return Objects.equals(getAppName(), mobileApp.getAppName()) &amp;&amp;</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        getAppCategory() == mobileApp.getAppCategory() &amp;&amp;</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        Objects.equals(getCurrentVersion(), mobileApp.getCurrentVersion()) &amp;&amp;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        Objects.equals(getCurrentSize(), mobileApp.getCurrentSize()) &amp;&amp;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        Objects.equals(getDevelopers(), mobileApp.getDevelopers()) &amp;&amp;</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        Objects.equals(getRequestedPermissions(), mobileApp.getRequestedPermissions()) &amp;&amp;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        Objects.equals(getDateOfOriginalRelease(), mobileApp.getDateOfOriginalRelease()) &amp;&amp;</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        Objects.equals(getDateOfLatestUpdate(), mobileApp.getDateOfLatestUpdate());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L71">    return Objects.hash(getAppName(), getAppCategory(), getCurrentVersion(),</span>
+<span class="fc" id="L72">        getCurrentSize(), getDevelopers(), getRequestedPermissions(), getDateOfOriginalRelease(),</span>
+<span class="fc" id="L73">        getDateOfLatestUpdate());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L78">    return &quot;MobileApp{&quot; +</span>
+        &quot;appName='&quot; + appName + '\'' +
+        &quot;, appCategory=&quot; + appCategory +
+        &quot;, currentVersion=&quot; + currentVersion +
+        &quot;, currentSize=&quot; + currentSize +
+        &quot;, developers=&quot; + developers +
+        &quot;, requestedPermissions=&quot; + requestedPermissions +
+        &quot;, dateOfOriginalRelease=&quot; + dateOfOriginalRelease +
+        &quot;, dateOfLatestUpdate=&quot; + dateOfLatestUpdate +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

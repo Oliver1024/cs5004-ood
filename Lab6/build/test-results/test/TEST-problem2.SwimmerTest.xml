@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.SwimmerTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-07-31T00:00:26" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.003">
+  <properties/>
+  <testcase name="getButterfly50mTimes" classname="problem2.SwimmerTest" time="0.0"/>
+  <testcase name="getFastestSwimTime" classname="problem2.SwimmerTest" time="0.0"/>
+  <testcase name="compareTo" classname="problem2.SwimmerTest" time="0.0"/>
+  <testcase name="getBackstroke50mTimes" classname="problem2.SwimmerTest" time="0.001"/>
+  <testcase name="getName" classname="problem2.SwimmerTest" time="0.0"/>
+  <testcase name="testCompare" classname="problem2.SwimmerTest" time="0.0"/>
+  <testcase name="getFreestyle50mTimes" classname="problem2.SwimmerTest" time="0.0"/>
+  <testcase name="getBreaststroke50mTimes" classname="problem2.SwimmerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

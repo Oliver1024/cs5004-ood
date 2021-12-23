@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CourseCatalog.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW4</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">CourseCatalog.java</span></div><h1>CourseCatalog.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * A class that is defined a course catalog and implements from interface of ICourseCatalog.
+ */
+public class CourseCatalog implements ICourseCatalog {
+
+  private Course[] courses;
+  private int courseIndex;
+  private static final int NUM_ONE = 1;
+  private static final int NUM_NEGATIVE_ONE = -1;
+<span class="fc" id="L15">  private int zero = 0;</span>
+
+  /**
+   * A constructor that creates a new object of the CourseCatalog.
+   */
+<span class="fc" id="L20">  public CourseCatalog() {</span>
+<span class="fc" id="L21">    this.courses = new Course[NUM_ONE];</span>
+<span class="fc" id="L22">    this.courseIndex = zero;</span>
+<span class="fc" id="L23">  }</span>
+
+  /**
+   * Append a course to current array
+   *
+   * @param courseName Course, a parameter that is appended to the array.
+   */
+  @Override
+  public void append(Course courseName) {
+<span class="fc bfc" id="L32" title="All 2 branches covered.">    if (!this.isFull()) {</span>
+<span class="fc" id="L33">      this.courses[courseIndex] = courseName;</span>
+    } else {
+<span class="fc" id="L35">      Course[] newestCourse = new Course[this.count() + NUM_ONE];</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">      for (int j = zero; j &lt; courseIndex; j++) {</span>
+<span class="fc" id="L37">        newestCourse[j] = courses[j];</span>
+      }
+<span class="fc" id="L39">      newestCourse[courseIndex] = courseName;</span>
+<span class="fc" id="L40">      this.courses = newestCourse;</span>
+    }
+<span class="fc" id="L42">    this.courseIndex++;</span>
+
+<span class="fc" id="L44">  }</span>
+
+  /**
+   * Check if the current array if is full or not. If full return true otherwise false.
+   *
+   * @return true if the the current array is full otherwise is false
+   */
+  private boolean isFull() {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">    return this.courses[this.courses.length - NUM_ONE] != null;</span>
+  }
+
+
+  /**
+   * Remove a specific courseName from the array given the courseName as a parameter
+   *
+   * @param courseName Course, given the courseName as a parameter
+   * @throws CourseNotFoundException if the course is not found in the array
+   */
+  @Override
+  public void remove(Course courseName) throws CourseNotFoundException {
+<span class="fc bfc" id="L64" title="All 2 branches covered.">    if (!this.contains(courseName)) {</span>
+<span class="fc" id="L65">      throw new CourseNotFoundException();</span>
+    } else {
+<span class="fc bfc" id="L67" title="All 2 branches covered.">      for (int i = zero; i &lt; this.courseIndex; i++) {</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (this.courses[i].equals(courseName)) {</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">          for (int j = i; j &lt; this.courseIndex - NUM_ONE; j++) {</span>
+<span class="fc" id="L70">            this.courses[j] = this.courses[j + NUM_ONE];</span>
+            break;
+          }
+        }
+      }
+<span class="fc" id="L75">      this.courses[this.courseIndex - NUM_ONE] = null;</span>
+<span class="fc" id="L76">      this.courseIndex--;</span>
+    }
+<span class="fc" id="L78">  }</span>
+
+  /**
+   * Check if the array contain a specific course given the parameter
+   *
+   * @param courseName Course, given the courseName as a parameter
+   * @return boolean, if contain a specific course, return true otherwise false
+   */
+  @Override
+  public boolean contains(Course courseName) {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">    for (int i = zero; i &lt; this.courseIndex; i++) {</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">      if (courseName.equals(this.courses[i])) {</span>
+<span class="fc" id="L90">        return true;</span>
+      }
+    }
+<span class="fc" id="L93">    return false;</span>
+  }
+
+  /**
+   * Returns the index of the specified Course in the CourseCatalog
+   *
+   * @param courseName Course, given the parameter
+   * @return int, the index of the specified Course in the CourseCatalog, otherwise return -1
+   */
+  @Override
+  public int indexOf(Course courseName) {
+<span class="fc bfc" id="L104" title="All 2 branches covered.">    for (int i = zero; i &lt; this.courseIndex; i++) {</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">      if (courseName.equals(this.courses[i])) {</span>
+<span class="fc" id="L106">        return i;</span>
+      }
+    }
+<span class="fc" id="L109">    return NUM_NEGATIVE_ONE;</span>
+  }
+
+  /**
+   * Gets the number of Courses in the CourseCatalog.
+   *
+   * @return int, the number of Courses in the CourseCatalog
+   */
+  @Override
+  public int count() {
+<span class="fc" id="L119">    return this.courses.length;</span>
+  }
+
+  /**
+   * Returns the Course at the given index in the CourseCatalog.
+   *
+   * @param courseIndex int, given the index of the course
+   * @return Course, the Course at the given index in the CourseCatalog
+   * @throws InvalidIndexException if the index doesn’t exist
+   */
+  @Override
+  public Course get(int courseIndex) throws InvalidIndexException {
+<span class="fc bfc" id="L131" title="All 4 branches covered.">    if (courseIndex &lt; this.courseIndex &amp;&amp; courseIndex &gt;= zero) {</span>
+<span class="fc" id="L132">      return this.courses[courseIndex];</span>
+    }
+<span class="fc" id="L134">    throw new InvalidIndexException();</span>
+  }
+
+
+  /**
+   * Check the array if is empty or not.If empty return true otherwise false.
+   *
+   * @return boolean, return true if the array is empty otherwise false
+   */
+  @Override
+  public boolean isEmpty() {
+<span class="fc" id="L145">    Course[] a = new Course[NUM_ONE];</span>
+<span class="pc bpc" id="L146" title="1 of 4 branches missed.">    return (this.courseIndex == zero &amp;&amp; Arrays.equals(a, this.courses));</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   * A method provided by java.lang.Object that indicates whether some other object
+   * passed as an argument is &quot;equal to&quot; the current instance.
+   *
+   * @param o Object, taking this object as a parameter
+   * @return boolean, a boolean value after compare with those fields of CourseCatalog object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L159" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L160">      return true;</span>
+    }
+<span class="fc bfc" id="L162" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L163">      return false;</span>
+    }
+<span class="fc" id="L165">    CourseCatalog that = (CourseCatalog) o;</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">    if (this.courseIndex != that.courseIndex) {</span>
+<span class="fc" id="L167">      return false;</span>
+    }
+<span class="pc bpc" id="L169" title="1 of 4 branches missed.">    return courseIndex == that.courseIndex &amp;&amp; Arrays.equals(courses, that.courses);</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   * Return a hashcode value of the Object
+   *
+   * @return int, a hashcode value of the object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L180">    int result = Objects.hash(courseIndex);</span>
+<span class="fc" id="L181">    int number = 31;</span>
+<span class="fc" id="L182">    result = number * result + Arrays.hashCode(courses);</span>
+<span class="fc" id="L183">    return result;</span>
+  }
+
+  /**
+   * Returns the value given to it in string format.
+   *
+   * @return String, returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L193">    return &quot;CourseCatalog{&quot; +</span>
+<span class="fc" id="L194">        &quot;courses=&quot; + Arrays.toString(courses) +</span>
+        &quot;, courseIndex=&quot; + courseIndex +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

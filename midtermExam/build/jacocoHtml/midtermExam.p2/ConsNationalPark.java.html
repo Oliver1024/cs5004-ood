@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConsNationalPark.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">midtermExam</a> &gt; <a href="index.source.html" class="el_package">midtermExam.p2</a> &gt; <span class="el_source">ConsNationalPark.java</span></div><h1>ConsNationalPark.java</h1><pre class="source lang-java linenums">package midtermExam.p2;
+
+import java.util.Objects;
+
+public class ConsNationalPark implements INationalParkDirectorySystem{
+
+  private static final int HASH_CODE = 37;
+  private NationalPark first;
+  private INationalParkDirectorySystem rest;
+
+<span class="fc" id="L11">  public ConsNationalPark(NationalPark first, INationalParkDirectorySystem rest) {</span>
+<span class="fc" id="L12">    this.first = first;</span>
+<span class="fc" id="L13">    this.rest = rest;</span>
+<span class="fc" id="L14">  }</span>
+
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L18">    return false;</span>
+  }
+
+  @Override
+  public Integer size() {
+<span class="fc" id="L23">    return 1 + rest.size();</span>
+  }
+
+
+  @Override
+  public INationalParkDirectorySystem add(NationalPark nationalPark) {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">    if (this.first.equals(nationalPark)) return this;</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">    if(this.first.getNationalParkID().equals(nationalPark.getNationalParkID())){</span>
+<span class="fc" id="L31">      return new ConsNationalPark(nationalPark,this.rest);</span>
+    }
+<span class="fc" id="L33">    return new ConsNationalPark(this.first,this.rest.add(nationalPark));</span>
+  }
+
+
+
+  @Override
+  public INationalParkDirectorySystem remove(NationalPark nationalPark)
+      throws NationalParkNotFoundException {
+<span class="nc bnc" id="L41" title="All 2 branches missed.">    if(this.first.equals(nationalPark))</span>
+<span class="nc" id="L42">      return this.rest;</span>
+    else
+<span class="nc" id="L44">      return new ConsNationalPark(this.first,this.rest.remove(nationalPark));</span>
+  }
+
+
+  @Override
+  public Boolean contains(NationalPark nationalPark) {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">    if(this.first.equals(nationalPark))</span>
+<span class="nc" id="L51">      return true;</span>
+    else
+<span class="nc" id="L53">      return this.rest.contains(nationalPark);</span>
+  }
+
+  @Override
+  public INationalParkDirectorySystem findAllInSameState(String state) {
+<span class="nc bnc" id="L58" title="All 2 branches missed.">    if(this.first.getState().equals(state))</span>
+<span class="nc" id="L59">      return new ConsNationalPark(this.first, this.rest.findAllInSameState(state));</span>
+    else
+<span class="nc" id="L61">      return this.rest.findAllInSameState(state);</span>
+
+  }
+
+  @Override
+  public INationalParkDirectorySystem findAllOpenYearRound() {
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    if(this.first.getOpenYearRound())</span>
+<span class="fc" id="L68">      return new ConsNationalPark(this.first, this.rest.findAllOpenYearRound());</span>
+    else
+<span class="fc" id="L70">      return this.rest.findAllOpenYearRound();</span>
+  }
+
+
+  @Override
+  public NationalPark getSpecifiedNationalPark(String nationalParkID)
+      throws InvalidNationalParkIDException {
+<span class="fc bfc" id="L77" title="All 2 branches covered.">    if(this.first.getNationalParkID().equals(nationalParkID))</span>
+<span class="fc" id="L78">      return this.first;</span>
+    else
+<span class="fc" id="L80">      return this.rest.getSpecifiedNationalPark(nationalParkID);</span>
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L87">      return true;</span>
+    }
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">    if (o == null) {</span>
+<span class="nc" id="L90">      return false;</span>
+    }
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">    if(!(o instanceof ConsNationalPark))</span>
+<span class="nc" id="L93">      return false;</span>
+
+<span class="fc" id="L95">    ConsNationalPark that = (ConsNationalPark) o;</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">    if(!this.first.equals(that.first)) return false;</span>
+<span class="fc" id="L97">    return this.rest.equals(that.rest);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L102">    int result = 1;</span>
+<span class="nc" id="L103">    int prime = HASH_CODE;</span>
+
+<span class="nc bnc" id="L105" title="All 2 branches missed.">    result = (prime * result) + ((this.first == null) ? 0 : this.first.hashCode());</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">    result = (prime * result) + ((this.rest == null) ? 0 : this.rest.hashCode());</span>
+
+<span class="nc" id="L108">    return result;</span>
+  }
+
+
+  @Override
+  public String toString() {
+<span class="nc" id="L114">    return &quot;ConsNationalPark{&quot; +</span>
+        &quot;first=&quot; + first +
+        &quot;, rest=&quot; + rest +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

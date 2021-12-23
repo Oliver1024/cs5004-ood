@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommandOptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">controllerModules.commandOpreration</a> &gt; <span class="el_source">CommandOptions.java</span></div><h1>CommandOptions.java</h1><pre class="source lang-java linenums">package controllerModules.commandOpreration;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * A class that represents CommandOptions.
+ */
+public class CommandOptions {
+
+<span class="fc" id="L13">  Integer commandSymbolIndex = 0;</span>
+<span class="fc" id="L14">  char singleCommandSymbol = 'S';</span>
+<span class="fc" id="L15">  Integer singleCommandLength = 1;</span>
+<span class="fc" id="L16">  char doubleCommandsSymbol = 'D';</span>
+<span class="fc" id="L17">  Integer doubleCommandLength = 2;</span>
+
+  public static final String D_CSV_FILE = &quot;--csv-file&quot;;
+  public static final String S_ADD_TODO = &quot;--add-todo&quot;;
+  public static final String D_TODO_TEXT = &quot;--todo-text&quot;;
+  public static final String S_COMPLETED = &quot;--completed&quot;;
+  public static final String D_DUE_DATE = &quot;--due&quot;;
+  public static final String D_PRIORITY = &quot;--priority&quot;;
+  public static final String D_CATEGORY = &quot;--category&quot;;
+  public static final String D_COMPLETE_TODO = &quot;--complete-todo&quot;;
+  public static final String S_DISPLAY = &quot;--display&quot;;
+  public static final String S_SHOW_INCOMPLETE = &quot;--show-incomplete&quot;;
+  public static final String D_SHOW_CATEGORY = &quot;--show-category&quot;;
+  public static final String S_SORT_BY_DATE = &quot;--sort-by-date&quot;;
+  public static final String S_SORT_BY_PRIORITY = &quot;--sort-by-priority&quot;;
+
+  private Map &lt;String, Integer&gt; outputOptionsMap;
+
+
+  /**
+   * Instantiate outputOptionsMap
+   */
+<span class="fc" id="L39">  public CommandOptions() {</span>
+<span class="fc" id="L40">    outputOptionsMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L41">  }</span>
+
+  /**
+   * Return outputOptionsMap
+   * @return outputOptionsMap
+   * @throws IllegalAccessException throw exception when condition is reached
+   */
+  public Map&lt;String, Integer&gt; initialize()
+      throws IllegalAccessException {
+<span class="fc" id="L50">    Field[] fields = this.getClass().getDeclaredFields();</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    for (Field field : fields) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">      if (Modifier.isStatic(field.getModifiers())) {</span>
+<span class="fc" id="L53">        putCommandLengthInMap(field.getName(), field.get(this).toString());</span>
+      }
+    }
+<span class="fc" id="L56">    return this.outputOptionsMap;</span>
+  }
+
+
+  /**
+   * A helper function that helps to put command length to a map.
+   * @param commandName String
+   * @param command String
+   */
+  private void putCommandLengthInMap(String commandName, String command) {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (commandName.charAt(commandSymbolIndex) == singleCommandSymbol) {</span>
+<span class="fc" id="L67">      this.outputOptionsMap.put(command, singleCommandLength);</span>
+    }
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    if (commandName.charAt(commandSymbolIndex) == doubleCommandsSymbol) {</span>
+<span class="fc" id="L70">      this.outputOptionsMap.put(command, doubleCommandLength);</span>
+    }
+<span class="fc" id="L72">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

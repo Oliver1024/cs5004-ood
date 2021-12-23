@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SetImplement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW4</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">SetImplement.java</span></div><h1>SetImplement.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * A class that implements from the interface of Set that represents an array contains Integer
+ */
+public class SetImplement implements Set{
+  private Integer[] items;
+  private Integer size;
+  private static final int NUM_SLOTS = 1;
+  public static final int NOT_FOUND = -1;
+
+  /**
+   * Private constructor that allows us to return a new copy from the producers.
+   * @param size The size of the arraySet.
+   * @param items The items in the arraySet.
+   */
+<span class="fc" id="L20">  public SetImplement(Integer[] items, Integer size) {</span>
+<span class="fc" id="L21">    this.items = items;</span>
+<span class="fc" id="L22">    this.size = size;</span>
+<span class="fc" id="L23">  }</span>
+
+  /**
+   * A constructor that with items and size and create an empty size of arraySet.
+   */
+<span class="fc" id="L28">  public SetImplement() {</span>
+<span class="fc" id="L29">    this.items = new Integer[NUM_SLOTS];</span>
+<span class="fc" id="L30">    this.size = 0;</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Creates and returns an empty Set.
+   * @return Set, an empty Set
+   */
+  @Override
+  public Set emptySet() {
+<span class="fc" id="L39">    return new SetImplement();</span>
+  }
+
+  /**
+   * Checks if the Set is empty. Returns true if the Set contains no items, false otherwise
+   * @return Boolean,  true if the Set contains no items, false otherwise
+   */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L48">    Integer[] a = new Integer[1];</span>
+<span class="pc bpc" id="L49" title="1 of 4 branches missed.">    return this.size == 0 &amp;&amp; Arrays.equals(a,this.items);</span>
+  }
+
+  /**
+   * Adds the given Integer to the Set if and only if that Integer is not already in the Set.
+   * @param n, Integer, taking this as parameter
+   * @return Set, a new set,after adding the Set if and only if that Integer
+   * is not already in the Set
+   */
+  @Override
+  public Set add(Integer n) {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">    if(this.contains(n)) return this;</span>
+    Integer[] newItems;
+<span class="fc bfc" id="L62" title="All 2 branches covered.">    if(!this.inSizeRange())</span>
+<span class="fc" id="L63">      newItems = this.resize();</span>
+    else
+<span class="fc" id="L65">      newItems = this.items.clone();</span>
+<span class="fc" id="L66">      newItems[this.size] = n;</span>
+    //use private constructor
+<span class="fc" id="L68">    return new SetImplement(newItems,this.size+1);</span>
+  }
+
+  /**
+   * Returns true if the given Integer is in the Set, false otherwise.
+   * @param n, Integer, taking this number as a parameter
+   * @return Boolean, true if the given Integer is in the Set, false otherwise.
+   */
+  @Override
+  public Boolean contains(Integer n) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">    for(int i = 0; i &lt; this.size; i++){</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">      if(this.items[i].equals(n))</span>
+<span class="fc" id="L80">        return true;</span>
+    }
+<span class="fc" id="L82">    return false;</span>
+  }
+
+  /**
+   * Returns a copy of the Set with the given Integer removed.
+   * If the given Integer is not in the Set, returns the Set as is.
+   * @param n Integer, taking this number as a parameter
+   * @return Set, a copy of the Set with the given Integer removed
+   */
+  @Override
+  public Set remove(Integer n) {
+
+<span class="fc bfc" id="L94" title="All 2 branches covered.">    if(!contains(n)) return this;</span>
+<span class="fc" id="L95">    SetImplement newSet = new SetImplement();</span>
+<span class="fc" id="L96">    Integer[] newItems = new Integer[this.size-1];</span>
+<span class="fc" id="L97">    int i = 0;</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">    for(int j = 0; j &lt; this.size; j++){</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">      if(this.items[j] != n){</span>
+<span class="fc" id="L100">        newItems[i] = this.items[j];</span>
+<span class="fc" id="L101">        i++;</span>
+      }
+    }
+<span class="fc" id="L104">    newSet.items = newItems;</span>
+<span class="fc" id="L105">    newSet.size = this.size - 1;</span>
+<span class="fc" id="L106">    return newSet;</span>
+  }
+
+
+  /**
+   * Gets the number of items in the Set.
+   * @return Integer, the number of items in the Set
+   */
+  @Override
+  public Integer size() {
+<span class="fc" id="L116">    return this.size;</span>
+  }
+
+
+  /**
+   * Helper function that checks if there is room in the items array to add a new item to the array.
+   *
+   * @return true if there is space available, false otherwise
+   */
+  private boolean inSizeRange() {
+<span class="fc bfc" id="L126" title="All 2 branches covered.">    return (this.size + 1 &lt;= this.items.length);</span>
+  }
+
+
+  /**
+   * Helper function used by add and insert methods. Copies the items from one array to another.
+   * @param from The array to copy from.
+   * @param to The array to copy to.
+   * @param fromStart The index in the &quot;from&quot; array to start copying from.
+   * @param fromEnd The index in the &quot;from&quot; array to end at (exclusive).
+   * @param toStart The index in the &quot;to&quot; array to start copying to.
+   */
+  private void copyItems(Integer[] from, Integer[] to, int fromStart, int fromEnd, int toStart) {
+<span class="fc bfc" id="L139" title="All 2 branches covered.">      for (int i = fromStart; i &lt; fromEnd; i++) {</span>
+<span class="fc" id="L140">        int current = toStart;</span>
+<span class="fc" id="L141">        to[current] = from[i];</span>
+<span class="fc" id="L142">        current++;</span>
+    }
+<span class="fc" id="L144">  }</span>
+
+  /**
+   * Shortcut version of the helper method above. Will copy the entirety of the
+   * &quot;from&quot; array to the &quot;to&quot; array.
+   * @param from The array to copy from.
+   * @param to The array to copy to.
+   */
+  private void copyItems(Integer[] from, Integer[] to) {
+<span class="fc" id="L153">    this.copyItems(from, to, 0, from.length, 0);</span>
+<span class="fc" id="L154">  }</span>
+
+
+  /**
+   * Increase the size of the data array. This involves creating a temporary new array, adding the
+   * existing data to the new array, then setting the data array to the new array.
+   *
+   * @return a new items array
+   */
+  private Integer[] resize() {
+<span class="fc" id="L164">    int newSize = this.size + NUM_SLOTS;</span>
+<span class="fc" id="L165">    Integer[] newItems = new Integer[newSize];</span>
+<span class="fc" id="L166">    this.copyItems(this.items, newItems);</span>
+<span class="fc" id="L167">    return newItems;</span>
+  }
+
+  /**
+   * A method provided by java.lang.Object that indicates whether some other object
+   * passed as an argument is &quot;equal to&quot; the current instance.
+   * @param o  Object, taking this object as a parameter
+   * @return boolean, a boolean value after compare with those fields of SetImplement object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L178" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L179">      return true;</span>
+    }
+<span class="fc bfc" id="L181" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L182">      return false;</span>
+    }
+<span class="fc" id="L184">    SetImplement that = (SetImplement) o;</span>
+<span class="pc bpc" id="L185" title="1 of 4 branches missed.">    return Arrays.equals(items, that.items) &amp;&amp; size == that.size;</span>
+  }
+
+  /**
+   * Return a hashcode value of the Object
+   * @return int, a hashcode value of the object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L194">    int result = Objects.hash(size);</span>
+<span class="fc" id="L195">    result = 31 * result;</span>
+<span class="fc bfc" id="L196" title="All 2 branches covered.">    for (int i = 0; i &lt; this.size; i++)</span>
+<span class="fc" id="L197">      result += Objects.hash(this.items[i]);</span>
+<span class="fc" id="L198">    return result;</span>
+  }
+
+
+  /**
+   * Returns the value given to it in string format.
+   * @return String, returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L208">    return &quot;SetImplement{&quot; +</span>
+<span class="fc" id="L209">        &quot;items=&quot; + Arrays.toString(items) +</span>
+        &quot;, size=&quot; + size +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

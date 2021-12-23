@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SwimmerIterator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab6</a> &gt; <a href="index.source.html" class="el_package">problem3</a> &gt; <span class="el_source">SwimmerIterator.java</span></div><h1>SwimmerIterator.java</h1><pre class="source lang-java linenums">package problem3;
+
+import java.util.NoSuchElementException;
+import problem2.Swimmer;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * A class that used to define a SwimmerIterator
+ */
+public class SwimmerIterator implements Iterator&lt;Swimmer&gt; {
+
+  private List&lt;Swimmer&gt; qualifiedSwimmers;
+<span class="fc" id="L16">  private static final Integer MIN_BUTTERFLY_TIMES = 5;</span>
+<span class="fc" id="L17">  private static final Double QUALIFICATION_TIME = 26.17;</span>
+
+
+  /**
+   * A constructor that create a new object of SwimmerIterator.
+   * @param swimmers List&lt;Swimmer&gt;
+   */
+<span class="fc" id="L24">  public SwimmerIterator(List&lt;Swimmer&gt; swimmers){</span>
+<span class="fc" id="L25">    this.qualifiedSwimmers = this.getQualifiedSwimmers(swimmers);</span>
+<span class="fc" id="L26">  }</span>
+
+  /**
+   * A helper function that used to get qualifiedSwimmers
+   * @param swimmers List&lt;Swimmer&gt;
+   * @return qualifiedSwimmers
+   */
+  private List&lt;Swimmer&gt; getQualifiedSwimmers(List&lt;Swimmer&gt; swimmers){
+<span class="fc" id="L34">    List&lt;Swimmer&gt; qualifiedSwimmers = new ArrayList&lt;Swimmer&gt;();</span>
+
+<span class="fc bfc" id="L36" title="All 2 branches covered.">    for(Swimmer swimmer: swimmers){</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">      if(swimmer.getButterfly50mTimes().size() &gt;= MIN_BUTTERFLY_TIMES &amp;&amp;</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">          checkQualifyingFreestyleSwimTimes(swimmer))</span>
+<span class="fc" id="L39">        qualifiedSwimmers.add(swimmer);</span>
+<span class="fc" id="L40">    }</span>
+<span class="fc" id="L41">    return qualifiedSwimmers;</span>
+  }
+
+  /**
+   * A helper method that used to check the free style swim times.
+   * @param swimmer Swimmer
+   * @return Boolean value
+   */
+  private Boolean checkQualifyingFreestyleSwimTimes(Swimmer swimmer){
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">    for(Double swimTime: swimmer.getFreestyle50mTimes()){</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">      if(swimTime &lt;= QUALIFICATION_TIME)</span>
+<span class="fc" id="L52">        return true;</span>
+<span class="nc" id="L53">    }</span>
+<span class="nc" id="L54">    return false;</span>
+  }
+
+  /**
+   * Returns {@code true} if the iteration has more elements.
+   * (In other words, returns {@code true} if {@link #next} would
+   * return an element rather than throwing an exception.)
+   *
+   * @return {@code true} if the iteration has more elements
+   */
+  @Override
+  public boolean hasNext() {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    return qualifiedSwimmers.size() &gt; 0;</span>
+  }
+
+  /**
+   * Returns the next element in the iteration.
+   *
+   * @return the next element in the iteration
+   * @throws NoSuchElementException if the iteration has no more elements
+   */
+  @Override
+  public Swimmer next() throws NoSuchElementException {
+<span class="fc" id="L77">    return qualifiedSwimmers.remove(0);</span>
+  }
+
+  /**
+   * Removes from the underlying collection the last element returned
+   * by this iterator (optional operation).  This method can be called
+   * only once per call to {@link #next}.
+   * &lt;p&gt;
+   * The behavior of an iterator is unspecified if the underlying collection
+   * is modified while the iteration is in progress in any way other than by
+   * calling this method, unless an overriding class has specified a
+   * concurrent modification policy.
+   * &lt;p&gt;
+   * The behavior of an iterator is unspecified if this method is called
+   * after a call to the {@link #forEachRemaining forEachRemaining} method.
+   *
+   * @throws UnsupportedOperationException if the {@code remove}
+   *                                       operation is not supported by this iterator
+   * @throws IllegalStateException         if the {@code next} method has not
+   *                                       yet been called, or the {@code remove} method has already
+   *                                       been called after the last call to the {@code next}
+   *                                       method
+   * @implSpec The default implementation throws an instance of
+   * {@link UnsupportedOperationException} and performs no other action.
+   */
+  @Override
+  public void remove() {
+<span class="nc" id="L104">    new Exception(&quot;Method not supported!&quot;);</span>
+<span class="nc" id="L105">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

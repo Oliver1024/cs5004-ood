@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.OlderVehicleFilterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-11T20:07:26" hostname="Oliver-Macbook.gateway.sasktel.net" time="0.004">
+  <properties/>
+  <testcase name="filterOlderVehicles2" classname="problem2.OlderVehicleFilterTest" time="0.004"/>
+  <system-out><![CDATA[Make=’a’, Model=’b', Year=2021
+Make=’a1’, Model=’b1', Year=2022
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

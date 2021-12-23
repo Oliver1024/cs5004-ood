@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vehicle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab8</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Vehicle.java</span></div><h1>Vehicle.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.awt.Color;
+import java.util.Objects;
+
+/**
+ * A class that represents an object of Vehicle.
+ */
+public class Vehicle {
+  private String make;
+  private String model;
+  private Integer year;
+  private Color vehicleColor;
+  /**
+  • * Constructor for an object Vehicle, based on the provided input arguments.
+  • * @param make - String, make of a vehicle
+  • * @param model - String, make of a vehicle
+  • * @param year - Integer, year of the vehicle (expected to
+  be in the range 1950-2020)
+  • * @param vehicleColor - Color, color of a vehicle */
+<span class="fc" id="L21">  public Vehicle(String make, String model, Integer year, Color vehicleColor){</span>
+<span class="fc" id="L22">    this.make = make;</span>
+<span class="fc" id="L23">    this.model = model;</span>
+<span class="fc" id="L24">    this.year = year; this.vehicleColor = vehicleColor;</span>
+<span class="fc" id="L25">  }</span>
+
+  /**
+   * Getter for the property ’make’
+   * @returns value for property ’make’ (String)
+   */
+<span class="fc" id="L31">  public String getMake() { return make; }</span>
+
+  /**
+   * Getter for the property ’model’
+   * @returns value for property ’model’ (String)
+   */
+<span class="fc" id="L37">  public String getModel() { return model; }</span>
+
+  /**
+   * Getter for the property ’year’
+   * @returns value for property ’year’ (Integer in the range 1950- 2020) */
+<span class="fc" id="L42">  public Integer getYear() { return year; }</span>
+
+  /**
+   * Getter for the property ’vehicleColor’
+   * @returns value for property ’vehicleColor’ (Color)
+   */
+<span class="fc" id="L48">  public Color getVehicleColor() { return vehicleColor; }</span>
+
+  /**
+   * A helper function that prints make model and year of a vehicle
+   * @param vehicle Vehicle
+   */
+  protected static void printMakeModelAndYear(Vehicle vehicle){
+<span class="fc" id="L55">    System.out.println(</span>
+<span class="fc" id="L56">            &quot;Make=’&quot; + vehicle.getMake() + &quot;’&quot; +</span>
+<span class="fc" id="L57">            &quot;, Model=’&quot; + vehicle.getModel() + &quot;'&quot; +</span>
+<span class="fc" id="L58">            &quot;, Year=&quot; + vehicle.getYear());</span>
+<span class="fc" id="L59">  }</span>
+
+  /**
+   * A helper function that return boolean value if less than the year.
+   * @param year Integer
+   * @return Boolean value
+   */
+  protected Boolean isYoungerThanGivenYear(Integer year){
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    return this.getYear() &gt; year;</span>
+  }
+
+  /**
+   *  Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   *  current instance
+   * @param o object, an object to compare
+   * @return  boolean value
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">    if (this == o) return true;</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">    if (!(o instanceof Vehicle)) return false;</span>
+<span class="fc" id="L80">    Vehicle vehicle = (Vehicle) o;</span>
+<span class="fc" id="L81">    return Objects.equals(getMake(), vehicle.getMake());</span>
+  }
+
+
+  /**
+   * {@inheritDoc}
+   * Returns an integer representation of the object memory address
+   * @return int, hash code
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L92">    return Objects.hash(getMake());</span>
+  }
+
+
+  /**
+   *{@inheritDoc}
+   * Returns an String representation of the object
+   * @return an String representation of the object
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L103">    return &quot;Vehicle{&quot; +</span>
+        &quot;make=’&quot; + make + &quot;’&quot; +
+        &quot;, model=’&quot; + model + &quot;'&quot; +
+        &quot;, year=&quot; + year +
+        &quot;, vehicleColor=&quot; + vehicleColor + &quot;}&quot;;
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

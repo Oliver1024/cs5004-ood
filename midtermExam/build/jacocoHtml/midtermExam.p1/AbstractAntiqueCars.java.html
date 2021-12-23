@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractAntiqueCars.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">midtermExam</a> &gt; <a href="index.source.html" class="el_package">midtermExam.p1</a> &gt; <span class="el_source">AbstractAntiqueCars.java</span></div><h1>AbstractAntiqueCars.java</h1><pre class="source lang-java linenums">package midtermExam.p1;
+
+import java.util.Objects;
+
+public abstract class AbstractAntiqueCars implements IAntiqueCars{
+
+<span class="fc" id="L7">  private static final Double FACTOR = 3.2;</span>
+<span class="fc" id="L8">  private static final Double PERFECT_FACTOR = 2.15;</span>
+<span class="fc" id="L9">  private static final Double DEFAULT_FACTOR = 1.0;</span>
+
+  protected String uniqueID;
+  protected Integer age;
+  protected Integer mileage;
+  protected ConditionCategory conditionCategory;
+  protected Double latestAskingPrice;
+
+  public AbstractAntiqueCars(String uniqueID, Integer age, Integer mileage,
+<span class="fc" id="L18">      ConditionCategory conditionCategory, Double latestAskingPrice) {</span>
+<span class="fc" id="L19">    this.uniqueID = uniqueID;</span>
+<span class="fc" id="L20">    this.age = age;</span>
+<span class="fc" id="L21">    this.mileage = mileage;</span>
+<span class="fc" id="L22">    this.conditionCategory = conditionCategory;</span>
+<span class="fc" id="L23">    this.latestAskingPrice = latestAskingPrice;</span>
+<span class="fc" id="L24">  }</span>
+
+  public String getUniqueID() {
+<span class="nc" id="L27">    return uniqueID;</span>
+  }
+
+  public Integer getAge() {
+<span class="nc" id="L31">    return age;</span>
+  }
+
+  public Integer getMileage() {
+<span class="nc" id="L35">    return mileage;</span>
+  }
+
+  public ConditionCategory getConditionCategory() {
+<span class="nc" id="L39">    return conditionCategory;</span>
+  }
+
+  public Double getLatestAskingPrice() {
+<span class="nc" id="L43">    return latestAskingPrice;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L48" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L49">      return true;</span>
+    }
+<span class="nc bnc" id="L51" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L52">      return false;</span>
+    }
+<span class="nc" id="L54">    AbstractAntiqueCars that = (AbstractAntiqueCars) o;</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">    return Objects.equals(getUniqueID(), that.getUniqueID()) &amp;&amp; Objects</span>
+<span class="nc bnc" id="L56" title="All 4 branches missed.">        .equals(getAge(), that.getAge()) &amp;&amp; Objects.equals(getMileage(), that.getMileage())</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        &amp;&amp; getConditionCategory() == that.getConditionCategory() &amp;&amp; Objects</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        .equals(getLatestAskingPrice(), that.getLatestAskingPrice());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L63">    return Objects</span>
+<span class="nc" id="L64">        .hash(getUniqueID(), getAge(), getMileage(), getConditionCategory(),</span>
+<span class="nc" id="L65">            getLatestAskingPrice());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L70">    return &quot;AbstractAntiqueCars{&quot; +</span>
+        &quot;uniqueID='&quot; + uniqueID + '\'' +
+        &quot;, age=&quot; + age +
+        &quot;, mileage=&quot; + mileage +
+        &quot;, conditionCategory=&quot; + conditionCategory +
+        &quot;, latestAskingPrice=&quot; + latestAskingPrice +
+        '}';
+  }
+
+  @Override
+  public Double estimatePrice() {
+<span class="fc" id="L81">    return this.latestAskingPrice * FACTOR * addExtraValue();</span>
+  }
+
+
+  private Double addExtraValue(){
+<span class="fc bfc" id="L86" title="All 2 branches covered.">    if(this.conditionCategory.equals(ConditionCategory.PERFECT))</span>
+<span class="fc" id="L87">      return PERFECT_FACTOR;</span>
+<span class="fc" id="L88">    return DEFAULT_FACTOR;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

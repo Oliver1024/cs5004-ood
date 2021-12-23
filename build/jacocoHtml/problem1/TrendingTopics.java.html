@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TrendingTopics.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab8</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">TrendingTopics.java</span></div><h1>TrendingTopics.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+
+/**
+ * A class that represents an object of TrendingTopics.
+ */
+public class TrendingTopics {
+  private Map&lt;String,Integer&gt; occuranceMap;
+
+  /**
+   * A constructor that creates a new object of TrendingTopics.
+   * @param occuranceMap - Map, occuranceMap
+   */
+<span class="fc" id="L22">  public TrendingTopics(Map&lt;String, Integer&gt; occuranceMap) {</span>
+<span class="fc" id="L23">    this.occuranceMap = occuranceMap;</span>
+<span class="fc" id="L24">  }</span>
+
+  /**
+   * A constructor that creates a new object of TrendingTopics.
+   */
+<span class="fc" id="L29">  public TrendingTopics(){</span>
+<span class="fc" id="L30">    this.occuranceMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Return occurrence map.
+   * @return Map, occurrence map.
+   */
+  public Map&lt;String, Integer&gt; getOccurnceMap() {
+<span class="fc" id="L38">    return occuranceMap;</span>
+  }
+
+  /**
+   * Return the number of occurrences of every String in the input list as a Map.
+   * @param topics Map List
+   * @return the number of occurrences of every String in the input list as a Map.
+   */
+  public Map&lt;String, Integer&gt; countTopics(List&lt;String&gt; topics){
+<span class="fc" id="L47">    this.occuranceMap = topics.stream().collect(Collectors.toMap(x -&gt; x.toString(),</span>
+<span class="fc" id="L48">        x -&gt; 1, (x,y) -&gt; x+y));</span>
+<span class="fc" id="L49">    return this.occuranceMap;</span>
+  }
+
+  /**
+   * Return the number of occurrences of every String in the input list as a Map.
+   * @param topics - List
+   * @return  the number of occurrences of every String in the input list as a Map.
+   */
+  public Map&lt;String, Long&gt; countTopics2(List&lt;String&gt; topics){
+<span class="fc" id="L58">    return topics.stream().collect(Collectors.groupingBy(Function.identity(),</span>
+<span class="fc" id="L59">        Collectors.counting()));</span>
+  }
+
+  /**
+   * Return the number of occurrences of every String in the input list as a Map.
+   * @param topics - List
+   * @return the number of occurrences of every String in the input list as a Map.
+   */
+  public Map&lt;String, Long&gt; countTopics3(List&lt;String&gt; topics){
+<span class="fc" id="L68">    return topics.stream().collect(Collectors.groupingBy(word-&gt;word, Collectors.counting()));</span>
+  }
+
+  /**
+   * Return the number of occurrences of every String in the input list as a Map.
+   * @param topics - List
+   * @return the number of occurrences of every String in the input list as a Map
+   */
+  public Map&lt;String, Integer&gt; countTopics4(List&lt;String&gt; topics){
+<span class="fc" id="L77">    this.occuranceMap = topics.stream().collect(Collectors.toMap(x-&gt;x, x-&gt;1, Integer::sum));</span>
+<span class="fc" id="L78">    return this.occuranceMap;</span>
+  }
+
+  /**
+   * Return the number of occurrences of every String in the input list as a Map.
+   * @param topics - List
+   * @return the number of occurrences of every String in the input list as a Map
+   */
+  public Map&lt;String, Integer&gt; countTopics5(List&lt;String&gt; topics){
+<span class="fc" id="L87">    this.occuranceMap = topics.stream().collect(Collectors.toMap(Function.identity(),</span>
+<span class="fc" id="L88">        x-&gt; TrendingTopics.getNumElements(topics,x),(x,y) -&gt; Math.max(x, y)));</span>
+<span class="fc" id="L89">    return this.occuranceMap;</span>
+  }
+
+  /**
+   * Return the counter of the String x in the list
+   * @param topics List
+   * @param x String
+   * @return the counter of the String x in the list
+   */
+  protected static Integer getNumElements(List&lt;String&gt; topics, String x){
+<span class="fc" id="L99">    Integer counter = 0;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">    for(String element : topics){</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">      if(element.equals(x))</span>
+<span class="fc" id="L102">        counter++;</span>
+<span class="fc" id="L103">    }</span>
+<span class="fc" id="L104">    return counter;</span>
+  }
+
+
+  /**
+   *  Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   *  current instance
+   * @param o object, an object to compare
+   * @return  boolean value
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L116" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L117">      return true;</span>
+    }
+<span class="fc bfc" id="L119" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L120">      return false;</span>
+    }
+<span class="fc" id="L122">    TrendingTopics that = (TrendingTopics) o;</span>
+<span class="fc" id="L123">    return Objects.equals(getOccurnceMap(), that.getOccurnceMap());</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   * Returns an integer representation of the object memory address
+   * @return int, hash code
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L133">    return Objects.hash(getOccurnceMap());</span>
+  }
+
+  /**
+   *{@inheritDoc}
+   * Returns an String representation of the object
+   * @return an String representation of the object
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L143">    return &quot;TrendingTopics{&quot; +</span>
+        &quot;occuranceMap=&quot; + occuranceMap +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

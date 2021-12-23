@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Runner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Runner.java</span></div><h1>Runner.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+
+/**
+ * Class Runner stores information about a Runner. This class inherits from Athlete.
+ */
+public class Runner extends Athlete {
+
+  private Double best5kTime;
+  private Double bestHalfMarathonTime;
+  private String favouriteRunningEvent;
+
+  /**
+   * Constructor for Runner.
+   *
+   * @param athletesName          - Name, representing a runner's name
+   * @param height                - Double, representing height
+   * @param weight                - Double, representing weight
+   * @param league                - String, representing league
+   * @param best5kTime            - Double, representing best time of 5k running
+   * @param bestHalfMarathonTime  - Double, representing best time of half marathon time
+   * @param favouriteRunningEvent - String, representing best running event
+   */
+  public Runner(Name athletesName, Double height, Double weight, String league,
+      Double best5kTime, Double bestHalfMarathonTime, String favouriteRunningEvent) {
+<span class="fc" id="L27">    super(athletesName, height, weight, league);</span>
+<span class="fc" id="L28">    this.best5kTime = best5kTime;</span>
+<span class="fc" id="L29">    this.bestHalfMarathonTime = bestHalfMarathonTime;</span>
+<span class="fc" id="L30">    this.favouriteRunningEvent = favouriteRunningEvent;</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Constructor for Runner.
+   *
+   * @param athletesName          - Name, representing a runner's name
+   * @param height                - Double, representing height
+   * @param weight                - Double, representing weight
+   * @param best5kTime            - Double, representing best time of 5k running
+   * @param bestHalfMarathonTime  - Double, representing best time of half marathon time
+   * @param favouriteRunningEvent - String, representing best running event
+   */
+  public Runner(Name athletesName, Double height, Double weight, Double best5kTime,
+      Double bestHalfMarathonTime, String favouriteRunningEvent) {
+<span class="fc" id="L45">    super(athletesName, height, weight);</span>
+<span class="fc" id="L46">    this.best5kTime = best5kTime;</span>
+<span class="fc" id="L47">    this.bestHalfMarathonTime = bestHalfMarathonTime;</span>
+<span class="fc" id="L48">    this.favouriteRunningEvent = favouriteRunningEvent;</span>
+<span class="fc" id="L49">  }</span>
+
+  /**
+   * @return Double, representing best time of 5k running
+   */
+  public Double getBest5kTime() {
+<span class="fc" id="L55">    return best5kTime;</span>
+  }
+
+  /**
+   * @return Double, representing best time of half marathon time
+   */
+  public Double getBestHalfMarathonTime() {
+<span class="fc" id="L62">    return bestHalfMarathonTime;</span>
+  }
+
+  /**
+   * @return String, representing best running event
+   */
+  public String getFavouriteRunningEvent() {
+<span class="fc" id="L69">    return favouriteRunningEvent;</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @param o - Taking object as a parameter
+   * @return a boolean value after compare with those fields of Runner object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L80" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L81">      return true;</span>
+    }
+<span class="fc bfc" id="L83" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L84">      return false;</span>
+    }
+<span class="fc bfc" id="L86" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L87">      return false;</span>
+    }
+<span class="fc" id="L89">    Runner runner = (Runner) o;</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">    return Objects.equals(getBest5kTime(), runner.getBest5kTime()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        .equals(getBestHalfMarathonTime(), runner.getBestHalfMarathonTime()) &amp;&amp; Objects</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        .equals(getFavouriteRunningEvent(), runner.getFavouriteRunningEvent());</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return a hash value after of those fields of Runner object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L102">    return Objects.hash(super.hashCode(), best5kTime, bestHalfMarathonTime, favouriteRunningEvent);</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return Strings of those fields of Runner object
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L112">    return &quot;Runner{&quot; +</span>
+        &quot;best5kTime=&quot; + best5kTime +
+        &quot;, bestHalfMarathonTime=&quot; + bestHalfMarathonTime +
+        &quot;, favouriteRunningEvent='&quot; + favouriteRunningEvent + '\'' +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

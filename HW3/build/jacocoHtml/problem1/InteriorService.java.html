@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InteriorService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW3</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">InteriorService.java</span></div><h1>InteriorService.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+
+/**
+ * An abstract class that inherits from AService.
+ */
+public abstract class InteriorService extends AService {
+
+  protected Integer numberOfPets;
+<span class="fc" id="L11">  protected static final Integer BASE_PRICE = 80;</span>
+
+  /**
+   * A constructor that creates a new object of InteriorService.
+   *
+   * @param propertyAddress - String, propertyAddress of the new InteriorService object
+   * @param sizeOfProperty  - enumerate, sizeOfProperty of the new InteriorService object
+   * @param monthlyService  - boolean, monthlyService of the new InteriorService object
+   * @param numberOfFloors  - Integer, numberOfFloors of the new InteriorService object
+   * @param numberOfPets    - Integer, numberOfPets of the new InteriorService object
+   * @throws InvalidSizePropertyException    when if condition is not matched
+   * @throws InvalidPropertyAddressException when if condition is not matched
+   */
+  public InteriorService(String propertyAddress, PropertySize sizeOfProperty,
+      boolean monthlyService, Integer numberOfFloors,
+      Integer numberOfPets) throws InvalidSizePropertyException, InvalidPropertyAddressException {
+<span class="fc" id="L27">    super(propertyAddress, sizeOfProperty, monthlyService);</span>
+<span class="fc" id="L28">    this.numberOfPets = numberOfPets;</span>
+<span class="fc" id="L29">    super.setNumberOfFloors(numberOfFloors);</span>
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * A constructor that creates a new object of InteriorService with different parameters.
+   *
+   * @param propertyAddress - String, propertyAddress of the new InteriorService object
+   * @param sizeOfProperty  - enumerate, sizeOfProperty of the new InteriorService object
+   * @param monthlyService  - boolean, monthlyService of the new InteriorService object
+   * @param numberOfPets    - Integer, numberOfPets of the new InteriorService object
+   * @throws InvalidSizePropertyException    when if condition is not matched
+   * @throws InvalidPropertyAddressException when if condition is not matched
+   */
+  public InteriorService(String propertyAddress, PropertySize sizeOfProperty,
+      boolean monthlyService,
+      Integer numberOfPets) throws InvalidSizePropertyException, InvalidPropertyAddressException {
+<span class="fc" id="L45">    super(propertyAddress, sizeOfProperty, monthlyService);</span>
+<span class="fc" id="L46">    this.numberOfPets = numberOfPets;</span>
+<span class="fc" id="L47">  }</span>
+
+  /**
+   * Return number of pets
+   *
+   * @return number of pets
+   */
+  public Integer getNumberOfPets() {
+<span class="fc" id="L55">    return numberOfPets;</span>
+  }
+
+  /**
+   * {@inheritDoc} A method provided by java.lang.Object that indicates whether some other object
+   * passed as an argument is &quot;equal to&quot; the current instance.
+   *
+   * @param o, - Object, taking this object as a parameter
+   * @return a boolean value after compare with those fields of InteriorService object
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L68">      return true;</span>
+    }
+<span class="fc bfc" id="L70" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L71">      return false;</span>
+    }
+<span class="fc bfc" id="L73" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L74">      return false;</span>
+    }
+<span class="fc" id="L76">    InteriorService that = (InteriorService) o;</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">    return Objects.equals(getNumberOfPets(), that.getNumberOfPets()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        .equals(BASE_PRICE, that.BASE_PRICE);</span>
+  }
+
+  /**
+   * Return a hashcode value of the Object
+   *
+   * @return int, a hashcode value of the object
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L88">    return Objects.hash(super.hashCode(), getNumberOfPets(), BASE_PRICE);</span>
+  }
+
+  /**
+   * Returns the value given to it in string format.
+   *
+   * @return String, returns the value given to it in string format.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L98">    return &quot;InteriorService{&quot; +</span>
+        &quot;numberOfPets=&quot; + numberOfPets +
+        &quot;, BASE_PRICE=&quot; + BASE_PRICE +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

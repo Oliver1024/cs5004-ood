@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.VegetableTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2021-06-09T20:57:04" hostname="Oliver-Macbook.local" time="0.009">
+  <properties/>
+  <testcase name="testHashCodeNull" classname="problem1.VegetableTest" time="0.001"/>
+  <testcase name="equals2" classname="problem1.VegetableTest" time="0.001"/>
+  <testcase name="equals" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="testToString" classname="problem1.VegetableTest" time="0.001"/>
+  <testcase name="equalNotSameCurrentPricePerUnit" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="testIllegalArgumentException" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="testHashCodeConsistency" classname="problem1.VegetableTest" time="0.001"/>
+  <testcase name="equalsDifferentDataTypes" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="equalNotSameExpirationDate" classname="problem1.VegetableTest" time="0.001"/>
+  <testcase name="testGetOrderDate" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="equalNotSameOrderDate" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="testGetExpirationDate" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="equalsSameFields" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="testHashCodeEquality" classname="problem1.VegetableTest" time="0.0"/>
+  <testcase name="equalNotSameName" classname="problem1.VegetableTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

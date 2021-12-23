@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vehicle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW1</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Vehicle.java</span></div><h1>Vehicle.java</h1><pre class="source lang-java linenums">package problem1;
+
+/**
+ * Vehicle is a simple object that has a unique Vehicle Identification Number (VIN), and
+ * corresponding license plate.
+ */
+public class Vehicle {
+
+  public Owner owner;
+  public Integer VIN;
+  public String licensePlate;
+
+  /**
+   * Constructor that creates a new vehicle object with the specified VIN and license plate.
+   *
+   * @param VIN          - VIN of the new Vehicle object.
+   * @param licensePlate - license plate of the new Vehicle.
+   */
+<span class="fc" id="L19">  public Vehicle(Owner owner, Integer VIN, String licensePlate) {</span>
+<span class="fc" id="L20">    this.owner = owner;</span>
+<span class="fc" id="L21">    this.VIN = VIN;</span>
+<span class="fc" id="L22">    this.licensePlate = licensePlate;</span>
+<span class="fc" id="L23">  }</span>
+
+  /**
+   * Get Owner of Vehicle
+   *
+   * @return Owner of the vehicle
+   */
+  public Owner getOwner() {
+<span class="fc" id="L31">    return this.owner;</span>
+  }
+
+  /**
+   * Returns the VIN of the Vehicle.
+   *
+   * @return the VIN OF THE Vehicle.
+   */
+  public Integer getVIN() {
+<span class="fc" id="L40">    return this.VIN;</span>
+  }
+
+  /**
+   * Returns the licensePlate of the Vehicle.
+   *
+   * @return the licensePlate of the Vehicle.
+   */
+  public String getLicensePlate() {
+<span class="fc" id="L49">    return licensePlate;</span>
+  }
+
+  /**
+   * Set Owner of vehicle
+   *
+   * @param owner of the vehicle
+   */
+  public void setOwner(Owner owner) {
+<span class="fc" id="L58">    this.owner = owner;</span>
+<span class="fc" id="L59">  }</span>
+
+  /**
+   * Sets the VIN of the Vehicle.
+   *
+   * @param VIN - Vehicle Identification Number of Vehicle
+   */
+  public void setVIN(Integer VIN) {
+<span class="fc" id="L67">    this.VIN = VIN;</span>
+<span class="fc" id="L68">  }</span>
+
+  /**
+   * Sets the licensePlate of the Vehicle.
+   *
+   * @param licensePlate the licensePlate of the Vehicle
+   */
+  public void setLicensePlate(String licensePlate) {
+<span class="fc" id="L76">    this.licensePlate = licensePlate;</span>
+<span class="fc" id="L77">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

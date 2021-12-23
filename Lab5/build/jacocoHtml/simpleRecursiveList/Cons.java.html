@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cons.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab5</a> &gt; <a href="index.source.html" class="el_package">simpleRecursiveList</a> &gt; <span class="el_source">Cons.java</span></div><h1>Cons.java</h1><pre class="source lang-java linenums">package simpleRecursiveList;
+
+/**
+ * Represents a non-empty list of integers
+ *
+ */
+public class Cons implements List {
+  private Integer first;
+  private List rest;
+
+
+  /**
+   * Given an integer and a list create a new list with the
+   * same elements as {@code rest} and with {@code first} prepended.
+   *
+   * @param first new element to add to the beginning of the list
+   * @param rest the list we are going to use to add our new element
+   */
+<span class="fc" id="L19">  public Cons(Integer first, List rest) {</span>
+<span class="fc" id="L20">    this.first = first;</span>
+<span class="fc" id="L21">    this.rest = rest;</span>
+<span class="fc" id="L22">  }</span>
+
+  /**
+   * Getter for property 'first'.
+   *
+   * @return Value for property 'first'.
+   */
+  public Integer getFirst() {
+<span class="fc" id="L30">    return first;</span>
+  }
+
+  /**
+   * Getter for property 'rest'.
+   *
+   * @return Value for property 'rest'.
+   */
+  public List getRest() {
+<span class="fc" id="L39">    return rest;</span>
+  }
+
+  /**
+   * Return size of the list
+   * @return size of the list
+   */
+  @Override
+  public Integer size() {
+<span class="fc" id="L48">    return 1 + this.getRest().size(); }</span>
+
+  /**
+   * Return boolean to check if list is empty or not
+   * @return boolean to check if list is empty or not
+   */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L56">    return false;</span>
+  }
+
+  /**
+   *  Return new Cons object
+   * @param element new element to add to the list
+   * @return new Cons object
+   */
+  @Override
+  public List add(Integer element) {
+
+<span class="fc" id="L67">    return new Cons(element, this);</span>
+  }
+
+  /**
+   * Return last value of the list
+   * @return last value of the list
+   */
+  @Override
+  public Integer last() {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">    if (this.rest.isEmpty()) {</span>
+<span class="fc" id="L77">      return this.first;</span>
+    } else {
+<span class="fc" id="L79">      return this.rest.last();</span>
+    }
+  }
+
+  /**
+   * returns true if element is in the list and false otherwise
+   *
+   * @param number Integer
+   * @return  true if element is in the list and false otherwise
+   */
+  @Override
+  public Boolean contains(Integer number) {
+<span class="fc bfc" id="L91" title="All 2 branches covered.">    if(this.first.equals(number))</span>
+<span class="fc" id="L92">      return true;</span>
+<span class="fc" id="L93">    else return this.rest.contains(number);</span>
+  }
+
+  /**
+   * Returns the element found at index in the list. If an index provided is outside
+   * the bounds of the list, the method throws exception.
+   *
+   * @param index Integer
+   * @return the element found at index in the list. If an index provided is outside
+   * the bounds of the list, the method throws exception.
+   */
+  @Override
+  public Integer elementAt(Integer index) throws InvalidCallException{
+<span class="fc bfc" id="L106" title="All 4 branches covered.">    if(index &lt; 0 || index &gt;= this.size())</span>
+<span class="fc" id="L107">      throw new InvalidCallException(&quot;Index out of bounds!&quot;);</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">    else if(index == 0)</span>
+<span class="fc" id="L109">      return this.first;</span>
+<span class="fc" id="L110">    else return this.rest.elementAt(index - 1);</span>
+  }
+
+  /**
+   * Return the total sum of the list
+   * @return the total sum of the list
+   */
+  @Override
+  public Integer sum() {
+<span class="fc" id="L119">    return this.first + this.rest.sum();</span>
+  }
+
+  /**
+   * Remove a value from the list
+   * @param value Integer
+   * @return a value from the list
+   */
+  @Override
+  public List remove(Integer value) {
+<span class="fc bfc" id="L129" title="All 2 branches covered.">    if(!this.contains(value))</span>
+<span class="fc" id="L130">      return this;</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    else if (this.first.equals(value)) {</span>
+<span class="fc" id="L132">      return this.rest;</span>
+    } else {
+<span class="fc" id="L134">      return new Cons(this.first,this.rest.remove(value));</span>
+    }
+  }
+
+
+  /**
+   * Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   * current instance
+   * @param o Object
+   * @return boolean value
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L147" title="All 2 branches covered.">    if (this == o) return true;</span>
+<span class="fc bfc" id="L148" title="All 4 branches covered.">    if (o == null || getClass() != o.getClass()) return false;</span>
+
+<span class="fc" id="L150">    Cons cons = (Cons) o;</span>
+
+<span class="fc bfc" id="L152" title="All 6 branches covered.">    if (getFirst() != null ? !getFirst().equals(cons.getFirst()) : cons.getFirst() != null)</span>
+<span class="fc" id="L153">      return false;</span>
+<span class="fc bfc" id="L154" title="All 4 branches covered.">    return getRest() != null ? getRest().equals(cons.getRest()) : cons.getRest() == null;</span>
+  }
+
+  /**
+   * returns an integer representation of the object memory address
+   * @return an integer representation of the object memory address
+   */
+  @Override
+  public int hashCode() {
+<span class="fc bfc" id="L163" title="All 2 branches covered.">    int result = getFirst() != null ? getFirst().hashCode() : 0;</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">    result = 31 * result + (getRest() != null ? getRest().hashCode() : 0);</span>
+<span class="fc" id="L165">    return result;</span>
+  }
+
+  /**
+   * Returns an String representation of the object
+   * @return String
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L174">    return &quot;Cons{&quot;</span>
+        + &quot;first=&quot; + first
+        + &quot;, rest=&quot; + rest
+        + '}';
+  }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

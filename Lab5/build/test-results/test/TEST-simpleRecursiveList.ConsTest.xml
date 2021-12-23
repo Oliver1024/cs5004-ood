@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="simpleRecursiveList.ConsTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2021-06-24T20:45:35" hostname="Oliver-Macbook.local" time="0.024">
+  <properties/>
+  <testcase name="testEquals2" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="testEquals3" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="testEquals5" classname="simpleRecursiveList.ConsTest" time="0.002"/>
+  <testcase name="testHashCodeNull" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="testToString" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="remove" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="contains" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="elementAt" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="getRest" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="add" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="sum" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="last" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="size" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="testHashCode" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="testHashCode2" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="testEquals" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <testcase name="testInvalidCallException2" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="testHashCodeEquality" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="getFirst" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="testInvalidCallException" classname="simpleRecursiveList.ConsTest" time="0.0"/>
+  <testcase name="isEmpty" classname="simpleRecursiveList.ConsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

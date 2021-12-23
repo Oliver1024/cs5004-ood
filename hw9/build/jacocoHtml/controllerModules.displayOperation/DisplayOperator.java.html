@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DisplayOperator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hw9</a> &gt; <a href="index.source.html" class="el_package">controllerModules.displayOperation</a> &gt; <span class="el_source">DisplayOperator.java</span></div><h1>DisplayOperator.java</h1><pre class="source lang-java linenums">package controllerModules.displayOperation;
+
+import controllerModules.commandOpreration.CommandInfoCollection;
+import controllerModules.csvOperation.CSVWriter;
+import java.util.Comparator;
+import java.util.List;
+import model.Todo;
+
+/**
+ * A class that represents DisplayOperator.
+ */
+public class DisplayOperator {
+  private CommandInfoCollection commandInfoCollection;
+  private List&lt;Todo&gt; todoList;
+
+  /**
+   * A constructor that creates a new object of DisplayOperator
+   * @param commandInfoCollection - CommandInfoCollection, commandInfoCollection
+   * @param todoList - List, todoList
+   */
+  public DisplayOperator(
+<span class="fc" id="L22">      CommandInfoCollection commandInfoCollection, List&lt;Todo&gt; todoList) {</span>
+<span class="fc" id="L23">    this.commandInfoCollection = commandInfoCollection;</span>
+<span class="fc" id="L24">    this.todoList = todoList;</span>
+<span class="fc" id="L25">  }</span>
+
+  /**
+   * Print csv file info.
+   */
+  public void print(){
+<span class="fc" id="L31">    CSVWriter csvWriter = new CSVWriter();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">    if(commandInfoCollection.getDisplay()) {</span>
+<span class="fc" id="L33">      System.out.println(csvWriter.columnNameWriter());</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">      if(commandInfoCollection.getShowIncomplete()) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        for(Todo todo : todoList){</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">          if(!todo.getCompleted()) {</span>
+<span class="fc" id="L37">            System.out.println(csvWriter.todoWriter(todo));</span>
+          }
+<span class="fc" id="L39">        }</span>
+      }
+<span class="fc bfc" id="L41" title="All 2 branches covered.">      else if(commandInfoCollection.getShowCategory()) {</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for(Todo todo : todoList){</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">          if(todo.getCategory().equals(commandInfoCollection.getCategoryToShow())) {</span>
+<span class="fc" id="L44">            System.out.println(csvWriter.todoWriter(todo));</span>
+          }
+<span class="fc" id="L46">        }</span>
+      }
+<span class="fc bfc" id="L48" title="All 4 branches covered.">      else if(!sortByDate() &amp;&amp; !sortByPriority()) {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        for(Todo todo : todoList){</span>
+<span class="fc" id="L50">          System.out.println(csvWriter.todoWriter(todo));</span>
+<span class="fc" id="L51">        }</span>
+      }
+    }
+
+
+
+
+<span class="fc" id="L58">  }</span>
+
+  /**
+   * Sort by date of the todo file.
+   * @return Boolean value
+   */
+  private Boolean sortByDate() {
+<span class="fc" id="L65">    CSVWriter csvWriter = new CSVWriter();</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (commandInfoCollection.getSortByDate()) {</span>
+<span class="fc" id="L67">      List&lt;Todo&gt; newTodoList = createListSortByDate(todoList);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">      for(Todo todo : newTodoList){</span>
+<span class="fc" id="L69">        System.out.println(csvWriter.todoWriter(todo));</span>
+<span class="fc" id="L70">      }</span>
+    }
+<span class="fc" id="L72">    return commandInfoCollection.getSortByDate();</span>
+  }
+
+  /**
+   * Sort by priority of the todo file
+   * @return Boolean value
+   */
+  private Boolean sortByPriority() {
+<span class="fc" id="L80">    CSVWriter csvWriter = new CSVWriter();</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">    if(commandInfoCollection.getSortByPriority()) {</span>
+<span class="fc" id="L82">      List&lt;Todo&gt; newTodoList = createListSortByPriority(todoList);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">      for(Todo todo : newTodoList){</span>
+<span class="fc" id="L84">        System.out.println(csvWriter.todoWriter(todo));</span>
+<span class="fc" id="L85">      }</span>
+    }
+<span class="fc" id="L87">    return commandInfoCollection.getSortByPriority();</span>
+  }
+
+  /**
+   * A helper function that creates a list sorting by date.
+   * @param todoList List&lt;Todo&gt;
+   * @return a valid list of todo
+   */
+  private List&lt;Todo&gt; createListSortByDate(List&lt;Todo&gt; todoList) {
+<span class="fc" id="L96">    List&lt;Todo&gt; outputList = todoList;</span>
+<span class="fc" id="L97">    outputList.sort(new Comparator&lt;Todo&gt;() {</span>
+      @Override
+      public int compare(Todo o1, Todo o2) {
+<span class="fc bfc" id="L100" title="All 4 branches covered.">        if(o1.getDue() == null &amp;&amp; o2.getDue() == null) return 0;</span>
+<span class="pc bpc" id="L101" title="1 of 4 branches missed.">        else if (o1.getDue() == null &amp;&amp; o2.getDue() != null) return 1;</span>
+<span class="pc bpc" id="L102" title="1 of 4 branches missed.">        else if (o1.getDue() != null &amp;&amp; o2.getDue() == null) return -1;</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        else if(o1.getDue().isAfter(o2.getDue())){</span>
+<span class="fc" id="L104">          return 1;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        } else if (o1.getDue().isEqual(o2.getDue())){</span>
+<span class="fc" id="L106">          return 0;}</span>
+<span class="fc" id="L107">        else return -1;</span>
+      }
+    });
+<span class="fc" id="L110">    return outputList;</span>
+  }
+
+  /**
+   * A helper function that creates a list sorting by priority.
+   * @param todoList List&lt;Todo&gt;, todo list
+   * @return a valid list of todo
+   */
+  private List&lt;Todo&gt; createListSortByPriority(List&lt;Todo&gt; todoList) {
+<span class="fc" id="L119">    List&lt;Todo&gt; outputList = todoList;</span>
+<span class="fc" id="L120">    outputList.sort(new Comparator&lt;Todo&gt;() {</span>
+      @Override
+      public int compare(Todo o1, Todo o2) {
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        if (o1.getPriority() &gt; o2.getPriority()) {</span>
+<span class="fc" id="L124">          return 1;</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">        } else if (o1.getPriority() &lt; o2.getPriority()) {</span>
+<span class="fc" id="L126">          return -1;</span>
+<span class="fc" id="L127">        } else return 0;</span>
+      }
+    });
+<span class="fc" id="L130">    return outputList;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

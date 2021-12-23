@@ -1,0 +1,17 @@
+-classpath '/Users/oliver/cs5004/HW2/build/classes/java/main:/Users/oliver/cs5004/HW2/build/resources/main:/Users/oliver/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.1/cdd00374f1fee76b11e2a9d127405aa3f6be5b6a/junit-4.13.1.jar:/Users/oliver/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar'
+-d '/Users/oliver/cs5004/HW2/build/docs/javadoc'
+-doctitle 'HW2 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'HW2 1.0-SNAPSHOT API'
+'/Users/oliver/cs5004/HW2/src/main/java/problem1/Room.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem1/SingleRoom.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem1/DoubleRoom.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem1/FamilyRoom.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem2/LockerEmptyException.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem2/MailSizeToLargeException.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem2/Mail.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem2/Locker.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem2/LockerOccupiedException.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem2/Recipient.java'
+'/Users/oliver/cs5004/HW2/src/main/java/problem2/RecipientNotMatchException.java'

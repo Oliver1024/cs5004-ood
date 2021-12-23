@@ -1,0 +1,12 @@
+problem1/DestinationTest.java
+ problem1.DestinationTest
+problem2/MSDailyFinancesTest.java
+ problem2.MSDailyFinancesTest
+problem2/YFinancesTest.java
+ problem2.YFinancesTest
+problem2/LoanTest.java
+ problem2.LoanTest
+problem1/TravelerTest.java
+ problem1.TravelerTest
+problem1/TravelerIteratorTest.java
+ problem1.TravelerIteratorTest

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConsPriorityQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW6</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">ConsPriorityQueue.java</span></div><h1>ConsPriorityQueue.java</h1><pre class="source lang-java linenums">package problem1;
+
+/**
+ * Represent a class ConsPriorityQueue.
+ */
+public class ConsPriorityQueue extends AbstractPriorityQueue {
+
+  /**
+   * Represent a  class Node.
+   */
+  static class Node{
+    private Integer priority;
+    private String value;
+
+    /**
+     * Constructor that a new object with two arguments
+     * @param priority - Integer, priority
+     * @param value - String, value
+     */
+<span class="fc" id="L20">    public Node(Integer priority, String value){</span>
+<span class="fc" id="L21">      this.priority = priority;</span>
+<span class="fc" id="L22">      this.value = value;</span>
+<span class="fc" id="L23">    }</span>
+  }
+
+  private final Node first;
+  private final PriorityQueue rest;
+
+
+  /**
+   * Constructor a new object with three arguments
+   * @param priority - Integer, priority
+   * @param value - String value
+   * @param rest - PriorityQueue rest of the new object
+   */
+<span class="fc" id="L36">  public ConsPriorityQueue(Integer priority,String value,PriorityQueue rest) {</span>
+<span class="fc" id="L37">    this.first = new Node(priority,value);</span>
+<span class="fc" id="L38">    this.rest = rest;</span>
+<span class="fc" id="L39">  }</span>
+
+  /**
+   * {@inheritDoc}
+   * Return false if the queue is not empty otherwise true
+   * @return a boolean value
+   */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L48">    return false;</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   * Return a new priority queue after adding a queue
+   * @param priority Integer, priority
+   * @param value String, value
+   * @return a new priority queue after adding a queue
+   */
+  @Override
+  public PriorityQueue add(Integer priority, String value) {
+
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    if(this.first.priority &lt; priority){</span>
+<span class="fc" id="L62">      return new ConsPriorityQueue(priority,value,this);</span>
+    }
+<span class="fc" id="L64">    return new ConsPriorityQueue(this.first.priority,this.first.value,</span>
+<span class="fc" id="L65">        this.rest.add(priority,value));</span>
+  }
+
+
+  /**
+   * {@inheritDoc}
+   * Returns the value in the PQ that has the highest priority
+   *
+   * @return String,  the value in the PQ that has the highest priority
+   */
+  @Override
+  public String peek() {
+<span class="fc" id="L77">    return this.first.value;</span>
+  }
+
+  /**
+   * Returns a copy of the PQ without the element with the
+   * highest priority.
+   * @return PriorityQueue, a copy of the PQ without the element with the highest priority.
+   */
+  @Override
+  public PriorityQueue pop(){
+<span class="fc" id="L87">   return this.rest;</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   * Indicates whether some other object passed as an argument is &quot;equal to&quot; the
+   * current instance
+   * @param o - object, an object to compare
+   * @return boolean value
+   */
+  @Override
+  public boolean equals(Object o) {
+
+<span class="fc bfc" id="L100" title="All 2 branches covered.">    if(this == o) return true;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">    if( o == null) return false;</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">    if(!(o instanceof  ConsPriorityQueue)) return false;</span>
+
+<span class="fc" id="L104">    ConsPriorityQueue that = (ConsPriorityQueue) o;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">    if(this.first.priority == null){</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">      if(that.first.priority != null) return  false;</span>
+    }
+<span class="fc bfc" id="L108" title="All 2 branches covered.">    else if(!this.first.priority.equals(that.first.priority)) return false;</span>
+
+<span class="fc bfc" id="L110" title="All 2 branches covered.">    if(this.first.value == null){</span>
+<span class="pc bpc" id="L111" title="1 of 2 branches missed.">      if(that.first.value != null) return false;</span>
+    }
+
+<span class="fc bfc" id="L114" title="All 2 branches covered.">    if(this.rest == null){</span>
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">      if(that.rest != null) return false;</span>
+    }
+<span class="fc bfc" id="L117" title="All 2 branches covered.">    else if (!this.rest.equals(that.rest)) return false;</span>
+<span class="fc" id="L118">    return true;</span>
+  }
+
+
+  /**
+   * {@inheritDoc}
+   * Returns an integer representation of the object memory address
+   * @return int, an integer representation of the object memory address
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L129">    final int prime = 31;</span>
+<span class="fc" id="L130">    int result = 1;</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    result = (prime * result) + ((this.first.priority == null) ? 0 :</span>
+<span class="fc" id="L132">        this.first.priority.hashCode());</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">    result = (prime * result) + ((this.first.value == null) ? 0 : this.first.value.hashCode());</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">    result = (prime * result) + ((this.rest == null) ? 0 : this.rest.hashCode());</span>
+<span class="fc" id="L135">    return result;</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   * Returns an String representation of the object
+   * @return String, string
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L145">    return &quot;ConsPriorityQueue{&quot; +</span>
+<span class="fc" id="L146">        &quot;first.priority=&quot; + first.priority +</span>
+<span class="fc" id="L147">        &quot;, first.value=&quot; + first.value +</span>
+        &quot;, rest=&quot; + rest +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

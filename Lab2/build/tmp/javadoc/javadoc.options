@@ -1,0 +1,11 @@
+-classpath '/Users/oliver/cs5004/Lab2/build/classes/java/main:/Users/oliver/cs5004/Lab2/build/resources/main'
+-d '/Users/oliver/cs5004/Lab2/build/docs/javadoc'
+-doctitle 'Lab2 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'Lab2 1.0-SNAPSHOT API'
+'/Users/oliver/cs5004/Lab2/src/main/java/problem1/Athlete.java'
+'/Users/oliver/cs5004/Lab2/src/main/java/problem1/Runner.java'
+'/Users/oliver/cs5004/Lab2/src/main/java/problem1/BaseballPlayer.java'
+'/Users/oliver/cs5004/Lab2/src/main/java/problem1/Name.java'
+'/Users/oliver/cs5004/Lab2/src/main/java/problem2/Posn.java'

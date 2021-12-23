@@ -1,0 +1,20 @@
+listOfList/EmptyListOfList.java
+ listOfList.EmptyListOfList
+simpleRecursiveList/List.java
+ simpleRecursiveList.List
+simpleRecursiveList/InvalidCallException.java
+ simpleRecursiveList.InvalidCallException
+listOfList/ConsListOfList.java
+ listOfList.ConsListOfList
+simpleRecursiveList/Cons.java
+ simpleRecursiveList.Cons
+simpleRecursiveList/Empty.java
+ simpleRecursiveList.Empty
+listOfList/ListOfList.java
+ listOfList.ListOfList
+recursiveSet/EmptySet.java
+ recursiveSet.EmptySet
+recursiveSet/Set.java
+ recursiveSet.Set
+recursiveSet/ConsSet.java
+ recursiveSet.ConsSet

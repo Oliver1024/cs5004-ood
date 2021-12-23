@@ -1,0 +1,13 @@
+-classpath '/Users/oliver/cs5004/HW4/build/classes/java/main:/Users/oliver/cs5004/HW4/build/resources/main'
+-d '/Users/oliver/cs5004/HW4/build/docs/javadoc'
+-doctitle 'HW4 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'HW4 1.0-SNAPSHOT API'
+'/Users/oliver/cs5004/HW4/src/main/java/problem1/CourseCatalog.java'
+'/Users/oliver/cs5004/HW4/src/main/java/problem1/ICourseCatalog.java'
+'/Users/oliver/cs5004/HW4/src/main/java/problem1/Course.java'
+'/Users/oliver/cs5004/HW4/src/main/java/problem1/InvalidIndexException.java'
+'/Users/oliver/cs5004/HW4/src/main/java/problem1/CourseNotFoundException.java'
+'/Users/oliver/cs5004/HW4/src/main/java/problem2/SetImplement.java'
+'/Users/oliver/cs5004/HW4/src/main/java/problem2/Set.java'
